@@ -182,6 +182,148 @@
       "created_at": "2026-08-31T16:45:00+00:00",
       "frozen_at": "2026-08-31T17:12:00+00:00",
       "freeze_tag": "EXP_TRAIN_VAL_SPLIT_V1"
+    },
+    {
+      "id": "EXP_MI_V1",
+      "purpose": "Mutual Information feature selection. Rank all encoded TRAIN features by MI against binary label. Use 5-fold inner CV to select optimal K from {10,20,30,40,50}. Final MI refit on complete frozen TRAIN. Output frozen feature list for all downstream models and AE.",
+      "protocol_version": "1.0",
+      "seed": 42,
+      "dataset": "UNSW-NB15",
+      "config_file": "results/feature_selection/EXP_MI_V1/config.yaml",
+      "script": "scripts/run_mi_feature_selection.py",
+      "log": "results/logs/EXP_MI_V1/run.log",
+      "expected_outputs": [
+        "results/feature_selection/EXP_MI_V1/mi_scores.csv",
+        "results/feature_selection/EXP_MI_V1/feature_ranking.csv",
+        "results/feature_selection/EXP_MI_V1/selected_features.json",
+        "results/feature_selection/EXP_MI_V1/k_selection_results.csv",
+        "results/feature_selection/EXP_MI_V1/metadata.json",
+        "results/feature_selection/EXP_MI_V1/config.yaml"
+      ],
+      "source_modules": [
+        "src/feature_selection/mi_selector.py",
+        "src/feature_selection/k_selector.py",
+        "src/feature_selection/__init__.py",
+        "scripts/run_mi_feature_selection.py"
+      ],
+      "test_modules": [
+        "tests/test_mi_selector.py",
+        "tests/test_k_selector.py",
+        "tests/test_mi_leakage.py"
+      ],
+      "mi_config": {
+        "estimator": "mutual_info_classif",
+        "n_neighbors": 3,
+        "random_state": 42,
+        "target": "label",
+        "representation": "encoded_unscaled"
+      },
+      "inner_cv_config": {
+        "method": "StratifiedKFold",
+        "n_splits": 5,
+        "shuffle": true,
+        "random_state": 42,
+        "candidate_k": [10, 20, 30, 40, 50],
+        "selection_metric": "macro_f1",
+        "tie_break": "smaller_k",
+        "evaluator": "LogisticRegression(solver=liblinear, C=1.0, max_iter=1000, class_weight=balanced, random_state=42)",
+        "evaluator_scaling": "StandardScaler fitted on inner_train_only"
+      },
+      "data_access_boundary": "Reads data/splits/train.csv ONLY. Never reads validation.csv, development_test.csv, protected_unseen_attack.csv, or excluded_train_backdoor.csv.",
+      "observed_results": null,
+      "status": "IMPLEMENTED",
+      "created_at": "2026-08-31T17:30:00+00:00",
+      "frozen_at": null,
+      "freeze_tag": null
+    },
+    {
+      "id": "EXP_MI_V1_1",
+      "protocol_version": "1.1",
+      "purpose": "Sprint 4 MI feature selection — Protocol v1.1. Protocol amendment: K grid extended from {10,20,30,40,50} to {10,20,30,40,50,75,100,150} after v1.0 produced a monotonic sanity flag (REVIEW_REQUIRED). All other methodology parameters are identical to EXP_MI_V1.",
+      "dataset": "UNSW-NB15",
+      "config_file": "results/feature_selection/EXP_MI_V1_1/config.yaml",
+      "script": "scripts/run_mi_feature_selection_v1_1.py",
+      "log": "results/logs/EXP_MI_V1_1/run.log",
+      "protocol_amendment": {
+        "file": "results/feature_selection/EXP_MI_V1_1/protocol_amendment.md",
+        "previous_experiment_id": "EXP_MI_V1",
+        "previous_candidate_k": [10, 20, 30, 40, 50],
+        "new_candidate_k": [10, 20, 30, 40, 50, 75, 100, 150],
+        "reason": "Initial K grid produced a monotonic mean inner-CV Macro-F1 curve through its upper boundary; the project sanity check therefore required human review. The grid was expanded once to include higher-dimensional candidate feature sets before final K selection.",
+        "timing": "Before rerunning the expanded K-selection experiment; no TEST, outer VALIDATION, protected Backdoor, or archived Backdoor data were used.",
+        "human_approved": true
+      },
+      "expected_outputs": [
+        "results/feature_selection/EXP_MI_V1_1/mi_scores.csv",
+        "results/feature_selection/EXP_MI_V1_1/feature_ranking.csv",
+        "results/feature_selection/EXP_MI_V1_1/selected_features.json",
+        "results/feature_selection/EXP_MI_V1_1/k_selection_results.csv",
+        "results/feature_selection/EXP_MI_V1_1/metadata.json",
+        "results/feature_selection/EXP_MI_V1_1/config.yaml",
+        "results/feature_selection/EXP_MI_V1_1/protocol_amendment.md"
+      ],
+      "source_modules": [
+        "src/feature_selection/mi_selector.py",
+        "src/feature_selection/k_selector.py",
+        "src/feature_selection/__init__.py",
+        "scripts/run_mi_feature_selection_v1_1.py"
+      ],
+      "test_modules": [
+        "tests/test_mi_v1_1.py",
+        "tests/test_mi_selector.py",
+        "tests/test_k_selector.py",
+        "tests/test_mi_leakage.py"
+      ],
+      "mi_config": {
+        "estimator": "mutual_info_classif",
+        "n_neighbors": 3,
+        "random_state": 42,
+        "target": "label",
+        "representation": "encoded_unscaled"
+      },
+      "inner_cv_config": {
+        "method": "StratifiedKFold",
+        "n_splits": 5,
+        "shuffle": true,
+        "random_state": 42,
+        "candidate_k": [10, 20, 30, 40, 50, 75, 100, 150],
+        "selection_metric": "macro_f1",
+        "tie_break": "smaller_k",
+        "evaluator": "LogisticRegression(solver=liblinear, C=1.0, max_iter=1000, class_weight=balanced, random_state=42)",
+        "evaluator_scaling": "StandardScaler fitted on inner_train_only"
+      },
+      "data_access_boundary": "Reads data/splits/train.csv ONLY. Never reads validation.csv, development_test.csv, protected_unseen_attack.csv, or excluded_train_backdoor.csv.",
+      "observed_results": {
+        "k_selection_summary": [
+          {"k": 10,  "mean_macro_f1": 0.824852, "std_macro_f1": 0.003435},
+          {"k": 20,  "mean_macro_f1": 0.864436, "std_macro_f1": 0.002428},
+          {"k": 30,  "mean_macro_f1": 0.897442, "std_macro_f1": 0.000917},
+          {"k": 40,  "mean_macro_f1": 0.916198, "std_macro_f1": 0.002122},
+          {"k": 50,  "mean_macro_f1": 0.919560, "std_macro_f1": 0.002323},
+          {"k": 75,  "mean_macro_f1": 0.919799, "std_macro_f1": null},
+          {"k": 100, "mean_macro_f1": 0.919775, "std_macro_f1": null},
+          {"k": 150, "mean_macro_f1": 0.919750, "std_macro_f1": null}
+        ],
+        "selected_k": 75,
+        "sanity_status": "REVIEW_REQUIRED",
+        "sanity_condition": "MONOTONIC",
+        "human_review": "APPROVED",
+        "top5_features": ["sbytes", "sttl", "dbytes", "ct_state_ttl", "dttl"],
+        "source_family_selected": {"proto": 25, "service": 6, "state": 5, "numeric": 39},
+        "total_encoded_features": 193,
+        "selected_feature_count": 75,
+        "train_rows": 162395,
+        "train_sha256": "4a259324e604f013287a5de5fe49c46bf19418d815b550c5d1a5820b569ac41c"
+      },
+      "human_review": {
+        "decision": "APPROVED",
+        "rationale": "K=75 has highest mean inner-CV macro-F1 (0.919799). Practical plateau begins at K=75. Improvements K=75->100->150 are negligible (<0.0001). MONOTONIC flag retained as documented sanity condition.",
+        "sanity_status_retained": "REVIEW_REQUIRED"
+      },
+      "status": "FROZEN",
+      "created_at": "2026-08-31T18:00:00+00:00",
+      "frozen_at": "2026-08-31T18:30:00+00:00",
+      "freeze_tag": "EXP_MI_V1_1"
     }
   ]
 }
