@@ -74,6 +74,55 @@
       "created_at": "2026-08-31T15:18:08.821399+00:00",
       "frozen_at": "2026-08-31T15:33:00+00:00",
       "freeze_tag": "EXP_DATA_ACQUISITION_UNSEEN_RESERVATION_V1"
+    },
+    {
+      "id": "EXP_PREPROCESSING_V1",
+      "purpose": "Leakage-safe preprocessing pipeline: OHE encoding (handle_unknown=ignore), StandardScaler fitted on TRAIN only, two model views (unscaled for DT/RF, scaled for SVM/NN/AE), typed ProcessedDataset result, fail-loud non-finite policy.",
+      "protocol_version": "1.0",
+      "seed": null,
+      "dataset": "UNSW-NB15",
+      "config_file": "configs/project_config.yaml",
+      "script": "scripts/run_preprocessing_smoke_test.py",
+      "log": "results/logs/EXP_PREPROCESSING_V1/run.log",
+      "expected_outputs": [
+        "src/preprocessing/exceptions.py",
+        "src/preprocessing/cleaning.py",
+        "src/preprocessing/encoding.py",
+        "src/preprocessing/scaling.py",
+        "src/preprocessing/processed_dataset.py",
+        "src/preprocessing/preprocessing_pipeline.py",
+        "tests/test_cleaning.py",
+        "tests/test_encoding.py",
+        "tests/test_scaling.py",
+        "tests/test_processed_dataset.py",
+        "tests/test_preprocessing_pipeline.py",
+        "tests/test_preprocessing_leakage.py"
+      ],
+      "observed_results": {
+        "n_features": 194,
+        "categorical_cols": ["proto", "service", "state"],
+        "numeric_col_count": 39,
+        "train_rows": 175341,
+        "dev_test_rows": 81749,
+        "protected_rows": 583,
+        "backdoor_in_dev_test": 0,
+        "protected_all_backdoor": true,
+        "raw_train_hash_unchanged": true,
+        "raw_test_hash_unchanged": true,
+        "protected_csv_unchanged": true,
+        "leakage_tests": "PASS",
+        "all_tests": "234/234 PASS",
+        "smoke_test": "ALL PASS",
+        "ml_fit_calls_in_source": 0,
+        "scaler_leakage_tolerance": "rtol=1e-7, atol=1e-9 vs independently reconstructed encoded TRAIN matrix",
+        "feature_name_verification": "element-by-element on every transform call",
+        "row_ordering_tested": true,
+        "note": "Official EXP_PREPROCESSING_V1 checkpoint intentionally NOT created. Will be created at the Sprint 3 split-protocol freeze when TRAIN/VAL split is finalised."
+      },
+      "status": "FROZEN",
+      "created_at": "2026-08-31T15:59:00+00:00",
+      "frozen_at": "2026-08-31T16:11:00+00:00",
+      "freeze_tag": "EXP_PREPROCESSING_V1"
     }
   ]
 }
