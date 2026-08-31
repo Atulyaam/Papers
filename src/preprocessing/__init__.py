@@ -6,9 +6,12 @@ Sprint 1 (FROZEN):
     loader, attack_cat_canonicalization, schema_audit,
     schema_validator, protected_unseen_attack, withheld_candidate
 
-Sprint 2 (this sprint):
-    cleaning, encoding, scaling, processed_dataset, preprocessing_pipeline
+Sprint 2 (FROZEN):
+    cleaning, encoding, scaling, processed_dataset, preprocessing_pipeline,
     exceptions
+
+Sprint 3:
+    split_protocol
 """
 
 # Sprint 2 public API
@@ -46,3 +49,18 @@ from src.preprocessing.processed_dataset import (
     VIEW_UNSCALED,
 )
 from src.preprocessing.preprocessing_pipeline import PreprocessingPipeline
+
+# Sprint 3 public API
+from src.preprocessing.split_protocol import (
+    TrainValSplitResult,
+    SplitIntegrityReport,
+    create_train_val_split,
+    verify_split_integrity,
+    build_split_provenance,
+    WITHHELD_ATTACK,
+    NORMAL_CAT,
+    NORMAL_TRAIN_FRAC,
+    NORMAL_VAL_FRAC,
+    ATTACK_CAT_COL,
+    LABEL_COL,
+)

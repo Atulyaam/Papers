@@ -123,6 +123,65 @@
       "created_at": "2026-08-31T15:59:00+00:00",
       "frozen_at": "2026-08-31T16:11:00+00:00",
       "freeze_tag": "EXP_PREPROCESSING_V1"
+    },
+    {
+      "id": "EXP_TRAIN_VAL_SPLIT_V1",
+      "purpose": "Official TRAIN/VALIDATION split from UNSW-NB15 training file. Backdoor training rows archived. Normal 80/20 split (seed=42). All non-Backdoor attack rows -> TRAIN. VALIDATION = Normal only (zero attack rows).",
+      "protocol_version": "1.0",
+      "seed": 42,
+      "dataset": "UNSW-NB15",
+      "config_file": "configs/project_config.yaml",
+      "script": "scripts/run_train_val_split.py",
+      "log": "results/logs/EXP_TRAIN_VAL_SPLIT_V1/run.log",
+      "expected_outputs": [
+        "data/splits/train.csv",
+        "data/splits/validation.csv",
+        "data/splits/excluded_train_backdoor.csv",
+        "data/splits/train_val_split_metadata.json",
+        "src/preprocessing/split_protocol.py",
+        "tests/test_split_protocol.py",
+        "tests/test_split_leakage.py"
+      ],
+      "observed_results": {
+        "input_rows": 175341,
+        "train_rows": 162395,
+        "validation_rows": 11200,
+        "excluded_backdoor_rows": 1746,
+        "normal_train_count": 44800,
+        "normal_validation_count": 11200,
+        "non_backdoor_attack_train_count": 117595,
+        "validation_attack_count": 0,
+        "backdoor_train_count": 0,
+        "backdoor_validation_count": 0,
+        "row_conservation": "PASS",
+        "exact_reconstruction": "PASS",
+        "pairwise_disjointness": "ALL ZERO (PASS)",
+        "source_hash_unchanged_train": "PASS",
+        "source_hash_unchanged_test": "PASS",
+        "protected_unseen_unchanged": "PASS",
+        "development_test_unchanged": "PASS",
+        "integrity_checks_all_pass": true,
+        "no_fitting_in_source": true,
+        "sprint3_targeted_tests": "74/74 PASS",
+        "all_tests": "308/308 PASS",
+        "train_csv_sha256": "4a259324e604f013287a5de5fe49c46bf19418d815b550c5d1a5820b569ac41c",
+        "validation_csv_sha256": "13caf21a076a33f50243f48f404b7e7525969f71d4b9d7c0f3768aef23589180",
+        "excluded_backdoor_csv_sha256": "b3f6e7e60c9815a53f40eb2d41df8b67d29f884b922a487c3fe83c02e0db0a02",
+        "git_commit_at_run": "59e9f872eee6573dc8fd1311ce96b9a3d827bffb",
+        "data_access_boundary": "Read ONLY data/raw/UNSW_NB15_training-set.csv. Did NOT read protected_unseen_attack.csv or development_test.csv.",
+        "validation_percentile_adequacy": {
+          "n_benign_validation": 11200,
+          "p90_tail": 1120,
+          "p95_tail": 560,
+          "p97_5_tail": 280,
+          "p99_tail": 112,
+          "note": "Descriptive empirical-support counts. NOT confidence intervals."
+        }
+      },
+      "status": "FROZEN",
+      "created_at": "2026-08-31T16:45:00+00:00",
+      "frozen_at": "2026-08-31T17:12:00+00:00",
+      "freeze_tag": "EXP_TRAIN_VAL_SPLIT_V1"
     }
   ]
 }

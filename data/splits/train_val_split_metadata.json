@@ -1,0 +1,131 @@
+{
+  "protocol_version": "1.0",
+  "experiment_id": "EXP_TRAIN_VAL_SPLIT_V1",
+  "dataset": "UNSW-NB15",
+  "created_at": "2026-08-31T17:10:50.882594+00:00",
+  "git_commit": "59e9f872eee6573dc8fd1311ce96b9a3d827bffb",
+  "source_training_filename": "UNSW_NB15_training-set.csv",
+  "source_training_sha256": "bec7dd5ec88dc2a0ccc7a07879d338395ed7421750f675fd0339e07dfe0648fa",
+  "split_seed": 42,
+  "split_strategy": "Step 1: Archive all Backdoor training rows. Step 2: Separate Normal and non-Backdoor attack rows from remaining pool. Step 3: Random 80/20 split of Normal rows (sklearn train_test_split, shuffle=True). Step 4: All non-Backdoor attack rows go 100% to TRAIN. Step 5: TRAIN = 80% Normal + 100% attack. VALIDATION = 20% Normal only.",
+  "normal_train_fraction": 0.8,
+  "normal_validation_fraction": 0.2,
+  "withheld_attack": "Backdoor",
+  "withheld_role": "NONE - archived to excluded_train_backdoor.csv",
+  "validation_purpose": "Benign-only AE reconstruction-error threshold calibration and protocol sanity checks. NOT for repeated supervised hyperparameter selection.",
+  "train_count": 162395,
+  "validation_count": 11200,
+  "excluded_backdoor_count": 1746,
+  "normal_train_count": 44800,
+  "normal_validation_count": 11200,
+  "non_backdoor_attack_train_count": 117595,
+  "validation_attack_count": 0,
+  "backdoor_train_count": 0,
+  "backdoor_validation_count": 0,
+  "train_distribution": {
+    "attack_cat": {
+      "Normal": 44800,
+      "Generic": 40000,
+      "Exploits": 33393,
+      "Fuzzers": 18184,
+      "DoS": 12264,
+      "Reconnaissance": 10491,
+      "Analysis": 2000,
+      "Shellcode": 1133,
+      "Worms": 130
+    },
+    "label": {
+      "1": 117595,
+      "0": 44800
+    }
+  },
+  "val_distribution": {
+    "attack_cat": {
+      "Normal": 11200
+    },
+    "label": {
+      "0": 11200
+    }
+  },
+  "excluded_distribution": {
+    "attack_cat": {
+      "Backdoor": 1746
+    }
+  },
+  "row_conservation": true,
+  "exact_reconstruction": true,
+  "integrity_checks": {
+    "all_pass": true,
+    "row_conservation": true,
+    "val_zero_attack": true,
+    "val_zero_attack_count": 0,
+    "backdoor_not_in_train": true,
+    "backdoor_in_train_count": 0,
+    "backdoor_not_in_val": true,
+    "backdoor_in_val_count": 0,
+    "normal_only_in_val": true,
+    "non_normal_in_val_count": 0,
+    "excluded_all_backdoor": true,
+    "label_consistency": true,
+    "no_index_overlap_train_val": true,
+    "train_has_attacks": true,
+    "failures": []
+  },
+  "output_hashes": {
+    "train_csv": "4a259324e604f013287a5de5fe49c46bf19418d815b550c5d1a5820b569ac41c",
+    "validation_csv": "13caf21a076a33f50243f48f404b7e7525969f71d4b9d7c0f3768aef23589180",
+    "excluded_train_backdoor_csv": "b3f6e7e60c9815a53f40eb2d41df8b67d29f884b922a487c3fe83c02e0db0a02"
+  },
+  "library_versions": {
+    "python": "3.11.9",
+    "numpy": "2.4.6",
+    "pandas": "3.0.5",
+    "sklearn": "1.9.0"
+  },
+  "validation_percentile_adequacy": {
+    "n_benign_validation": 11200,
+    "method": "Descriptive count. For percentile p, approx_tail_count = round(n_benign_validation * (1 - p/100)). These are empirical support counts, NOT confidence intervals.",
+    "percentiles": {
+      "90": {
+        "approx_tail_count": 1120
+      },
+      "95": {
+        "approx_tail_count": 560
+      },
+      "97.5": {
+        "approx_tail_count": 280
+      },
+      "99": {
+        "approx_tail_count": 112
+      }
+    },
+    "assessment": "The validation set contains 11,200 benign rows. The 90th-percentile threshold is calibrated on approximately 1,120 upper-tail samples, and the 99th-percentile threshold on approximately 112. All operating points have substantial empirical support. This is descriptive evidence of adequacy, not a formal guarantee."
+  },
+  "pairwise_disjointness": {
+    "train_val_overlap": 0,
+    "train_excluded_overlap": 0,
+    "val_excluded_overlap": 0,
+    "all_disjoint": true
+  },
+  "count_identity_checks": {
+    "normal_train_plus_val_eq_all_normal": true,
+    "train_attacks_eq_all_nb_attacks": true,
+    "val_attacks_eq_zero": true,
+    "train_backdoor_eq_zero": true,
+    "val_backdoor_eq_zero": true,
+    "excluded_backdoor_eq_all_train_backdoor": true,
+    "counts": {
+      "orig_backdoor": 1746,
+      "orig_normal": 56000,
+      "orig_nb_attacks": 117595,
+      "train_normal": 44800,
+      "val_normal": 11200,
+      "train_attacks": 117595,
+      "val_attacks": 0,
+      "train_backdoor": 0,
+      "val_backdoor": 0,
+      "excl_backdoor": 1746
+    },
+    "all_pass": true
+  }
+}
