@@ -21,8 +21,26 @@
         "data/audit/withheld_candidates.json",
         "data/audit/audit_report.md"
       ],
-      "status": "IMPLEMENTED",
-      "created_at": ""
+      "observed_results": {
+        "train_rows": 175341,
+        "train_cols": 45,
+        "test_rows": 82332,
+        "test_cols": 45,
+        "train_sha256": "bec7dd5ec88dc2a0ccc7a07879d338395ed7421750f675fd0339e07dfe0648fa",
+        "test_sha256": "734fe6642edf758f7c94d7d9149426b49d202fe8e7bf0bef47392489c3c0a559",
+        "null_values": 0,
+        "duplicate_rows": 0,
+        "exact_train_test_overlap": 0,
+        "attack_cat_raw_values": ["Analysis","Backdoor","DoS","Exploits","Fuzzers","Generic","Normal","Reconnaissance","Shellcode","Worms"],
+        "canonicalization_needed": false,
+        "backdoor_test_count": 583,
+        "eligible_candidates": 8,
+        "worms_ineligible_count": 44
+      },
+      "status": "FROZEN",
+      "created_at": "2026-08-31T15:17:54.748328+00:00",
+      "frozen_at": "2026-08-31T15:33:00+00:00",
+      "freeze_tag": "EXP_DATA_ACQUISITION_UNSEEN_RESERVATION_V1"
     },
     {
       "id": "EXP_UNSEEN_RESERVATION",
@@ -38,8 +56,24 @@
         "data/splits/development_test.csv",
         "data/splits/split_metadata.json"
       ],
-      "status": "IMPLEMENTED",
-      "created_at": ""
+      "observed_results": {
+        "withheld_target": "Backdoor",
+        "selection_rule": "fixed_named_target",
+        "protected_rows": 583,
+        "development_test_rows": 81749,
+        "original_test_rows": 82332,
+        "row_conservation": "PASS",
+        "reconstruction_verified": "PASS",
+        "source_hash_unchanged": "PASS",
+        "protected_sha256": "6ffd23479b575e438ad90678268f40f674a663c2b9507aaf65089623397a9d91",
+        "development_test_sha256": "04725e85732ab2fc6d9eaaa6105418b22b083b5c651067e7b0785464f414e508",
+        "determinism": "PASS",
+        "validation_checks_passed": 6
+      },
+      "status": "FROZEN",
+      "created_at": "2026-08-31T15:18:08.821399+00:00",
+      "frozen_at": "2026-08-31T15:33:00+00:00",
+      "freeze_tag": "EXP_DATA_ACQUISITION_UNSEEN_RESERVATION_V1"
     }
   ]
 }
