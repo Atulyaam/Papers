@@ -1,0 +1,45 @@
+{
+  "experiments": [
+    {
+      "id": "EXP_DATA_ACQUISITION_AUDIT",
+      "purpose": "Download official UNSW-NB15 pre-split CSV files, compute file hashes, audit schema, attack_cat values, label distribution, cross-split overlap, and withheld-attack candidate eligibility.",
+      "protocol_version": "1.0",
+      "seed": 42,
+      "dataset": "UNSW-NB15",
+      "config_file": "configs/project_config.yaml",
+      "script": "scripts/run_data_audit.py",
+      "log": "results/logs/EXP_DATA_ACQUISITION_AUDIT/run.log",
+      "expected_outputs": [
+        "data/audit/file_hashes.json",
+        "data/audit/dataset_schema.json",
+        "data/audit/attack_cat_raw_strings.json",
+        "data/audit/attack_cat_raw_distribution.json",
+        "data/audit/canonicalization_map.json",
+        "data/audit/label_distribution.json",
+        "data/audit/attack_cat_distribution.json",
+        "data/audit/overlap_report.json",
+        "data/audit/withheld_candidates.json",
+        "data/audit/audit_report.md"
+      ],
+      "status": "IMPLEMENTED",
+      "created_at": ""
+    },
+    {
+      "id": "EXP_UNSEEN_RESERVATION",
+      "purpose": "Partition the official TEST file into protected_unseen_attack (all Backdoor rows) and development_test (all non-Backdoor rows). Validate row conservation and exact reconstruction.",
+      "protocol_version": "1.0",
+      "seed": null,
+      "dataset": "UNSW-NB15",
+      "config_file": "configs/project_config.yaml",
+      "script": "scripts/run_unseen_reservation.py",
+      "log": "results/logs/EXP_UNSEEN_RESERVATION/run.log",
+      "expected_outputs": [
+        "data/splits/protected_unseen_attack.csv",
+        "data/splits/development_test.csv",
+        "data/splits/split_metadata.json"
+      ],
+      "status": "IMPLEMENTED",
+      "created_at": ""
+    }
+  ]
+}

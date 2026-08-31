@@ -1,0 +1,76 @@
+# =============================================================================
+# configs/project_config.yaml
+# Project-level configuration for the UNSW-NB15 IDS project.
+#
+# All paths are relative to the project root (IDS-UNSW-NB15/).
+# Scripts resolve paths relative to their CWD (the project root).
+# =============================================================================
+
+experiment_id: EXP_DATA_ACQUISITION_AUDIT
+protocol_version: "1.0"
+seed: 42
+
+# ---------------------------------------------------------------------------
+# Data source
+# ---------------------------------------------------------------------------
+data:
+  raw_dir: data/raw
+
+  # Official UNSW-NB15 pre-split filenames (Scenario B layout)
+  # Training set: 175,341 records
+  # Testing set:  82,332 records
+  train_file: UNSW_NB15_training-set.csv
+  test_file:  UNSW_NB15_testing-set.csv
+
+  # Optional feature-description file (schema documentation)
+  features_file: UNSW-NB15_features.csv
+
+  # CSV format
+  header: true          # Headers are embedded in the official pre-split CSVs
+  encoding: utf-8
+
+  # Column names (from official documentation)
+  label_col: label
+  attack_cat_col: attack_cat
+
+  # Columns to exclude from feature modelling (decided after audit in Sprint 2).
+  # Recorded here for transparency; do NOT use to modify raw files.
+  # These are CANDIDATE fields only — Sprint 1 audits them, Sprint 2 decides.
+  exclude_cols_candidates:
+    - id
+    - srcip
+    - dstip
+    - sport
+    - dsport
+    - Stime
+    - Ltime
+
+# ---------------------------------------------------------------------------
+# Audit
+# ---------------------------------------------------------------------------
+audit:
+  output_dir: data/audit
+  log_dir: results/logs
+
+# ---------------------------------------------------------------------------
+# Withheld attack protocol
+# ---------------------------------------------------------------------------
+withheld:
+  min_test_instances: 50
+  selection_rule: fixed_named_target
+  target: Backdoor
+
+# ---------------------------------------------------------------------------
+# Splits
+# ---------------------------------------------------------------------------
+splits:
+  output_dir: data/splits
+
+# ---------------------------------------------------------------------------
+# Results
+# ---------------------------------------------------------------------------
+results:
+  checkpoints_dir: results/checkpoints
+  metrics_dir: results/metrics
+  figures_dir: results/figures
+  shap_dir: results/shap

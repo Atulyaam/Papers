@@ -1,0 +1,29 @@
+{
+  "protocol_version": "1.0",
+  "dataset": "UNSW-NB15",
+  "eligibility": {
+    "minimum_test_instances": 50
+  },
+  "selection_rule": {
+    "type": "fixed_named_target",
+    "target": "Backdoor",
+    "note": "Target is fixed independently of model performance. See revision_history."
+  },
+  "candidate_subclasses": [],
+  "candidate_counts": {},
+  "selected_subclass": "Backdoor",
+  "revision_history": [
+    {
+      "revision_id": 1,
+      "previous_rule": "alphabetical_first_eligible",
+      "previous_description": "Filter eligible subclasses (>= 50 TEST instances), sort alphabetically, select the first.",
+      "new_rule": "fixed_named_target",
+      "new_target": "Backdoor",
+      "timing": "before_any_model_training_or_evaluation",
+      "rationale": "Backdoor is a minority attack family with sufficient test support and distinct properties from larger attack families (Generic, Exploits, DoS). Fixing the target by name before any training/evaluation preserves pre-registration integrity while ensuring the chosen class is theoretically interesting for the unseen-attack hypothesis.",
+      "disclosure": "This revision is disclosed transparently per project protocol. The original alphabetical rule is preserved here as historical record. No model results were inspected before the revision."
+    }
+  ],
+  "created_at": "",
+  "selection_frozen_at": ""
+}
