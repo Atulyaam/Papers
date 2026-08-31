@@ -1,4 +1,7 @@
-"""tests/test_schema_validator.py — Unit tests for src/preprocessing/schema_validator.py"""
+"""
+tests/test_schema_validator.py — Unit tests for src/preprocessing/schema_validator.py
+Extended in Sprint 1 final quality review to cover columns_absent_from_presplit.
+"""
 
 import sys
 from pathlib import Path
@@ -23,13 +26,14 @@ def _make_contract(label_col="label", cat_col="attack_cat"):
         "target": {"column": label_col},
         "attack_category": {"column": cat_col},
         "candidate_categorical_columns": ["proto", "service"],
-        "candidate_exclude_columns": ["id", "srcip"],
+        "candidate_exclude_columns": ["id"],
+        "columns_absent_from_presplit": ["srcip", "dstip"],
     }
 
 
 class TestValidateSchema:
     def test_passes_with_valid_schema(self):
-        obs = _make_observed(["label", "attack_cat", "proto", "service", "feat1"])
+        obs = _make_observed(["label", "attack_cat", "proto", "service", "id", "feat1"])
         contract = _make_contract()
         violations = validate_schema(obs, contract)
         assert violations == []
@@ -51,13 +55,27 @@ class TestValidateSchema:
         obs = _make_observed(["label", "attack_cat"])  # no proto, service
         contract = _make_contract()
         violations = validate_schema(obs, contract)
-        # proto/service absence should not appear in violations list
         assert violations == []
 
     def test_empty_contract_no_violations(self):
         obs = _make_observed(["a", "b"])
         violations = validate_schema(obs, {})
         assert violations == []
+
+    def test_columns_absent_from_presplit_confirmed_absent(self):
+        """srcip/dstip absent from pre-split CSVs is EXPECTED — NOT a violation."""
+        obs = _make_observed(["label", "attack_cat", "feat1"])  # no srcip, dstip
+        contract = _make_contract()
+        violations = validate_schema(obs, contract)
+        assert violations == []
+
+    def test_columns_absent_from_presplit_present_is_violation(self):
+        """If srcip/dstip ARE present, we loaded the wrong file — this IS a violation."""
+        obs = _make_observed(["label", "attack_cat", "srcip", "dstip"])
+        contract = _make_contract()
+        violations = validate_schema(obs, contract)
+        assert len(violations) >= 1
+        assert any("srcip" in v or "dstip" in v for v in violations)
 
 
 class TestAssertSchemaValid:

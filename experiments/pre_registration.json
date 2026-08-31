@@ -9,8 +9,26 @@
     "target": "Backdoor",
     "note": "Target is fixed independently of model performance. See revision_history."
   },
-  "candidate_subclasses": [],
-  "candidate_counts": {},
+  "candidate_subclasses": [
+    "Analysis",
+    "Backdoor",
+    "DoS",
+    "Exploits",
+    "Fuzzers",
+    "Generic",
+    "Reconnaissance",
+    "Shellcode"
+  ],
+  "candidate_counts": {
+    "Analysis": 677,
+    "Backdoor": 583,
+    "DoS": 4089,
+    "Exploits": 11132,
+    "Fuzzers": 6062,
+    "Generic": 18871,
+    "Reconnaissance": 3496,
+    "Shellcode": 378
+  },
   "selected_subclass": "Backdoor",
   "revision_history": [
     {
@@ -21,9 +39,9 @@
       "new_target": "Backdoor",
       "timing": "before_any_model_training_or_evaluation",
       "rationale": "Backdoor is a minority attack family with sufficient test support and distinct properties from larger attack families (Generic, Exploits, DoS). Fixing the target by name before any training/evaluation preserves pre-registration integrity while ensuring the chosen class is theoretically interesting for the unseen-attack hypothesis.",
-      "disclosure": "This revision is disclosed transparently per project protocol. The original alphabetical rule is preserved here as historical record. No model results were inspected before the revision."
+      "disclosure": "The candidate count data (including Backdoor's count of 583 test instances) was available when the fixed_named_target rule was formulated. The integrity claim is that this revision occurred before any model training, model evaluation, or performance-based analysis — not that the counts were unseen. The choice of Backdoor was based on methodological rationale (minority class, distinct attack family) and not on model performance metrics."
     }
   ],
-  "created_at": "",
-  "selection_frozen_at": ""
+  "created_at": "2026-08-31T15:17:58.194970+00:00",
+  "selection_frozen_at": "2026-08-31T15:17:58.194970+00:00"
 }

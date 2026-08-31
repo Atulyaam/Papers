@@ -1,4 +1,6 @@
-"""tests/test_loader.py — Unit tests for src/preprocessing/loader.py"""
+"""tests/test_loader.py — Unit tests for src/preprocessing/loader.py
+Extended in Sprint 1 final quality review with edge-case CSV tests.
+"""
 
 import sys
 from pathlib import Path
@@ -84,3 +86,25 @@ class TestLoadRawUnswnb15:
         splits = load_raw_unswnb15(config)
         assert "Normal" in splits["train"]["attack_cat"].values
         assert "Backdoor" in splits["train"]["attack_cat"].values
+
+    def test_empty_csv_raises_or_returns_empty(self, tmp_path):
+        """
+        A CSV with only a header (zero data rows) must not crash the loader.
+        It may return an empty DataFrame — the caller must handle that.
+        """
+        (tmp_path / "train.csv").write_text("label,attack_cat,feat1\n", encoding="utf-8")
+        (tmp_path / "test.csv").write_text("label,attack_cat,feat1\n", encoding="utf-8")
+        config = _make_config(tmp_path)
+        splits = load_raw_unswnb15(config)
+        assert len(splits["train"]) == 0  # header-only → 0 rows
+        assert len(splits["test"]) == 0
+
+    def test_does_not_write_to_raw_dir(self, csv_dir):
+        """Loading must not create any new files in the raw directory."""
+        config = _make_config(csv_dir)
+        files_before = set(p.name for p in csv_dir.iterdir())
+        load_raw_unswnb15(config)
+        files_after = set(p.name for p in csv_dir.iterdir())
+        assert files_before == files_after, (
+            f"Loader created unexpected files: {files_after - files_before}"
+        )

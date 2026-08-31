@@ -1,4 +1,6 @@
-"""tests/test_hashing.py — Unit tests for src/utils/hashing.py"""
+"""tests/test_hashing.py — Unit tests for src/utils/hashing.py
+Extended in Sprint 1 final quality review with hash-change-after-modification test.
+"""
 
 import hashlib
 import tempfile
@@ -51,19 +53,35 @@ class TestSha256File:
         expected = hashlib.sha256(b"").hexdigest()
         assert digest == expected
 
+    def test_hash_changes_after_source_modification(self, tmp_path):
+        """
+        Verifying the raw-file immutability check:
+        If the source file is modified, sha256_file must return a DIFFERENT digest.
+        This is the mechanism used to detect accidental mutation of data/raw/.
+        """
+        f = tmp_path / "source.csv"
+        f.write_bytes(b"col1,col2\n1,2\n3,4\n")
+        original_hash = sha256_file(f)
+
+        # Simulate accidental modification
+        with open(f, "ab") as fh:
+            fh.write(b"5,6\n")
+
+        modified_hash = sha256_file(f)
+        assert original_hash != modified_hash, (
+            "Hash did not change after file was modified — immutability detection broken."
+        )
+
 
 class TestSha256DataFrame:
-    def _make_df(self):
-        return pd.DataFrame({"a": [1, 2, 3], "b": ["x", "y", "z"]})
-
     def test_deterministic(self):
         """Same DataFrame produces same hash across two calls."""
-        df = self._make_df()
+        df = pd.DataFrame({"a": [1, 2, 3], "b": ["x", "y", "z"]})
         assert sha256_dataframe(df) == sha256_dataframe(df)
 
     def test_different_content_differs(self):
         """DataFrames with different values produce different hashes."""
-        df1 = self._make_df()
+        df1 = pd.DataFrame({"a": [1, 2, 3], "b": ["x", "y", "z"]})
         df2 = pd.DataFrame({"a": [1, 2, 99], "b": ["x", "y", "z"]})
         assert sha256_dataframe(df1) != sha256_dataframe(df2)
 
@@ -71,5 +89,12 @@ class TestSha256DataFrame:
         """Changing column order changes the hash."""
         df1 = pd.DataFrame({"a": [1], "b": [2]})
         df2 = pd.DataFrame({"b": [2], "a": [1]})
-        # Column order should produce different CSV byte streams
         assert sha256_dataframe(df1) != sha256_dataframe(df2)
+
+    def test_empty_dataframe(self):
+        """Empty DataFrame produces a valid, deterministic digest."""
+        df = pd.DataFrame()
+        h1 = sha256_dataframe(df)
+        h2 = sha256_dataframe(df)
+        assert h1 == h2
+        assert len(h1) == 64

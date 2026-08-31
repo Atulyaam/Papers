@@ -82,8 +82,21 @@ def validate_schema(
     for col in candidate_excl:
         if col not in observed_columns:
             logger.debug(
-                "Candidate exclude column '%s' not in observed schema.", col
+                "Candidate exclude column '%s' not in observed schema (expected for pre-split layout).", col
             )
+
+    # --- Columns documented as absent from pre-split layout (informational — NOT violations) ---
+    absent_from_presplit = expected_contract.get("columns_absent_from_presplit", [])
+    for col in absent_from_presplit:
+        if col in observed_columns:
+            msg = (
+                f"Column '{col}' is listed in 'columns_absent_from_presplit' but IS present. "
+                f"This suggests the wrong file (e.g., raw 4-shard CSV) may have been loaded."
+            )
+            violations.append(msg)
+            logger.error("SCHEMA VIOLATION: %s", msg)
+        else:
+            logger.debug("Column '%s' confirmed absent from pre-split layout (expected).", col)
 
     return violations
 
