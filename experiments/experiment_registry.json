@@ -324,6 +324,115 @@
       "created_at": "2026-08-31T18:00:00+00:00",
       "frozen_at": "2026-08-31T18:30:00+00:00",
       "freeze_tag": "EXP_MI_V1_1"
+    },
+    {
+      "id": "EXP_BASE_MODELS_V1",
+      "purpose": "Sprint 5 individual base models. Four classifiers (DT, RF, LinearSVC, PyTorch NN) trained and tuned on frozen TRAIN using 5-fold StratifiedKFold CV. Macro-F1 is the sole selection metric. Final models refit on complete frozen TRAIN. No validation or test data accessed.",
+      "protocol_version": "1.0",
+      "sprint": 5,
+      "seed": {
+        "cv_seed": 0,
+        "model_seed": 42,
+        "nn_seed_policy": "set_all_seeds(42): Python, NumPy, PyTorch, CUDA"
+      },
+      "dataset": "UNSW-NB15",
+      "feature_set": "EXP_MI_V1_1",
+      "feature_count": 75,
+      "train_sha256": "4a259324e604f013287a5de5fe49c46bf19418d815b550c5d1a5820b569ac41c",
+      "train_rows": 162395,
+      "class_counts": {
+        "normal": 44800,
+        "attack": 117595
+      },
+      "cv": {
+        "method": "StratifiedKFold",
+        "n_splits": 5,
+        "shuffle": true,
+        "random_state": 0,
+        "stratify": "label"
+      },
+      "selection_metric": "macro_f1",
+      "comparator_tolerance": 1e-6,
+      "scripts": {
+        "benchmark": "scripts/run_base_models_benchmark.py",
+        "baseline": "scripts/run_base_models_baseline.py",
+        "tuning": "scripts/run_base_models_tuning.py",
+        "refit": "scripts/run_base_models_refit.py",
+        "validation": "scripts/validate_base_models.py"
+      },
+      "selected_configs": {
+        "dt": {
+          "criterion": "entropy",
+          "max_depth": null,
+          "min_samples_leaf": 1,
+          "class_weight": "balanced",
+          "random_state": 42,
+          "cv_mean_macro_f1": 0.9388952272152782,
+          "cv_std_macro_f1": 0.002022534185433608
+        },
+        "rf": {
+          "n_estimators": 300,
+          "criterion": "gini",
+          "max_depth": null,
+          "min_samples_leaf": 1,
+          "max_features": 0.3,
+          "class_weight": "balanced",
+          "random_state": 42,
+          "n_jobs": -1,
+          "cv_mean_macro_f1": 0.9508532447968256,
+          "cv_std_macro_f1": 0.0020002077505539163
+        },
+        "svm": {
+          "C": 0.1,
+          "class_weight": "balanced",
+          "max_iter": 5000,
+          "random_state": 42,
+          "cv_mean_macro_f1": 0.9202929348313965,
+          "cv_std_macro_f1": 0.001702636282124847
+        },
+        "nn": {
+          "hidden_sizes": [128, 64],
+          "learning_rate": 0.001,
+          "weight_decay": 0.0001,
+          "pos_weight": 0.38096857859602873,
+          "final_epoch_count": 18,
+          "cv_mean_macro_f1": 0.9242675746647988,
+          "cv_std_macro_f1": 0.004916534820245159
+        }
+      },
+      "result_artifacts": {
+        "results_dir": "results/base_models/EXP_BASE_MODELS_V1",
+        "baseline_results": "results/base_models/EXP_BASE_MODELS_V1/baseline_results.csv",
+        "tuning_results": "results/base_models/EXP_BASE_MODELS_V1/tuning_results.csv",
+        "fold_results": "results/base_models/EXP_BASE_MODELS_V1/fold_results.csv",
+        "selected_configs": "results/base_models/EXP_BASE_MODELS_V1/selected_configs.json",
+        "metadata": "results/base_models/EXP_BASE_MODELS_V1/metadata.json",
+        "validation_report": "results/base_models/EXP_BASE_MODELS_V1/validation_report.json",
+        "quality_review": "results/base_models/EXP_BASE_MODELS_V1/quality_review.md"
+      },
+      "checkpoint_artifacts": {
+        "root": "results/checkpoints/EXP_BASE_MODELS_V1",
+        "dt": "results/checkpoints/EXP_BASE_MODELS_V1/dt/dt_final.joblib",
+        "rf": "results/checkpoints/EXP_BASE_MODELS_V1/rf/rf_final.joblib",
+        "svm": "results/checkpoints/EXP_BASE_MODELS_V1/svm/svm_final.joblib",
+        "svm_scaler": "results/checkpoints/EXP_BASE_MODELS_V1/svm/svm_scaler.joblib",
+        "nn": "results/checkpoints/EXP_BASE_MODELS_V1/nn/nn_final.pt",
+        "nn_scaler": "results/checkpoints/EXP_BASE_MODELS_V1/nn/nn_scaler.joblib",
+        "nn_architecture": "results/checkpoints/EXP_BASE_MODELS_V1/nn/nn_architecture.json"
+      },
+      "data_access_boundary": "Reads data/splits/train.csv ONLY during training, tuning, and refit. Does NOT access validation.csv, development_test.csv, protected_unseen_attack.csv, or excluded_train_backdoor.csv.",
+      "validation_checks": "38/38 PASS",
+      "observed_results": {
+        "model_ranking": "RF > DT > NN > SVM",
+        "rf_cv_mean_macro_f1": 0.9508532447968256,
+        "dt_cv_mean_macro_f1": 0.9388952272152782,
+        "nn_cv_mean_macro_f1": 0.9242675746647988,
+        "svm_cv_mean_macro_f1": 0.9202929348313965
+      },
+      "status": "IMPLEMENTED",
+      "created_at": "2026-09-01T10:00:00+00:00",
+      "frozen_at": null,
+      "freeze_tag": null
     }
   ]
 }
