@@ -429,7 +429,7 @@
         "nn_cv_mean_macro_f1": 0.9242675746647988,
         "svm_cv_mean_macro_f1": 0.9202929348313965
       },
-      "status": "IMPLEMENTED",
+      "status": "FROZEN",
       "created_at": "2026-09-01T10:00:00+00:00",
       "frozen_at": null,
       "freeze_tag": null
