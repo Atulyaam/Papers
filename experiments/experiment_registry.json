@@ -433,6 +433,157 @@
       "created_at": "2026-09-01T10:00:00+00:00",
       "frozen_at": null,
       "freeze_tag": null
+    },
+    {
+      "id": "EXP_OOF_STACK_V1",
+      "purpose": "Sprint 6 OOF stacking ensemble. Four frozen Sprint 5 base models (DT, RF, LinearSVC, PyTorch NN) produce out-of-fold predictions via 5-fold StratifiedKFold (seed=7) over the full TRAIN split. A Logistic Regression meta-learner is trained on the resulting OOF meta-feature matrix. Three H1 seeds (42, 123, 2024) provide a within-experiment variance estimate. No validation, test, or protected Backdoor data are used.",
+      "protocol_version": "1.0",
+      "sprint": 6,
+      "dataset": "UNSW-NB15",
+      "feature_set": "EXP_MI_V1_1",
+      "feature_count": 75,
+      "train_sha256": "4a259324e604f013287a5de5fe49c46bf19418d815b550c5d1a5820b569ac41c",
+      "train_rows": 162395,
+      "class_counts": {
+        "normal": 44800,
+        "attack": 117595
+      },
+      "oof_config": {
+        "method": "StratifiedKFold",
+        "n_splits": 5,
+        "shuffle": true,
+        "random_state": 7,
+        "folds_created": "ONCE — reused identically for all H1 seeds",
+        "no_self_prediction": "VERIFIED — PASS"
+      },
+      "h1_seeds": [42, 123, 2024],
+      "h1_seed_policy": "For each H1 seed S: DT random_state=S, RF random_state=S, SVM random_state=S, set_all_seeds(S) for NN (Python/NumPy/PyTorch/CUDA), meta-learner random_state=S. All other Sprint 5 hyperparameters unchanged.",
+      "base_models": {
+        "dt": {
+          "checkpoint": "results/checkpoints/EXP_BASE_MODELS_V1/dt/dt_final.joblib",
+          "refit": false,
+          "oof_output": "predict_proba()[:,1]",
+          "oof_column": "dt_attack_probability"
+        },
+        "rf": {
+          "checkpoint": "results/checkpoints/EXP_BASE_MODELS_V1/rf/rf_final.joblib",
+          "refit": false,
+          "oof_output": "predict_proba()[:,1]",
+          "oof_column": "rf_attack_probability"
+        },
+        "svm": {
+          "checkpoint": "results/checkpoints/EXP_BASE_MODELS_V1/svm/svm_final.joblib",
+          "scaler": "results/checkpoints/EXP_BASE_MODELS_V1/svm/svm_scaler.joblib",
+          "refit": false,
+          "oof_output": "decision_function() [unbounded real, NOT probability]",
+          "oof_column": "svm_decision_score"
+        },
+        "nn": {
+          "checkpoint": "results/checkpoints/EXP_BASE_MODELS_V1/nn/nn_final.pt",
+          "scaler": "results/checkpoints/EXP_BASE_MODELS_V1/nn/nn_scaler.joblib",
+          "refit": false,
+          "oof_output": "sigmoid(logit) — probability",
+          "oof_column": "nn_attack_probability",
+          "oof_fixed_epoch_count": 18,
+          "oof_pos_weight": 0.38096857859602873,
+          "oof_pos_weight_formula": "44800 / 117595 (full-TRAIN constant, NOT per-fold)"
+        }
+      },
+      "meta_learner": {
+        "model": "LogisticRegression",
+        "solver": "lbfgs",
+        "C": 1.0,
+        "class_weight": "balanced",
+        "max_iter": 1000,
+        "random_state": "<H1 seed — varies per run: 42 / 123 / 2024>",
+        "meta_features": [
+          "dt_attack_probability",
+          "rf_attack_probability",
+          "svm_decision_score",
+          "nn_attack_probability"
+        ],
+        "row_id_excluded": true,
+        "hyperparameter_search": "NONE — frozen configuration"
+      },
+      "scaling_limitation": "SVM/NN OOF predictions use scaling statistics computed on the full frozen TRAIN, including rows in the OOF held-out fold. This is a bounded, label-independent leakage channel accepted for feature-space consistency.",
+      "meta_evaluation_limitation": "H1 Macro-F1 is computed by evaluating the meta-learner on the same OOF matrix used to train it. No separate meta-learner holdout exists under the current data-isolation rules. This is in-sample evaluation at the meta-learner level and is NOT a fully held-out end-to-end generalisation estimate.",
+      "h1_results": {
+        "seed_42":   {"macro_f1": 0.9469581725490128, "weighted_f1": 0.9572462047352442, "balanced_accuracy": 0.954777518879113,  "oof_runtime_seconds": 679.178},
+        "seed_123":  {"macro_f1": 0.9472901482870100, "weighted_f1": 0.9575143721928769, "balanced_accuracy": 0.9551027783198083, "oof_runtime_seconds": 628.873},
+        "seed_2024": {"macro_f1": 0.9474764614939630, "weighted_f1": 0.9576658507213086, "balanced_accuracy": 0.9552643460188723, "oof_runtime_seconds": 683.807}
+      },
+      "h1_summary": {
+        "mean_macro_f1": 0.9472415941099953,
+        "std_macro_f1_ddof1": 0.00026253378581352256,
+        "evaluation": "IN-SAMPLE (meta-learner trained and evaluated on same OOF matrix)"
+      },
+      "sprint5_reference": {
+        "model": "RF",
+        "macro_f1": 0.9508532447968256,
+        "label": "Frozen Sprint 5 single-CV reference; not a matched 3-seed H1 baseline.",
+        "note": "NOT statistically matched to H1 stacking mean. Different evaluation protocols. No significance test performed."
+      },
+      "two_reporting_units_statement": "Two reporting units are used: (a) three-seed H1 stacking mean\u00b1std; (b) frozen Sprint 5 single-CV base-model reference. These are not statistically matched quantities.",
+      "data_access_boundary": "Reads data/splits/train.csv ONLY (hash verified at runtime). Does NOT access validation.csv, development_test.csv, protected_unseen_attack.csv, or excluded_train_backdoor.csv.",
+      "scripts": {
+        "benchmark": "scripts/run_oof_stacking_benchmark.py",
+        "run_seed": "scripts/run_oof_stacking.py",
+        "h1_summary": "scripts/run_oof_h1_summary.py",
+        "validation": "scripts/validate_oof_stacking.py"
+      },
+      "source_modules": [
+        "src/models/stacking/__init__.py",
+        "src/models/stacking/oof_runner.py",
+        "src/models/stacking/meta_learner.py",
+        "src/models/stacking/artifacts.py"
+      ],
+      "test_modules": [
+        "tests/test_oof_runner.py",
+        "tests/test_oof_stacking_leakage.py",
+        "tests/test_meta_learner.py"
+      ],
+      "result_artifacts": {
+        "root": "results/stacking/EXP_OOF_STACK_V1",
+        "h1_summary": "results/stacking/EXP_OOF_STACK_V1/h1_summary.json",
+        "runtime_report": "results/stacking/EXP_OOF_STACK_V1/runtime_report.json",
+        "validation_report": "results/stacking/EXP_OOF_STACK_V1/validation_report.json",
+        "quality_review": "results/stacking/EXP_OOF_STACK_V1/quality_review.md",
+        "seed_42": {
+          "oof_predictions": "results/stacking/EXP_OOF_STACK_V1/seed_42/oof_predictions.csv",
+          "fold_assignments": "results/stacking/EXP_OOF_STACK_V1/seed_42/fold_assignments.csv",
+          "metrics": "results/stacking/EXP_OOF_STACK_V1/seed_42/metrics.json",
+          "metadata": "results/stacking/EXP_OOF_STACK_V1/seed_42/metadata.json"
+        },
+        "seed_123": {
+          "oof_predictions": "results/stacking/EXP_OOF_STACK_V1/seed_123/oof_predictions.csv",
+          "fold_assignments": "results/stacking/EXP_OOF_STACK_V1/seed_123/fold_assignments.csv",
+          "metrics": "results/stacking/EXP_OOF_STACK_V1/seed_123/metrics.json",
+          "metadata": "results/stacking/EXP_OOF_STACK_V1/seed_123/metadata.json"
+        },
+        "seed_2024": {
+          "oof_predictions": "results/stacking/EXP_OOF_STACK_V1/seed_2024/oof_predictions.csv",
+          "fold_assignments": "results/stacking/EXP_OOF_STACK_V1/seed_2024/fold_assignments.csv",
+          "metrics": "results/stacking/EXP_OOF_STACK_V1/seed_2024/metrics.json",
+          "metadata": "results/stacking/EXP_OOF_STACK_V1/seed_2024/metadata.json"
+        }
+      },
+      "checkpoint_artifacts": {
+        "root": "results/checkpoints/EXP_OOF_STACK_V1",
+        "seed_42_meta_learner": "results/checkpoints/EXP_OOF_STACK_V1/seed_42/meta_learner.joblib",
+        "seed_42_metadata": "results/checkpoints/EXP_OOF_STACK_V1/seed_42/metadata.json",
+        "seed_123_meta_learner": "results/checkpoints/EXP_OOF_STACK_V1/seed_123/meta_learner.joblib",
+        "seed_123_metadata": "results/checkpoints/EXP_OOF_STACK_V1/seed_123/metadata.json",
+        "seed_2024_meta_learner": "results/checkpoints/EXP_OOF_STACK_V1/seed_2024/meta_learner.joblib",
+        "seed_2024_metadata": "results/checkpoints/EXP_OOF_STACK_V1/seed_2024/metadata.json"
+      },
+      "validation_checks": "65/65 PASS",
+      "regression_tests": "802/802 PASS",
+      "git_commit": "0443d6d",
+      "quality_review_status": "READY_TO_FREEZE",
+      "status": "IMPLEMENTED",
+      "created_at": "2026-09-02T00:13:00+00:00",
+      "frozen_at": null,
+      "freeze_tag": null
     }
   ]
 }
