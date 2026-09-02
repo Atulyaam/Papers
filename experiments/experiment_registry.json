@@ -636,7 +636,7 @@
       "id": "EXP_FUSION_V1",
       "purpose": "2x2 Fusion evaluation combining frozen EXP_OOF_STACK_V1 seed-42 supervised signal with frozen EXP_AE_V1 anomaly signal",
       "sprint": 8,
-      "status": "IMPLEMENTED",
+      "status": "FROZEN",
       "upstream_experiments": [
         "EXP_MI_V1_1",
         "EXP_BASE_MODELS_V1",
@@ -675,9 +675,9 @@
       "exploratory_all_11": true,
       "exploratory_note": "INFORMATIONAL ONLY - post-hoc, no backward influence",
       "quality_review_status": "READY_TO_FREEZE",
-      "frozen_at": null,
-      "freeze_tag": null,
-      "freeze_commit": null,
+      "frozen_at": "2026-09-02T18.36.45+05:30",
+      "freeze_tag": "EXP_FUSION_V1",
+      "freeze_commit": "1231dd61eeb94539377b4ed94e006c8d00621d76",
       "created_at": "2026-09-02T18:26:48+05:30"
     }
   ]
