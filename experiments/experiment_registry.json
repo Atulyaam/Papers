@@ -589,7 +589,7 @@
       "id": "EXP_AE_V1",
       "purpose": "Benign-Only Autoencoder for anomaly detection using EXP_MI_V1_1 75 features",
       "sprint": 7,
-      "status": "IMPLEMENTED",
+      "status": "FROZEN",
       "feature_set": "EXP_MI_V1_1",
       "feature_count": 75,
       "train_sha256": "4a259324e604f013287a5de5fe49c46bf19418d815b550c5d1a5820b569ac41c",
@@ -628,9 +628,9 @@
       "ae_unit_tests": "76/76 PASS",
       "regression_tests": "878/878 PASS",
       "quality_review_status": "READY_TO_FREEZE",
-      "frozen_at": null,
-      "freeze_tag": null,
-      "freeze_commit": null
+      "frozen_at": "2026-09-02T16.37.07+05:30",
+      "freeze_tag": "EXP_AE_V1",
+      "freeze_commit": "8dd9645e7f7741d8a4fd91559d1c86d38755fc2c"
     }
   ]
 }
