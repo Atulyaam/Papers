@@ -58,31 +58,28 @@ TRAIN-only MI fitting and selected-feature artifact.
 ## Sprint 5 — Individual Base Models
 DT, RF, SVM, NN under identical preprocessing/evaluation.
 
-## Sprint 6 — Majority/Soft-Vote Baseline
-Baseline ensemble used to contextualize stacking.
-
-## Sprint 7 — Leakage-Controlled OOF Stacking
+## Sprint 6 — Leakage-Controlled OOF Stacking
 5-fold OOF predictions + logistic-regression meta-learner.
 
-## Sprint 8 — Autoencoder Branch
+## Sprint 7 — Autoencoder Branch
 Benign-only training and validation-derived threshold.
 
-## Sprint 9 — Formal Fusion
+## Sprint 8 — Formal Fusion
 Implement and test the 2x2 deterministic fusion rule.
 
-## Sprint 10 — H1/H2/H3 Evaluation
+## Sprint 9 — H1/H2/H3 Evaluation
 Run the must-have hypotheses under frozen protocol.
 
-## Sprint 11 — Ablation
+## Sprint 10 — Ablation
 Populate the five-row ablation matrix.
 
-## Sprint 12 — Explainability
+## Sprint 11 — Explainability
 Level-1 and Level-2 SHAP, bounded runtime.
 
-## Sprint 13 — Reproducible Final Runs
+## Sprint 12 — Reproducible Final Runs
 Three-seed H1 runs, final artifacts, provenance.
 
-## Sprint 14 — Results and Paper Integration
+## Sprint 13 — Results and Paper Integration
 Only after numerical results are final.
 
 ## Stretch Goals
