@@ -1,0 +1,10 @@
+Component,Main Research,Original-Split Benchmark
+DT,93.89% Macro-F1,85.45% Macro-F1
+RF,95.09% Macro-F1,88.94% Macro-F1
+SVM,92.03% Macro-F1,82.58% Macro-F1
+NN,92.43% Macro-F1,88.84% Macro-F1
+Stacking,94.72% Macro-F1,NOT RUN
+Autoencoder,NOT EVALUATED AS STANDALONE,32.39% Macro-F1
+Fusion C06,89.244% Macro-F1,NOT RUN
+Protected Backdoor,582/583,NOT EVALUATED
+H-FUSION,FALSE,NOT APPLICABLE

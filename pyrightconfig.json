@@ -1,0 +1,23 @@
+{
+  "pythonVersion": "3.11",
+  "pythonPlatform": "Windows",
+  "venvPath": ".",
+  "venv": ".venv",
+  "pythonPath": "c:/Users/Atul2/OneDrive/Desktop/Papers/IDS-UNSW-NB15/.venv/Scripts/python.exe",
+  "include": [
+    "src",
+    "tests",
+    "scripts"
+  ],
+  "exclude": [
+    "**/__pycache__",
+    "**/.venv"
+  ],
+  "extraPaths": [
+    "c:/Users/Atul2/OneDrive/Desktop/Papers/IDS-UNSW-NB15/.venv/Lib/site-packages"
+  ],
+  "typeCheckingMode": "basic",
+  "reportMissingModuleSource": "none",
+  "reportMissingImports": "none",
+  "reportDeprecated": "none"
+}

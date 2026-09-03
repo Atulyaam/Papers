@@ -1,0 +1,15 @@
+{
+  "report_title": "COMPARISON REPORT — MAIN RESEARCH vs SUPPLEMENTARY ORIGINAL-SPLIT BENCHMARK",
+  "generated_date": "2026-09-03",
+  "main_project_experiments": [
+    "EXP_BASE_MODELS_V1",
+    "EXP_OOF_STACK_V1",
+    "EXP_FUSION_V1",
+    "EXP_H123_V1"
+  ],
+  "benchmark_experiment": "EXP_ORIGINAL_SPLIT_BENCHMARK_V1",
+  "reporting_gaps": [
+    "original_split_benchmark/artifacts/summary.json is missing and was not generated."
+  ],
+  "notes": "No retraining, evaluation rerun, or artifact modifications were performed to generate this report."
+}
