@@ -92,8 +92,8 @@ class MonitorSplit:
 
     def to_dict(self) -> dict:
         return {
-            "ae_fit_count": int(len(self.ae_fit_indices)),
-            "monitor_count": int(len(self.monitor_indices)),
+            "ae_fit_count": len(self.ae_fit_indices),
+            "monitor_count": len(self.monitor_indices),
             "split_seed": self.split_seed,
             "ae_fit_fraction": round(len(self.ae_fit_indices) /
                                      (len(self.ae_fit_indices) + len(self.monitor_indices)), 4),
@@ -114,7 +114,7 @@ class AETrainResult:
     best_epoch: int
     final_epoch_count: int
     training_history: list[EpochRecord]
-    scaler: StandardScaler
+    scaler: StandardScaler | None
     model_state: dict                 # best-weights state_dict
     runtime_seconds: float
     device: str

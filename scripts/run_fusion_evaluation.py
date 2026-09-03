@@ -40,7 +40,15 @@ import pathlib
 import sys
 import datetime
 from dataclasses import asdict, dataclass
-from typing import Optional
+from typing import Optional, TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from sklearn.linear_model import LogisticRegression
+    from sklearn.tree import DecisionTreeClassifier
+    from sklearn.ensemble import RandomForestClassifier
+    from sklearn.svm import LinearSVC
+    from sklearn.preprocessing import StandardScaler
+    from src.models.base_models.neural_network import IDSNet
 
 import joblib
 import numpy as np
@@ -305,10 +313,10 @@ class SupervisedAdapter:
         X = build_feature_matrix(df, self._features)
 
         # DT
-        dt_prob = self._dt.predict_proba(X)[:, 1]
+        dt_prob = np.asarray(self._dt.predict_proba(X))[:, 1]
 
         # RF
-        rf_prob = self._rf.predict_proba(X)[:, 1]
+        rf_prob = np.asarray(self._rf.predict_proba(X))[:, 1]
 
         # SVM
         X_svm = self._svm_scaler.transform(X)
@@ -338,7 +346,7 @@ class SupervisedAdapter:
         meta = self.get_meta_features(df)
         X_meta = meta[self.META_COLS].to_numpy()
         preds = self._lr.predict(X_meta)        # uses sklearn default 0.5
-        return preds.astype(int)
+        return np.asarray(preds, dtype=int)
 
 
 class AEAdapter:

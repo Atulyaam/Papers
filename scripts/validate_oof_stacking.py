@@ -788,8 +788,9 @@ def check_23_meta_learner_loads(seed_data: dict) -> None:
                 issues.append(f"class_weight={clf.class_weight}")
             if clf.random_state != seed:
                 issues.append(f"random_state={clf.random_state} != {seed}")
-            if clf.n_features_in_ != 4:
-                issues.append(f"n_features_in_={clf.n_features_in_} != 4")
+            n_feat = getattr(clf, "n_features_in_", None)
+            if n_feat != 4:
+                issues.append(f"n_features_in_={n_feat} != 4")
             # Run a dummy prediction
             try:
                 X_dummy = np.zeros((5, 4), dtype=np.float64)

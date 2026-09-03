@@ -352,7 +352,7 @@ def run_oof_seed(
             random_state=h1_seed,
         )
         dt.fit(X_tr, y_tr)
-        dt_preds[oof_idx] = dt.predict_proba(X_unscaled[oof_idx])[:, 1]
+        dt_preds[oof_idx] = np.asarray(dt.predict_proba(X_unscaled[oof_idx]))[:, 1]
 
         # ── RF ────────────────────────────────────────────────────────────
         rf = RandomForestClassifier(
@@ -360,7 +360,7 @@ def run_oof_seed(
             random_state=h1_seed,
         )
         rf.fit(X_tr, y_tr)
-        rf_preds[oof_idx] = rf.predict_proba(X_unscaled[oof_idx])[:, 1]
+        rf_preds[oof_idx] = np.asarray(rf.predict_proba(X_unscaled[oof_idx]))[:, 1]
 
         # ── SVM ───────────────────────────────────────────────────────────
         # Uses frozen Sprint 5 full-TRAIN scaler (bounded label-indep. leakage)

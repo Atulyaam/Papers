@@ -34,6 +34,7 @@ import joblib
 import numpy as np
 import pandas as pd
 import torch
+import torch.version
 import yaml
 from sklearn.preprocessing import StandardScaler
 
@@ -160,9 +161,9 @@ def main() -> None:
         "monitor_split_seed": split.split_seed,
         "normal_train_total": 44800,
         "invariants": {
-            "ae_fit_count": int(len(split.ae_fit_indices)),
-            "monitor_count": int(len(split.monitor_indices)),
-            "total": int(len(split.ae_fit_indices) + len(split.monitor_indices)),
+            "ae_fit_count": len(split.ae_fit_indices),
+            "monitor_count": len(split.monitor_indices),
+            "total": len(split.ae_fit_indices) + len(split.monitor_indices),
             "disjoint": len(overlap) == 0,
         },
     }

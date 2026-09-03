@@ -425,7 +425,7 @@ class TestModelContracts:
         X, y = _make_tiny_data(n=200)
         dt = DecisionTreeClassifier(random_state=42)
         dt.fit(X[:160], y[:160])
-        proba = dt.predict_proba(X[160:])[:, 1]
+        proba = np.asarray(dt.predict_proba(X[160:]))[:, 1]
         assert proba.min() >= 0.0 and proba.max() <= 1.0
 
     def test_rf_output_is_probability(self):
@@ -433,7 +433,7 @@ class TestModelContracts:
         X, y = _make_tiny_data(n=200)
         rf = RandomForestClassifier(n_estimators=5, random_state=42)
         rf.fit(X[:160], y[:160])
-        proba = rf.predict_proba(X[160:])[:, 1]
+        proba = np.asarray(rf.predict_proba(X[160:]))[:, 1]
         assert proba.min() >= 0.0 and proba.max() <= 1.0
 
     def test_oof_fixed_epoch_count_is_18(self):

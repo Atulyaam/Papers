@@ -72,9 +72,9 @@ class ThresholdCandidate:
         return {
             "threshold_rule": self.rule,
             "percentile": self.percentile,
-            "threshold_value": float(self.threshold_value),
-            "samples_above_threshold": int(self.samples_above_threshold),
-            "fraction_above_threshold": float(self.fraction_above_threshold),
+            "threshold_value": self.threshold_value,
+            "samples_above_threshold": self.samples_above_threshold,
+            "fraction_above_threshold": self.fraction_above_threshold,
         }
 
 

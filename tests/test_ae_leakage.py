@@ -192,6 +192,7 @@ def test_scaler_fit_only_on_ae_fit_subset():
 
     scaler = StandardScaler()
     scaler.fit(X_ae_fit)
+    assert isinstance(scaler.mean_, np.ndarray)
 
     # Verify scaler mean is close to ae_fit distribution, not shifted
     assert abs(scaler.mean_[0] - 0.0) < 0.1, "Scaler mean should reflect ae_fit distribution"
@@ -207,6 +208,7 @@ def test_scaler_not_refit_on_validation():
 
     scaler = StandardScaler()
     scaler.fit(X_fit)
+    assert isinstance(scaler.mean_, np.ndarray)
     original_mean = scaler.mean_.copy()
 
     # Transform validation (not fit!)
