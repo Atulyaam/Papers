@@ -1,0 +1,281 @@
+{
+  "experiment_id": "EXP_ABLATION_V1",
+  "phase": "VALIDATE",
+  "status": "PASS",
+  "total_tests": 25,
+  "pass_count": 25,
+  "fail_count": 0,
+  "inconclusive_count": 0,
+  "individual_tests": {
+    "V01_CONFIGURATION_COMPLETENESS": "PASS",
+    "V02_A0_IDENTITY": "PASS",
+    "V03_A1_MEMBERSHIP": "PASS",
+    "V04_A1B_RULE": "PASS",
+    "V05_ABLATION_MEMBERSHIP": "PASS",
+    "V06_CACHE_INTEGRITY": "PASS",
+    "V07_FEATURE_INTEGRITY": "PASS",
+    "V08_DATASET_HASHES": "PASS",
+    "V09_HEADLINE_SPLIT": "PASS",
+    "V10_METRIC_DEFINITIONS": "PASS",
+    "V11_A6_OR_FUSION": "PASS",
+    "V12_A1_A6_INTERPRETATION": "PASS",
+    "V13_BACKDOOR_ISOLATION": "PASS",
+    "V14_SEED_STATISTICS": "PASS",
+    "V15_PAIRED_DELTAS": "PASS",
+    "V16_RESULT_SCHEMAS": "PASS",
+    "V17_RESULT_HASHES": "PASS",
+    "V18_CONFIG_IMMUTABILITY": "PASS",
+    "V19_ENVIRONMENT": "PASS",
+    "V20_DETERMINISM": "PASS",
+    "V21_TEST_SUITE": "PASS",
+    "V22_PROVENANCE": "PASS",
+    "V23_NO_RESULT_TUNING": "PASS",
+    "V24_SPRINT9_ISOLATION": "PASS",
+    "V25_PUBLICATION_INTERPRETATION": "PASS"
+  },
+  "details": {
+    "V01_CONFIGURATION_COMPLETENESS": {
+      "status": "PASS",
+      "expected_seed_files": 24,
+      "found_seed_files": 24,
+      "missing": []
+    },
+    "V02_A0_IDENTITY": {
+      "status": "PASS",
+      "a0_model": "RF",
+      "sprint9_rf_dev_test_macro_f1": 0.8807332603329192,
+      "fresh_refit_seeds": [
+        42,
+        123,
+        2024
+      ]
+    },
+    "V03_A1_MEMBERSHIP": {
+      "status": "PASS",
+      "base_models": [
+        "dt",
+        "rf",
+        "svm",
+        "nn"
+      ],
+      "meta_learner": {
+        "solver": "lbfgs",
+        "C": 1.0,
+        "class_weight": "balanced",
+        "max_iter": 1000
+      }
+    },
+    "V04_A1B_RULE": {
+      "status": "PASS",
+      "combination_rule": "mean",
+      "svm_normalization": "sigmoid",
+      "threshold": 0.5,
+      "meta_learner": null
+    },
+    "V05_ABLATION_MEMBERSHIP": {
+      "status": "PASS",
+      "memberships": {
+        "A2_NO_DT": [
+          "rf",
+          "svm",
+          "nn"
+        ],
+        "A3_NO_RF": [
+          "dt",
+          "svm",
+          "nn"
+        ],
+        "A4_NO_SVM": [
+          "dt",
+          "rf",
+          "nn"
+        ],
+        "A5_NO_NN": [
+          "dt",
+          "rf",
+          "svm"
+        ]
+      }
+    },
+    "V06_CACHE_INTEGRITY": {
+      "status": "PASS",
+      "cache_files_verified": 12,
+      "anomalies": []
+    },
+    "V07_FEATURE_INTEGRITY": {
+      "status": "PASS",
+      "n_features": 75,
+      "feature_file_sha256": "6a1816143a4fbe1141e406a820c5adbd0b1452b45172a9d7de8767a897db1024",
+      "matches_expected": true
+    },
+    "V08_DATASET_HASHES": {
+      "status": "PASS",
+      "datasets": {
+        "train": {
+          "actual": "4a259324e604f013287a5de5fe49c46bf19418d815b550c5d1a5820b569ac41c",
+          "matches": true
+        },
+        "validation": {
+          "actual": "13caf21a076a33f50243f48f404b7e7525969f71d4b9d7c0f3768aef23589180",
+          "matches": true
+        },
+        "development_test": {
+          "actual": "04725e85732ab2fc6d9eaaa6105418b22b083b5c651067e7b0785464f414e508",
+          "matches": true
+        },
+        "protected_backdoor": {
+          "actual": "6ffd23479b575e438ad90678268f40f674a663c2b9507aaf65089623397a9d91",
+          "matches": true
+        }
+      }
+    },
+    "V09_HEADLINE_SPLIT": {
+      "status": "PASS",
+      "split": "development_test",
+      "expected_N": 81749,
+      "all_24_results_match_N": true
+    },
+    "V10_METRIC_DEFINITIONS": {
+      "status": "PASS",
+      "publication_metrics_columns": [
+        "config_id",
+        "macro_f1",
+        "macro_precision",
+        "macro_recall",
+        "attack_f1",
+        "balanced_accuracy",
+        "fpr"
+      ],
+      "binary_label_convention": "0=Benign, 1=Attack",
+      "fpr_formula": "FP / (FP + TN)"
+    },
+    "V11_A6_OR_FUSION": {
+      "status": "PASS",
+      "fusion_rule": "OR",
+      "tau": 11.160062745213509,
+      "count_a1_1_and_a6_0": 0,
+      "ae_flagged_dev_test": 594
+    },
+    "V12_A1_A6_INTERPRETATION": {
+      "status": "PASS",
+      "interpretation_present": true,
+      "attack_recall_delta": "+0.000000",
+      "fpr_delta": "+0.000351",
+      "macro_recall_delta": "-0.000176"
+    },
+    "V13_BACKDOOR_ISOLATION": {
+      "status": "PASS",
+      "n_prot": 583,
+      "a1_detected": "582/583",
+      "a6_detected": "582/583",
+      "ae_only_detected": "0/583"
+    },
+    "V14_SEED_STATISTICS": {
+      "status": "PASS",
+      "ddof": 0,
+      "all_means_and_stds_reproduced": true
+    },
+    "V15_PAIRED_DELTAS": {
+      "status": "PASS",
+      "comparisons_found": [
+        "A1-A0",
+        "A1-A1b",
+        "A1-A2",
+        "A1-A3",
+        "A1-A4",
+        "A1-A5",
+        "A6-A1"
+      ],
+      "no_significance_claimed": true
+    },
+    "V16_RESULT_SCHEMAS": {
+      "status": "PASS",
+      "ablation_table_cols_match": true,
+      "paired_deltas_cols_match": true,
+      "publication_metrics_cols_match": true
+    },
+    "V17_RESULT_HASHES": {
+      "status": "PASS",
+      "established_hashes_match": true
+    },
+    "V18_CONFIG_IMMUTABILITY": {
+      "status": "PASS",
+      "config_sha256": "da3bb5480c9dcce70aaa2c28084d3784c752aa6305b633c8bd59df52d4ce04d5",
+      "config_sha256_before": "da3bb5480c9dcce70aaa2c28084d3784c752aa6305b633c8bd59df52d4ce04d5",
+      "config_sha256_after": "da3bb5480c9dcce70aaa2c28084d3784c752aa6305b633c8bd59df52d4ce04d5",
+      "match": true
+    },
+    "V19_ENVIRONMENT": {
+      "status": "PASS",
+      "recorded_environment": {
+        "sklearn": "1.9.0",
+        "numpy": "2.4.6",
+        "pandas": "3.0.5",
+        "torch": "2.7.1+cu118",
+        "joblib": "1.6.0"
+      },
+      "live_versions": {
+        "sklearn": "1.9.0",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "pandas": "3.0.5",
+        "torch": "2.7.1+cu118",
+        "joblib": "1.6.0"
+      }
+    },
+    "V20_DETERMINISM": {
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": [
+        "",
+        "=== DETERMINISM SUMMARY ===",
+        "All configurations and seeds matched: True",
+        "Maximum absolute numerical difference observed: 0.00e+00",
+        "DETERMINISM VERIFICATION: PASS (Exact bit-level reproduction)"
+      ]
+    },
+    "V21_TEST_SUITE": {
+      "status": "PASS",
+      "exit_code": 0,
+      "total_passed": 30
+    },
+    "V22_PROVENANCE": {
+      "status": "PASS",
+      "keys_present": [
+        "experiment_id",
+        "sprint",
+        "timestamp_utc",
+        "a0_identity",
+        "feature_set",
+        "n_features",
+        "seeds",
+        "n_folds",
+        "headline_split",
+        "a1b_svm_normalization",
+        "a1b_aggregation",
+        "a1b_threshold",
+        "frozen_ae_threshold",
+        "frozen_ae_fusion_rule",
+        "environment",
+        "config_sha256",
+        "d11_resolution",
+        "sprint9_protected"
+      ]
+    },
+    "V23_NO_RESULT_TUNING": {
+      "status": "PASS",
+      "protocol_frozen_before_eval": true,
+      "zero_post_hoc_adjustments": true
+    },
+    "V24_SPRINT9_ISOLATION": {
+      "status": "PASS",
+      "sprint9_freeze_tag_intact": true,
+      "sprint9_artifacts_present": true
+    },
+    "V25_PUBLICATION_INTERPRETATION": {
+      "status": "PASS",
+      "cautious_interpretation_verified": true
+    }
+  },
+  "timestamp_utc": "2026-09-03T19:19:12.286577Z"
+}

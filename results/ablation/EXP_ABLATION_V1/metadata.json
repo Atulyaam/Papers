@@ -1,0 +1,30 @@
+{
+  "experiment_id": "EXP_ABLATION_V1",
+  "sprint": 10,
+  "timestamp_utc": "2026-09-03T18:40:52.567528Z",
+  "a0_identity": "RF (verified from selected_configs.json \u2014 highest CV Macro-F1=0.9508)",
+  "feature_set": "EXP_MI_V1_1",
+  "n_features": 75,
+  "seeds": [
+    42,
+    123,
+    2024
+  ],
+  "n_folds": 5,
+  "headline_split": "development_test",
+  "a1b_svm_normalization": "sigmoid(decision_function)",
+  "a1b_aggregation": "mean",
+  "a1b_threshold": 0.5,
+  "frozen_ae_threshold": 11.160062745213509,
+  "frozen_ae_fusion_rule": "OR (C06)",
+  "environment": {
+    "sklearn": "1.9.0",
+    "numpy": "2.4.6",
+    "pandas": "3.0.5",
+    "torch": "2.7.1+cu118",
+    "joblib": "1.6.0"
+  },
+  "config_sha256": "da3bb5480c9dcce70aaa2c28084d3784c752aa6305b633c8bd59df52d4ce04d5",
+  "d11_resolution": "sklearn=1.9.0 authoritative (matches EXP_OOF_STACK_V1); EXP_H123_V1 recorded 1.5.0 is a recording discrepancy.",
+  "sprint9_protected": true
+}

@@ -1,0 +1,18 @@
+{
+  "config_id": "A1_FULL_STACK",
+  "seed": 123,
+  "macro_f1": 0.8922152271107664,
+  "precision": 0.9070119321798771,
+  "recall": 0.8873935171735681,
+  "f1": 0.9101624353771458,
+  "balanced_accuracy": 0.8873935171735681,
+  "fpr": 0.195,
+  "runtime_sec": 0.5137231349945068,
+  "base_models": [
+    "dt",
+    "rf",
+    "svm",
+    "nn"
+  ],
+  "n_dev_test": 81749
+}

@@ -1,0 +1,16 @@
+{
+  "config_id": "A6_STACK_PLUS_AE",
+  "seed": 42,
+  "macro_f1": 0.8916461070394397,
+  "precision": 0.906217282439683,
+  "recall": 0.8868707058530072,
+  "f1": 0.9096231324492194,
+  "balanced_accuracy": 0.8868707058530072,
+  "fpr": 0.19497297297297297,
+  "runtime_sec": 2.0304319858551025,
+  "ae_threshold": 11.160062745213509,
+  "fusion_rule": "OR",
+  "ae_flagged_dev_test": 594,
+  "ae_flagged_frac": 0.007266143928366096,
+  "n_dev_test": 81749
+}

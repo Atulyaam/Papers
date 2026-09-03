@@ -1,0 +1,36 @@
+{
+  "n_prot": 583,
+  "tau": 11.160062745213509,
+  "per_seed": {
+    "42": {
+      "A1_detected": 582,
+      "A1_rate": 0.9982847341337907,
+      "A1_missed": 1,
+      "A6_detected": 582,
+      "A6_rate": 0.9982847341337907,
+      "A6_missed": 1,
+      "AE_detected": 0,
+      "AE_rate": 0.0
+    },
+    "123": {
+      "A1_detected": 582,
+      "A1_rate": 0.9982847341337907,
+      "A1_missed": 1,
+      "A6_detected": 582,
+      "A6_rate": 0.9982847341337907,
+      "A6_missed": 1,
+      "AE_detected": 0,
+      "AE_rate": 0.0
+    },
+    "2024": {
+      "A1_detected": 582,
+      "A1_rate": 0.9982847341337907,
+      "A1_missed": 1,
+      "A6_detected": 582,
+      "A6_rate": 0.9982847341337907,
+      "A6_missed": 1,
+      "AE_detected": 0,
+      "AE_rate": 0.0
+    }
+  }
+}

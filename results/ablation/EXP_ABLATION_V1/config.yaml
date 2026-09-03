@@ -1,0 +1,136 @@
+# Sprint 10 — EXP_ABLATION_V1 — Locked Configuration
+# All research-critical parameters are explicitly specified.
+# Do NOT modify after config_sha256_before is recorded.
+
+experiment_id: EXP_ABLATION_V1
+sprint: 10
+feature_set: EXP_MI_V1_1
+n_features: 75
+seeds: [42, 123, 2024]
+n_folds: 5
+headline_split: development_test
+
+# ── Model Configurations ──────────────────────────────────────────────────────
+# random_state is set to the current seed at runtime; all other params are fixed.
+
+rf_config:
+  n_estimators: 300
+  criterion: gini
+  class_weight: balanced
+  n_jobs: -1
+  max_depth: null
+  min_samples_leaf: 1
+  max_features: 0.3
+  # random_state: <seed>   (set at runtime)
+
+dt_config:
+  criterion: entropy
+  max_depth: null
+  min_samples_split: 2
+  min_samples_leaf: 1
+  class_weight: balanced
+  # random_state: <seed>   (set at runtime)
+
+svm_config:
+  # LinearSVC — predict_proba ABSENT by design
+  C: 0.1
+  max_iter: 5000
+  class_weight: balanced
+  # random_state: <seed>   (set at runtime)
+  scaler: StandardScaler  # fitted on fold-train or full TRAIN as appropriate
+
+nn_config:
+  # IDSNet architecture
+  input_dim: 75
+  hidden_sizes: [128, 64]
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  batch_size: 1024
+  max_epochs: 100
+  patience: 10           # early stopping: folds use held-out fold; full-train uses val_frac
+  val_frac: 0.05         # fraction of TRAIN held back for NN early stopping on full-train fit
+  # scaler: StandardScaler fitted on fold-train or full TRAIN as appropriate
+
+meta_lr_config:
+  # Logistic Regression meta-learner (A1, A2-A5)
+  solver: lbfgs
+  C: 1.0
+  class_weight: balanced
+  max_iter: 1000
+  # random_state: <seed>   (set at runtime)
+
+# ── A1b Normalization ─────────────────────────────────────────────────────────
+# Resolved 2026-09-03: sigmoid(decision_function) normalization for SVM.
+# NOT probability calibration. NOT Platt scaling.
+
+a1b_config:
+  svm_normalization: sigmoid    # svm_unit = 1 / (1 + exp(-decision_function))
+  aggregation: mean             # mean([dt_prob, rf_prob, svm_unit, nn_prob])
+  threshold: 0.5                # prediction = (a1b_score >= 0.5)
+  tie_breaking: lowest_class_index
+
+# ── OOF Strategy ─────────────────────────────────────────────────────────────
+oof_config:
+  strategy: StratifiedKFold
+  n_splits: 5
+  shuffle: true
+  # random_state: <seed>   (set at runtime)
+
+# ── Frozen Sprint 9 AE / Fusion (A6) ────────────────────────────────────────
+ae_config:
+  checkpoint: results/checkpoints/EXP_AE_V1/ae_final.pt
+  scaler: results/checkpoints/EXP_AE_V1/ae_scaler.joblib
+  threshold: 11.160062745213509    # mean+3sigma — frozen Sprint 9 tau
+  threshold_rule: mean3sigma
+  fusion_rule: OR                  # C06: predict_attack if supervised=1 OR ae_flagged=1
+  input_dim: 75
+  frozen: true
+
+frozen_sprint9_hashes:
+  ae_final_pt:               "4ab66af8d4a6e61212ef5d78360f30a8caa68aa85dac3d54042218e010f9a1d6"
+  ae_scaler_joblib:          "c0128d42ed9ef5be695f261be75155e7de4ddf8e51b926e3ce516c4a88ad8211"
+  threshold_calibration_json: "29bd47b8a0dd886383d312e1364320c9ada62d78989c4c5f847a96f8c1882971"
+
+# ── Dataset Hashes ───────────────────────────────────────────────────────────
+dataset_hashes:
+  train:              "4a259324e604f013287a5de5fe49c46bf19418d815b550c5d1a5820b569ac41c"
+  validation:         "13caf21a076a33f50243f48f404b7e7525969f71d4b9d7c0f3768aef23589180"
+  development_test:   "04725e85732ab2fc6d9eaaa6105418b22b083b5c651067e7b0785464f414e508"
+  protected_backdoor: "6ffd23479b575e438ad90678268f40f674a663c2b9507aaf65089623397a9d91"
+
+# ── D15 Timeouts (seconds) ────────────────────────────────────────────────────
+# Safety factor: 2x on Sprint 9 recorded component runtimes.
+# Component baselines from Sprint 9 runtime records.
+timeouts:
+  safety_factor: 2.0
+  # A0: RF fresh training on full TRAIN. Baseline: rf_refit=12.5s. 2x → 30s (round up generous)
+  a0_training_sec: 60
+  # Base cache per seed (all 4 models × 5 folds OOF + full-TRAIN dev_test).
+  # Baseline: stacking OOF per seed ~680s. 2x → 1360s.
+  cache_per_seed_sec: 1400
+  # Meta-learner fit (LR). Baseline: 0.26s. 2x → 1s. Use generous 30s.
+  meta_learner_sec: 30
+  # A1b combination (pure inference). Generous: 30s.
+  a1b_combination_sec: 30
+  # A6: AE inference + fusion. Generous: 60s.
+  a6_inference_sec: 60
+  # Full config evaluation (A1-A6 per seed after cache exists). 120s generous.
+  per_config_seed_sec: 120
+
+# ── Environment (D11) ────────────────────────────────────────────────────────
+# Authoritative environment for Sprint 10: sklearn=1.9.0 (matches EXP_OOF_STACK_V1).
+# The EXP_H123_V1 runtime_report sklearn=1.5.0 field is a recording discrepancy.
+d11_authoritative_env:
+  sklearn: "1.9.0"
+  numpy: "2.4.6"
+  torch: "2.7.1+cu118"
+  pandas: "3.0.5"
+
+# ── A0 Identity ──────────────────────────────────────────────────────────────
+a0_identity:
+  model: RF
+  verified_from: results/base_models/EXP_BASE_MODELS_V1/selected_configs.json
+  sprint9_rf_cv_macro_f1: 0.9508532447968256
+  sprint9_dt_cv_macro_f1: 0.9388952272152782
+  sprint9_svm_cv_macro_f1: 0.9202929348313965
+  sprint9_nn_cv_macro_f1: 0.9242675746647988
