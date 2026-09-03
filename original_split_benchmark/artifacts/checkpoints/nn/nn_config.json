@@ -1,0 +1,15 @@
+{
+  "model_type": "IDSNet",
+  "random_state": 42,
+  "hidden_sizes": [
+    128,
+    64
+  ],
+  "lr": 0.001,
+  "weight_decay": 0.0001,
+  "batch_size": 256,
+  "epochs": 18,
+  "pos_weight": 0.469243596081816,
+  "n_train_rows": 175341,
+  "n_features": 75
+}

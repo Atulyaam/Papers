@@ -1,0 +1,9 @@
+{
+  "model_type": "LinearSVC",
+  "random_state": 42,
+  "C": 1.0,
+  "class_weight": "balanced",
+  "max_iter": 5000,
+  "n_train_rows": 175341,
+  "n_features": 75
+}

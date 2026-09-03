@@ -1,0 +1,18 @@
+{
+  "model": "Autoencoder",
+  "Accuracy": 0.4560681144633921,
+  "Precision": 0.9552238805970149,
+  "Recall": 0.012706256066354893,
+  "F1": 0.025078915859366495,
+  "Macro-F1": 0.32394610668441043,
+  "Weighted-F1": 0.29370074116487654,
+  "Balanced Accuracy": 0.5059882631683126,
+  "TP": 576,
+  "FP": 27,
+  "TN": 36973,
+  "FN": 44756,
+  "threshold": 12.409051895141602,
+  "threshold_method": "Internal TRAIN-only split (80% fit, 20% cal). mean+3sigma on AE-CALIBRATION subset.",
+  "anomaly_count": 603,
+  "anomaly_rate": 0.007324005247048535
+}

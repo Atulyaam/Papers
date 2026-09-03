@@ -1,0 +1,2 @@
+original_split_benchmark/artifacts/checkpoints/**/*.pt filter=lfs diff=lfs merge=lfs -text
+original_split_benchmark/artifacts/checkpoints/**/*.joblib filter=lfs diff=lfs merge=lfs -text

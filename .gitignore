@@ -9,3 +9,6 @@ results/
 *.egg-info/
 .DS_Store
 Thumbs.db
+
+# Original split benchmark generated predictions
+original_split_benchmark/artifacts/predictions/*.csv

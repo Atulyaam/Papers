@@ -1,0 +1,14 @@
+{
+  "model_type": "Autoencoder",
+  "random_state": 42,
+  "input_dim": 75,
+  "epochs": 50,
+  "batch_size": 1024,
+  "lr": 0.001,
+  "n_fit_rows": 44800,
+  "n_cal_rows": 11200,
+  "threshold_calibration_method": "Internal TRAIN-only split (80% fit, 20% cal). mean+3sigma on AE-CALIBRATION subset.",
+  "tau": 12.409051895141602,
+  "tau_p99": 1.7093820571899414,
+  "n_features": 75
+}
