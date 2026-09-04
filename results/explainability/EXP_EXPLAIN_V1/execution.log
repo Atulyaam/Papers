@@ -1,0 +1,68 @@
+2026-09-04 17:45:08,969 [INFO] === GIT STATE (before) ===
+?? scripts/run_sprint11_explainability.py
+
+2026-09-04 17:45:10,587 [INFO] Initialized Sprint 11 Pipeline on device: cuda
+2026-09-04 17:45:10,587 [INFO] === PHASE 0: Pre-Verification Gates (PV-01 through PV-33, plus PV-11a) ===
+2026-09-04 17:45:10,588 [INFO] [PASS] PV-01: A0_RF artifact resolved
+2026-09-04 17:45:10,588 [INFO] [PASS] PV-02: A1 DT artifact resolved
+2026-09-04 17:45:10,588 [INFO] [PASS] PV-03: A1 RF artifact resolved
+2026-09-04 17:45:10,588 [INFO] [PASS] PV-04: A1 SVM artifact resolved
+2026-09-04 17:45:10,588 [INFO] [PASS] PV-05: A1 NN artifact resolved
+2026-09-04 17:45:10,588 [INFO] [PASS] PV-06: A1 Logistic meta-learner resolved
+2026-09-04 17:45:10,589 [INFO] [PASS] PV-07: A6 AE artifact resolved
+2026-09-04 17:45:10,589 [INFO] [PASS] PV-08: Frozen preprocessing resolved
+2026-09-04 17:45:10,589 [INFO] [PASS] PV-09: Exact 75-feature order confirmed
+2026-09-04 17:45:10,589 [INFO] [PASS] PV-10: Class mapping confirmed (0=benign, 1=attack)
+2026-09-04 17:45:10,957 [INFO] [PASS] PV-11: DEVELOPMENT_TEST confirmed
+2026-09-04 17:45:11,943 [INFO] [PASS] PV-11a: Global source_row_uid uniqueness confirmed across all four splits
+2026-09-04 17:45:11,943 [INFO] Global UID uniqueness check: 255927 unique UIDs across all 4 splits (expected 255927). Passed: True
+2026-09-04 17:45:12,009 [INFO] [PASS] PV-12: Explanation-set generation reproducible (2,000 rows, independent RNG seed 42)
+2026-09-04 17:45:12,027 [INFO] [PASS] PV-13: Direct overlap of canonical source-row identities between explanation set and TRAIN = zero
+2026-09-04 17:45:12,177 [INFO] [PASS] PV-14: Direct overlap of canonical source-row identities between explanation set and OOF-fitting population, seed 42 = zero
+2026-09-04 17:45:12,334 [INFO] [PASS] PV-15: Direct overlap of canonical source-row identities between explanation set and OOF-fitting population, seed 123 = zero
+2026-09-04 17:45:12,486 [INFO] [PASS] PV-16: Direct overlap of canonical source-row identities between explanation set and OOF-fitting population, seed 2024 = zero
+2026-09-04 17:45:12,487 [INFO] [PASS] PV-17: All other applicable fitting-population overlap = zero (PV-17a: VAL=0, PV-17b: PROT=0)
+2026-09-04 17:45:12,952 [INFO] Fitting PreprocessingPipeline on TRAIN...
+2026-09-04 17:45:24,902 [INFO] [PASS] PV-18: RF explainer compatibility verified (TreeExplainer, tree_path_dependent)
+2026-09-04 17:45:24,905 [INFO] [PASS] PV-19: SVM explainer compatibility verified (LinearExplainer on decision_function)
+2026-09-04 17:45:25,048 [INFO] [PASS] PV-20: Logistic explainer compatibility verified (LinearExplainer on 4 meta-features)
+2026-09-04 17:45:25,285 [INFO] [PASS] PV-21: NN explainer compatibility verified (DeepExplainer on 2D probability output)
+2026-09-04 17:45:28,269 [INFO] [PASS] PV-22: NN GPU determinism test executed
+2026-09-04 17:45:28,269 [INFO] [PASS] PV-23: CPU fallback status
+2026-09-04 17:45:28,269 [INFO] [PASS] PV-24: NN final determinism requirement passed (< 1e-10)
+2026-09-04 17:45:28,269 [INFO] [PASS] PV-25: AE reconstruction-error formula confirmed (RE = 1/75 * sum((x_i - xhat_i)^2))
+2026-09-04 17:45:28,270 [INFO] [PASS] PV-26: A1 SVM meta-input representation confirmed (raw decision_function, svm_decision_score)
+2026-09-04 17:45:28,270 [INFO] [PASS] PV-27: SHAP background/masker specification confirmed for every explainer
+2026-09-04 17:45:28,270 [INFO] [PASS] PV-28: No retraining path required (all models strictly frozen)
+2026-09-04 17:45:28,270 [INFO] [PASS] PV-29: No tuning path required (no hyperparameter/threshold tuning)
+2026-09-04 17:45:28,270 [INFO] [PASS] PV-30: Sprint 9 artifacts unchanged (read-only verification)
+2026-09-04 17:45:28,270 [INFO] [PASS] PV-31: Sprint 10 artifacts unchanged (read-only verification)
+2026-09-04 17:45:28,270 [INFO] [PASS] PV-32: Report-generation provenance path verified
+2026-09-04 17:45:28,272 [INFO] [PASS] PV-33: Per-target figure directory structure confirmed non-colliding
+2026-09-04 17:45:28,272 [INFO] === ALL PRE-VERIFICATION GATES PASSED ===
+2026-09-04 17:45:28,473 [INFO] === PHASE 1 & 2: Sampling Background and Explanation Set ===
+2026-09-04 17:45:28,635 [INFO] Saved background_indices.csv with 500 rows.
+2026-09-04 17:45:28,716 [INFO] Saved explanation_set/indices.csv and metadata.json.
+2026-09-04 17:45:28,720 [INFO] === PHASE 5: A0_RF Explainability ===
+2026-09-04 17:45:28,722 [INFO] Phase 5 RESUME: shap_values.npz already exists — loading from disk, skipping recompute.
+2026-09-04 17:45:28,749 [INFO] Loaded A0_RF SHAP matrix (2000, 75) from disk.
+2026-09-04 17:45:28,749 [INFO] === PHASE 6: A1_FULL_STACK Explainability ===
+2026-09-04 17:45:28,752 [INFO] Phase 6 RESUME: meta_learner_importance.csv exists — loading saved artifacts, skipping SHAP recompute.
+2026-09-04 17:45:28,773 [INFO] Loaded RF base SHAP (2000, 75) from disk.
+2026-09-04 17:45:28,970 [INFO] Recomputed self.preds_a1 from saved models (fast path). Phase 6 resume complete.
+2026-09-04 17:45:28,970 [INFO] === PHASE 7 & 8: A6_STACK_PLUS_AE Explainability ===
+2026-09-04 17:45:28,976 [INFO] Scanning full DEVELOPMENT_TEST (81,749 rows) for AE-decisive cases...
+2026-09-04 17:45:29,270 [INFO] AE-decisive cases found: 13
+2026-09-04 17:45:42,314 [INFO] Saved local_cases.json for A6_STACK_PLUS_AE.
+2026-09-04 17:45:42,331 [INFO] === PHASE 11: Programmatic Documentation & Reporting ===
+2026-09-04 17:45:42,334 [INFO] Saved summary.json.
+2026-09-04 17:45:43,683 [INFO] Saved environment.txt.
+2026-09-04 17:45:43,685 [INFO] Saved metadata.json.
+2026-09-04 17:45:43,713 [INFO] Saved quality_review.md.
+2026-09-04 17:45:43,715 [INFO] Saved validation_report.md.
+2026-09-04 17:45:43,715 [INFO] === PHASE 12: Deterministic Reproducibility Check ===
+2026-09-04 17:45:43,821 [INFO] Reproducibility check passed: 100% bitwise matching.
+2026-09-04 17:45:43,984 [INFO] === GIT STATE (after) ===
+?? scripts/run_sprint11_explainability.py
+
+2026-09-04 17:45:43,984 [INFO] === SPRINT 11 EXECUTION COMPLETED SUCCESSFULLY ===

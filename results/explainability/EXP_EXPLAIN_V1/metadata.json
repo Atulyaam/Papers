@@ -1,0 +1,19 @@
+{
+  "experiment_id": "EXP_EXPLAIN_V1",
+  "protocol_version": "1.0",
+  "sprint": 11,
+  "explained_seed": 42,
+  "created_at": "2026-09-04T12:15:42Z",
+  "targets": [
+    "A0_RF",
+    "A1_FULL_STACK",
+    "A6_STACK_PLUS_AE"
+  ],
+  "explanation_set_size": 2000,
+  "background_set_size": 500,
+  "total_pv_gates": 34,
+  "all_pv_passed": true,
+  "ae_provenance": "RESOLVED",
+  "ae_decisive_count": 13,
+  "nn_device": "cuda"
+}

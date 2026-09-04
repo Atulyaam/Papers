@@ -1,0 +1,77 @@
+experiment_id: EXP_EXPLAIN_V1
+protocol_version: "1.0"
+sprint: 11
+created_at: "2026-09-04T15:15:00Z"
+
+targets:
+  - "A0_RF"
+  - "A1_FULL_STACK"
+  - "A6_STACK_PLUS_AE"
+
+explained_seed: 42
+explained_seed_rationale: "Seed 42 is the primary/first seed across all Sprint 10 protocols and is used consistently as the representative instance for post-hoc explanation. Seeds 123 and 2024 are not explained in this sprint."
+
+a0_explanation_seed: 42
+a0_checkpoint_path: "results/checkpoints/EXP_BASE_MODELS_V1/rf/rf_final.joblib"
+a0_checkpoint_provenance: "Trained under EXP_BASE_MODELS_V1 (Sprint 5) with random_state=42 on TRAIN (SHA256 4a259324e604f013287a5de5fe49c46bf19418d815b550c5d1a5820b569ac41c). Sprint 10 A0 (seed=42) used identical build_rf(42) parameters on identical TRAIN data without persisting model checkpoints to disk. Verified bitwise prediction identity on DEVELOPMENT_TEST: 0 differing predictions, macro_f1 0.8816191441877519 matching A0_RF/seed_42.json to 16 decimal places, and max probability difference 3.33e-16 against Sprint 10 ablation cache."
+
+pv_gate_count: 33
+
+paths:
+  train_data: "data/splits/train.csv"
+  validation_data: "data/splits/validation.csv"
+  development_test_data: "data/splits/development_test.csv"
+  protected_unseen_attack: "data/splits/protected_unseen_attack.csv"
+  selected_features: "results/feature_selection/EXP_MI_V1_1/selected_features.json"
+  rf_checkpoint: "results/checkpoints/EXP_BASE_MODELS_V1/rf/rf_final.joblib"
+  dt_checkpoint: "results/checkpoints/EXP_BASE_MODELS_V1/dt/dt_final.joblib"
+  svm_checkpoint: "results/checkpoints/EXP_BASE_MODELS_V1/svm/svm_final.joblib"
+  svm_scaler: "results/checkpoints/EXP_BASE_MODELS_V1/svm/svm_scaler.joblib"
+  nn_checkpoint: "results/checkpoints/EXP_BASE_MODELS_V1/nn/nn_final.pt"
+  nn_scaler: "results/checkpoints/EXP_BASE_MODELS_V1/nn/nn_scaler.joblib"
+  meta_learner_checkpoint: "results/checkpoints/EXP_OOF_STACK_V1/seed_42/meta_learner.joblib"
+  oof_predictions: "results/stacking/EXP_OOF_STACK_V1/seed_42/oof_predictions.csv"
+  ae_checkpoint: "results/checkpoints/EXP_AE_V1/ae_final.pt"
+  ae_scaler: "results/checkpoints/EXP_AE_V1/ae_scaler.joblib"
+  fusion_predictions: "results/fusion/EXP_FUSION_V1/development_test/predictions.csv"
+
+shap_background:
+  train_sample_size: 500
+  sampling_seed: 42
+  sampling_method: "numpy.random.default_rng(42).choice(162395, size=500, replace=False) on sorted canonical row_ids (0..162394)"
+  indices_file: "results/explainability/EXP_EXPLAIN_V1/background_indices.csv"
+  description: "500 deterministic TRAIN positional row IDs, mapped to canonical source_row_uid"
+  meta_learner_background: "500-row sample of OOF predictions from results/stacking/EXP_OOF_STACK_V1/seed_42/oof_predictions.csv using the identical background_indices.csv row_ids"
+  meta_learner_background_rationale: "Row-for-row alignment with base-model TRAIN background instances, computational efficiency, and empirical fidelity to the meta-learner fitting distribution."
+
+explanation_set:
+  total_size: 2000
+  benign_count: 1000
+  attack_count: 1000
+  sampling_seed: 42
+  sampling_method: "numpy.random.default_rng(42) independent generator on sorted source_row_uid partitioned subsets"
+  source_file: "data/splits/development_test.csv"
+  indices_file: "results/explainability/EXP_EXPLAIN_V1/explanation_set/indices.csv"
+  mapping_file: "results/explainability/EXP_EXPLAIN_V1/explanation_set/source_row_uid_mapping.csv"
+  metadata_file: "results/explainability/EXP_EXPLAIN_V1/explanation_set/metadata.json"
+
+ae_fusion:
+  threshold_tau: 11.160062745213509
+  calibration_rule: "mean3sigma"
+  fusion_rule: "C06 OR-rule (pred = A1_pred == 1 | AE_flag == 1)"
+  feature_importance_metric: "mean per-feature squared reconstruction error (x_i - xhat_i)^2"
+
+local_cases:
+  cases_per_type: 5
+  ordering: "explanation_set_index_ascending"
+  types:
+    - "TP"
+    - "FP"
+    - "FN"
+    - "TN"
+
+nn_determinism:
+  test_rows: 10
+  acceptance_threshold: 1.0e-10
+  device_primary: "cuda"
+  device_fallback: "cpu"

@@ -1,0 +1,18 @@
+[
+  {
+    "original_file": "scripts\\run_sprint11_explainability.py",
+    "preserved_file": "results\\explainability\\EXP_EXPLAIN_V1\\_audit_evidence\\run_sprint11_explainability_AS_OF_AUDIT.py",
+    "sha256": "9665d44e2300310e0c2ef62f43a5198feb09b5fa5b54255523815eb6c6252990",
+    "size_bytes": 62546,
+    "mtime_utc": "2026-09-04T12:14:48.801015+00:00",
+    "ctime_utc": "2026-09-04T09:44:46.582374+00:00"
+  },
+  {
+    "original_file": "src\\models\\autoencoder\\ae_model.py",
+    "preserved_file": "results\\explainability\\EXP_EXPLAIN_V1\\_audit_evidence\\ae_model_AS_OF_AUDIT.py",
+    "sha256": "e8f22b689123753138c3518bb5137ac7f547a72766064f425c528d6b0b3c4151",
+    "size_bytes": 4744,
+    "mtime_utc": "2026-09-02T09:47:15.940210+00:00",
+    "ctime_utc": "2026-09-02T09:47:15.939682+00:00"
+  }
+]

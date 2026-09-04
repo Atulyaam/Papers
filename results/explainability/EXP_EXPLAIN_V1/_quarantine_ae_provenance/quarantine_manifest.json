@@ -1,0 +1,299 @@
+[
+  {
+    "original_path": "results\\explainability\\EXP_EXPLAIN_V1\\A6_STACK_PLUS_AE\\ae_decisive_cases.csv",
+    "filename": "ae_decisive_cases.csv",
+    "sha256": "c446c686b7138f5d9c6f3c6069f231eb2207d79e5c7e7b88a2c7a318ec3e726d",
+    "size_bytes": 1369,
+    "mtime_utc": "2026-09-04T11:44:23.437393+00:00",
+    "quarantine_reason": "Generated with local TabularAutoencoder class which omitted the bottleneck ReLU present in the authoritative src.models.autoencoder.ae_model.Autoencoder training architecture.",
+    "quarantined_to": "results\\explainability\\EXP_EXPLAIN_V1\\_quarantine_ae_provenance\\ae_decisive_cases.csv"
+  },
+  {
+    "original_path": "results\\explainability\\EXP_EXPLAIN_V1\\A6_STACK_PLUS_AE\\ae_reconstruction_importance.csv",
+    "filename": "ae_reconstruction_importance.csv",
+    "sha256": "e599e5ddca1af048133a2d50ce8c8d8602ffcdb9ed956fe6831473b9ea0e4a37",
+    "size_bytes": 2773,
+    "mtime_utc": "2026-09-04T11:44:25.474358+00:00",
+    "quarantine_reason": "Generated with local TabularAutoencoder class which omitted the bottleneck ReLU present in the authoritative src.models.autoencoder.ae_model.Autoencoder training architecture.",
+    "quarantined_to": "results\\explainability\\EXP_EXPLAIN_V1\\_quarantine_ae_provenance\\ae_reconstruction_importance.csv"
+  },
+  {
+    "original_path": "results\\explainability\\EXP_EXPLAIN_V1\\A6_STACK_PLUS_AE\\local_cases.json",
+    "filename": "local_cases.json",
+    "sha256": "d8a66bebbc3b4ba6ff6328da1c6d4720541d9cb93fe755e0028c7b74de36b8e9",
+    "size_bytes": 10728,
+    "mtime_utc": "2026-09-04T11:44:28.767217+00:00",
+    "quarantine_reason": "Generated with local TabularAutoencoder class which omitted the bottleneck ReLU present in the authoritative src.models.autoencoder.ae_model.Autoencoder training architecture.",
+    "quarantined_to": "results\\explainability\\EXP_EXPLAIN_V1\\_quarantine_ae_provenance\\local_cases.json"
+  },
+  {
+    "original_path": "results\\explainability\\EXP_EXPLAIN_V1\\figures\\A6_STACK_PLUS_AE\\local_fn_1009.png",
+    "filename": "local_fn_1009.png",
+    "sha256": "54abaef28777a0b0431ac80891179064684b17039387b6fcd88c1f2177e54317",
+    "size_bytes": 63841,
+    "mtime_utc": "2026-09-04T11:44:27.162460+00:00",
+    "quarantine_reason": "Generated with local TabularAutoencoder class which omitted the bottleneck ReLU present in the authoritative src.models.autoencoder.ae_model.Autoencoder training architecture.",
+    "quarantined_to": "results\\explainability\\EXP_EXPLAIN_V1\\_quarantine_ae_provenance\\figures\\A6_STACK_PLUS_AE\\local_fn_1009.png"
+  },
+  {
+    "original_path": "results\\explainability\\EXP_EXPLAIN_V1\\figures\\A6_STACK_PLUS_AE\\local_fn_1039.png",
+    "filename": "local_fn_1039.png",
+    "sha256": "43f3d01538bfdc6897362acbc328311867bdc611ffa31c151ee874dc332110eb",
+    "size_bytes": 69654,
+    "mtime_utc": "2026-09-04T11:44:27.320690+00:00",
+    "quarantine_reason": "Generated with local TabularAutoencoder class which omitted the bottleneck ReLU present in the authoritative src.models.autoencoder.ae_model.Autoencoder training architecture.",
+    "quarantined_to": "results\\explainability\\EXP_EXPLAIN_V1\\_quarantine_ae_provenance\\figures\\A6_STACK_PLUS_AE\\local_fn_1039.png"
+  },
+  {
+    "original_path": "results\\explainability\\EXP_EXPLAIN_V1\\figures\\A6_STACK_PLUS_AE\\local_fn_1077.png",
+    "filename": "local_fn_1077.png",
+    "sha256": "f37d73449917203b65a799d72fc47abdacf2c2ff1e7f41a16d18a4b4b0c734fe",
+    "size_bytes": 66270,
+    "mtime_utc": "2026-09-04T11:44:27.480506+00:00",
+    "quarantine_reason": "Generated with local TabularAutoencoder class which omitted the bottleneck ReLU present in the authoritative src.models.autoencoder.ae_model.Autoencoder training architecture.",
+    "quarantined_to": "results\\explainability\\EXP_EXPLAIN_V1\\_quarantine_ae_provenance\\figures\\A6_STACK_PLUS_AE\\local_fn_1077.png"
+  },
+  {
+    "original_path": "results\\explainability\\EXP_EXPLAIN_V1\\figures\\A6_STACK_PLUS_AE\\local_fn_1080.png",
+    "filename": "local_fn_1080.png",
+    "sha256": "8097e093e126df3778f69e3ae491fc0d771e20c682a4d4d2892ff520b2b3e03d",
+    "size_bytes": 63437,
+    "mtime_utc": "2026-09-04T11:44:27.636997+00:00",
+    "quarantine_reason": "Generated with local TabularAutoencoder class which omitted the bottleneck ReLU present in the authoritative src.models.autoencoder.ae_model.Autoencoder training architecture.",
+    "quarantined_to": "results\\explainability\\EXP_EXPLAIN_V1\\_quarantine_ae_provenance\\figures\\A6_STACK_PLUS_AE\\local_fn_1080.png"
+  },
+  {
+    "original_path": "results\\explainability\\EXP_EXPLAIN_V1\\figures\\A6_STACK_PLUS_AE\\local_fn_1091.png",
+    "filename": "local_fn_1091.png",
+    "sha256": "d7ff621ca7be9b4161997b36432afb421f9e541a0627eef3a9b83299cc629292",
+    "size_bytes": 68089,
+    "mtime_utc": "2026-09-04T11:44:27.795722+00:00",
+    "quarantine_reason": "Generated with local TabularAutoencoder class which omitted the bottleneck ReLU present in the authoritative src.models.autoencoder.ae_model.Autoencoder training architecture.",
+    "quarantined_to": "results\\explainability\\EXP_EXPLAIN_V1\\_quarantine_ae_provenance\\figures\\A6_STACK_PLUS_AE\\local_fn_1091.png"
+  },
+  {
+    "original_path": "results\\explainability\\EXP_EXPLAIN_V1\\figures\\A6_STACK_PLUS_AE\\local_fp_20.png",
+    "filename": "local_fp_20.png",
+    "sha256": "7db969864457b29131ac3368d351283cecf7289c2564facd442c5c7ba24d8a91",
+    "size_bytes": 62120,
+    "mtime_utc": "2026-09-04T11:44:26.539907+00:00",
+    "quarantine_reason": "Generated with local TabularAutoencoder class which omitted the bottleneck ReLU present in the authoritative src.models.autoencoder.ae_model.Autoencoder training architecture.",
+    "quarantined_to": "results\\explainability\\EXP_EXPLAIN_V1\\_quarantine_ae_provenance\\figures\\A6_STACK_PLUS_AE\\local_fp_20.png"
+  },
+  {
+    "original_path": "results\\explainability\\EXP_EXPLAIN_V1\\figures\\A6_STACK_PLUS_AE\\local_fp_27.png",
+    "filename": "local_fp_27.png",
+    "sha256": "b099cd6cf1368d8ed9eb8437ee6c00f5494b1406b7bb49c1713a82276ddf616f",
+    "size_bytes": 65675,
+    "mtime_utc": "2026-09-04T11:44:26.695742+00:00",
+    "quarantine_reason": "Generated with local TabularAutoencoder class which omitted the bottleneck ReLU present in the authoritative src.models.autoencoder.ae_model.Autoencoder training architecture.",
+    "quarantined_to": "results\\explainability\\EXP_EXPLAIN_V1\\_quarantine_ae_provenance\\figures\\A6_STACK_PLUS_AE\\local_fp_27.png"
+  },
+  {
+    "original_path": "results\\explainability\\EXP_EXPLAIN_V1\\figures\\A6_STACK_PLUS_AE\\local_fp_31.png",
+    "filename": "local_fp_31.png",
+    "sha256": "5e00623b10a8cc0ea6fa60d9269b5f5654e3c1dfa85a68531c64487a5cc8e453",
+    "size_bytes": 66634,
+    "mtime_utc": "2026-09-04T11:44:26.851725+00:00",
+    "quarantine_reason": "Generated with local TabularAutoencoder class which omitted the bottleneck ReLU present in the authoritative src.models.autoencoder.ae_model.Autoencoder training architecture.",
+    "quarantined_to": "results\\explainability\\EXP_EXPLAIN_V1\\_quarantine_ae_provenance\\figures\\A6_STACK_PLUS_AE\\local_fp_31.png"
+  },
+  {
+    "original_path": "results\\explainability\\EXP_EXPLAIN_V1\\figures\\A6_STACK_PLUS_AE\\local_fp_4.png",
+    "filename": "local_fp_4.png",
+    "sha256": "3ec234fec04e4e955e6feb6c992d70ddfc3c9958012b9c4d368eb9de8049b9fa",
+    "size_bytes": 59980,
+    "mtime_utc": "2026-09-04T11:44:26.391537+00:00",
+    "quarantine_reason": "Generated with local TabularAutoencoder class which omitted the bottleneck ReLU present in the authoritative src.models.autoencoder.ae_model.Autoencoder training architecture.",
+    "quarantined_to": "results\\explainability\\EXP_EXPLAIN_V1\\_quarantine_ae_provenance\\figures\\A6_STACK_PLUS_AE\\local_fp_4.png"
+  },
+  {
+    "original_path": "results\\explainability\\EXP_EXPLAIN_V1\\figures\\A6_STACK_PLUS_AE\\local_fp_41.png",
+    "filename": "local_fp_41.png",
+    "sha256": "f75242d8a906c22d2162741d5c9349cd51bd2406fb247e9282cdea87ee856273",
+    "size_bytes": 65657,
+    "mtime_utc": "2026-09-04T11:44:27.008328+00:00",
+    "quarantine_reason": "Generated with local TabularAutoencoder class which omitted the bottleneck ReLU present in the authoritative src.models.autoencoder.ae_model.Autoencoder training architecture.",
+    "quarantined_to": "results\\explainability\\EXP_EXPLAIN_V1\\_quarantine_ae_provenance\\figures\\A6_STACK_PLUS_AE\\local_fp_41.png"
+  },
+  {
+    "original_path": "results\\explainability\\EXP_EXPLAIN_V1\\figures\\A6_STACK_PLUS_AE\\local_tn_0.png",
+    "filename": "local_tn_0.png",
+    "sha256": "4d28bc1971e4fb0a06c41b982fd974f12c288a9e732a93acc8deab85b1a707ff",
+    "size_bytes": 65388,
+    "mtime_utc": "2026-09-04T11:44:27.955142+00:00",
+    "quarantine_reason": "Generated with local TabularAutoencoder class which omitted the bottleneck ReLU present in the authoritative src.models.autoencoder.ae_model.Autoencoder training architecture.",
+    "quarantined_to": "results\\explainability\\EXP_EXPLAIN_V1\\_quarantine_ae_provenance\\figures\\A6_STACK_PLUS_AE\\local_tn_0.png"
+  },
+  {
+    "original_path": "results\\explainability\\EXP_EXPLAIN_V1\\figures\\A6_STACK_PLUS_AE\\local_tn_1.png",
+    "filename": "local_tn_1.png",
+    "sha256": "aaa2b5dc98589cb1122b115a807f7f6572a2f71852493c24701e3865c8b5013a",
+    "size_bytes": 63198,
+    "mtime_utc": "2026-09-04T11:44:28.109490+00:00",
+    "quarantine_reason": "Generated with local TabularAutoencoder class which omitted the bottleneck ReLU present in the authoritative src.models.autoencoder.ae_model.Autoencoder training architecture.",
+    "quarantined_to": "results\\explainability\\EXP_EXPLAIN_V1\\_quarantine_ae_provenance\\figures\\A6_STACK_PLUS_AE\\local_tn_1.png"
+  },
+  {
+    "original_path": "results\\explainability\\EXP_EXPLAIN_V1\\figures\\A6_STACK_PLUS_AE\\local_tn_2.png",
+    "filename": "local_tn_2.png",
+    "sha256": "490bb714f12fbf024be455b728822408fa479d53b7e7edc07b334dc62c446c92",
+    "size_bytes": 67963,
+    "mtime_utc": "2026-09-04T11:44:28.270183+00:00",
+    "quarantine_reason": "Generated with local TabularAutoencoder class which omitted the bottleneck ReLU present in the authoritative src.models.autoencoder.ae_model.Autoencoder training architecture.",
+    "quarantined_to": "results\\explainability\\EXP_EXPLAIN_V1\\_quarantine_ae_provenance\\figures\\A6_STACK_PLUS_AE\\local_tn_2.png"
+  },
+  {
+    "original_path": "results\\explainability\\EXP_EXPLAIN_V1\\figures\\A6_STACK_PLUS_AE\\local_tn_3.png",
+    "filename": "local_tn_3.png",
+    "sha256": "0cfe011657dcd3d34c679bbac8c168542a5c9f5be042e09403d7874f64c4782a",
+    "size_bytes": 65542,
+    "mtime_utc": "2026-09-04T11:44:28.566427+00:00",
+    "quarantine_reason": "Generated with local TabularAutoencoder class which omitted the bottleneck ReLU present in the authoritative src.models.autoencoder.ae_model.Autoencoder training architecture.",
+    "quarantined_to": "results\\explainability\\EXP_EXPLAIN_V1\\_quarantine_ae_provenance\\figures\\A6_STACK_PLUS_AE\\local_tn_3.png"
+  },
+  {
+    "original_path": "results\\explainability\\EXP_EXPLAIN_V1\\figures\\A6_STACK_PLUS_AE\\local_tn_5.png",
+    "filename": "local_tn_5.png",
+    "sha256": "a41b928acc0452c1e85d334b5b5e5f7e4eec80ebf7e6e8d7b2e6ec4f88f53f52",
+    "size_bytes": 63756,
+    "mtime_utc": "2026-09-04T11:44:28.732216+00:00",
+    "quarantine_reason": "Generated with local TabularAutoencoder class which omitted the bottleneck ReLU present in the authoritative src.models.autoencoder.ae_model.Autoencoder training architecture.",
+    "quarantined_to": "results\\explainability\\EXP_EXPLAIN_V1\\_quarantine_ae_provenance\\figures\\A6_STACK_PLUS_AE\\local_tn_5.png"
+  },
+  {
+    "original_path": "results\\explainability\\EXP_EXPLAIN_V1\\figures\\A6_STACK_PLUS_AE\\local_tp_1000.png",
+    "filename": "local_tp_1000.png",
+    "sha256": "d0887440b32de7c9a56ffa178f1fb66f6f7d7b3f4637cdbdeed86d087962aa9f",
+    "size_bytes": 68334,
+    "mtime_utc": "2026-09-04T11:44:25.603489+00:00",
+    "quarantine_reason": "Generated with local TabularAutoencoder class which omitted the bottleneck ReLU present in the authoritative src.models.autoencoder.ae_model.Autoencoder training architecture.",
+    "quarantined_to": "results\\explainability\\EXP_EXPLAIN_V1\\_quarantine_ae_provenance\\figures\\A6_STACK_PLUS_AE\\local_tp_1000.png"
+  },
+  {
+    "original_path": "results\\explainability\\EXP_EXPLAIN_V1\\figures\\A6_STACK_PLUS_AE\\local_tp_1001.png",
+    "filename": "local_tp_1001.png",
+    "sha256": "3c33770a85381bfd7bfcdf315b118cfc5f560a5ab9ab584db9f02dfda5b8fd2d",
+    "size_bytes": 64204,
+    "mtime_utc": "2026-09-04T11:44:25.766833+00:00",
+    "quarantine_reason": "Generated with local TabularAutoencoder class which omitted the bottleneck ReLU present in the authoritative src.models.autoencoder.ae_model.Autoencoder training architecture.",
+    "quarantined_to": "results\\explainability\\EXP_EXPLAIN_V1\\_quarantine_ae_provenance\\figures\\A6_STACK_PLUS_AE\\local_tp_1001.png"
+  },
+  {
+    "original_path": "results\\explainability\\EXP_EXPLAIN_V1\\figures\\A6_STACK_PLUS_AE\\local_tp_1002.png",
+    "filename": "local_tp_1002.png",
+    "sha256": "538db44d1f8e405b7ae3476a3de05e758635d913d37a77fa1dae9c6b589e73a5",
+    "size_bytes": 69525,
+    "mtime_utc": "2026-09-04T11:44:25.923473+00:00",
+    "quarantine_reason": "Generated with local TabularAutoencoder class which omitted the bottleneck ReLU present in the authoritative src.models.autoencoder.ae_model.Autoencoder training architecture.",
+    "quarantined_to": "results\\explainability\\EXP_EXPLAIN_V1\\_quarantine_ae_provenance\\figures\\A6_STACK_PLUS_AE\\local_tp_1002.png"
+  },
+  {
+    "original_path": "results\\explainability\\EXP_EXPLAIN_V1\\figures\\A6_STACK_PLUS_AE\\local_tp_1003.png",
+    "filename": "local_tp_1003.png",
+    "sha256": "805cb3a63ba469617b84e40496e3dd7cb16ee7ae902f4fe80495da88039a028b",
+    "size_bytes": 64534,
+    "mtime_utc": "2026-09-04T11:44:26.086879+00:00",
+    "quarantine_reason": "Generated with local TabularAutoencoder class which omitted the bottleneck ReLU present in the authoritative src.models.autoencoder.ae_model.Autoencoder training architecture.",
+    "quarantined_to": "results\\explainability\\EXP_EXPLAIN_V1\\_quarantine_ae_provenance\\figures\\A6_STACK_PLUS_AE\\local_tp_1003.png"
+  },
+  {
+    "original_path": "results\\explainability\\EXP_EXPLAIN_V1\\figures\\A6_STACK_PLUS_AE\\local_tp_1004.png",
+    "filename": "local_tp_1004.png",
+    "sha256": "4dbaa964635fd424e2fa8c597cda1a6306e0276dc2f9d54ee0031abe5aec5580",
+    "size_bytes": 66808,
+    "mtime_utc": "2026-09-04T11:44:26.238990+00:00",
+    "quarantine_reason": "Generated with local TabularAutoencoder class which omitted the bottleneck ReLU present in the authoritative src.models.autoencoder.ae_model.Autoencoder training architecture.",
+    "quarantined_to": "results\\explainability\\EXP_EXPLAIN_V1\\_quarantine_ae_provenance\\figures\\A6_STACK_PLUS_AE\\local_tp_1004.png"
+  },
+  {
+    "original_path": "results\\explainability\\EXP_EXPLAIN_V1\\figures\\ae_decisive_cases\\case_row_40612.png",
+    "filename": "case_row_40612.png",
+    "sha256": "40f1e60dea992b7f9fab734f7470a2c2c95a03f163175948d9279f4428a10ce0",
+    "size_bytes": 91048,
+    "mtime_utc": "2026-09-04T11:44:23.642317+00:00",
+    "quarantine_reason": "Generated with local TabularAutoencoder class which omitted the bottleneck ReLU present in the authoritative src.models.autoencoder.ae_model.Autoencoder training architecture.",
+    "quarantined_to": "results\\explainability\\EXP_EXPLAIN_V1\\_quarantine_ae_provenance\\figures\\ae_decisive_cases\\case_row_40612.png"
+  },
+  {
+    "original_path": "results\\explainability\\EXP_EXPLAIN_V1\\figures\\ae_decisive_cases\\case_row_40620.png",
+    "filename": "case_row_40620.png",
+    "sha256": "c952c2da3a5aa9ceba6e595842e1d0d0cdb32103bdc308a5e976629786409820",
+    "size_bytes": 88686,
+    "mtime_utc": "2026-09-04T11:44:23.841329+00:00",
+    "quarantine_reason": "Generated with local TabularAutoencoder class which omitted the bottleneck ReLU present in the authoritative src.models.autoencoder.ae_model.Autoencoder training architecture.",
+    "quarantined_to": "results\\explainability\\EXP_EXPLAIN_V1\\_quarantine_ae_provenance\\figures\\ae_decisive_cases\\case_row_40620.png"
+  },
+  {
+    "original_path": "results\\explainability\\EXP_EXPLAIN_V1\\figures\\ae_decisive_cases\\case_row_41062.png",
+    "filename": "case_row_41062.png",
+    "sha256": "79a75a5299d586eb55b5733dde80614f418e9391049e1adc06c3f326f20de33b",
+    "size_bytes": 87225,
+    "mtime_utc": "2026-09-04T11:44:24.039251+00:00",
+    "quarantine_reason": "Generated with local TabularAutoencoder class which omitted the bottleneck ReLU present in the authoritative src.models.autoencoder.ae_model.Autoencoder training architecture.",
+    "quarantined_to": "results\\explainability\\EXP_EXPLAIN_V1\\_quarantine_ae_provenance\\figures\\ae_decisive_cases\\case_row_41062.png"
+  },
+  {
+    "original_path": "results\\explainability\\EXP_EXPLAIN_V1\\figures\\ae_decisive_cases\\case_row_41459.png",
+    "filename": "case_row_41459.png",
+    "sha256": "cbfa7e2112990aaa81925034f47e8f9fcffd6f53c76e53f585d95edbd602f7d7",
+    "size_bytes": 86545,
+    "mtime_utc": "2026-09-04T11:44:24.232460+00:00",
+    "quarantine_reason": "Generated with local TabularAutoencoder class which omitted the bottleneck ReLU present in the authoritative src.models.autoencoder.ae_model.Autoencoder training architecture.",
+    "quarantined_to": "results\\explainability\\EXP_EXPLAIN_V1\\_quarantine_ae_provenance\\figures\\ae_decisive_cases\\case_row_41459.png"
+  },
+  {
+    "original_path": "results\\explainability\\EXP_EXPLAIN_V1\\figures\\ae_decisive_cases\\case_row_41540.png",
+    "filename": "case_row_41540.png",
+    "sha256": "1b8e223c4ddebd60929f7476ac43e0d14ae5e13c2dc83e65a80f4110553973cb",
+    "size_bytes": 87099,
+    "mtime_utc": "2026-09-04T11:44:24.426762+00:00",
+    "quarantine_reason": "Generated with local TabularAutoencoder class which omitted the bottleneck ReLU present in the authoritative src.models.autoencoder.ae_model.Autoencoder training architecture.",
+    "quarantined_to": "results\\explainability\\EXP_EXPLAIN_V1\\_quarantine_ae_provenance\\figures\\ae_decisive_cases\\case_row_41540.png"
+  },
+  {
+    "original_path": "results\\explainability\\EXP_EXPLAIN_V1\\figures\\ae_decisive_cases\\case_row_69582.png",
+    "filename": "case_row_69582.png",
+    "sha256": "17e1f0ac89fb181ddac271ac90145a318dc305a9aff10cc67e7d0f2663f195fe",
+    "size_bytes": 86029,
+    "mtime_utc": "2026-09-04T11:44:24.622012+00:00",
+    "quarantine_reason": "Generated with local TabularAutoencoder class which omitted the bottleneck ReLU present in the authoritative src.models.autoencoder.ae_model.Autoencoder training architecture.",
+    "quarantined_to": "results\\explainability\\EXP_EXPLAIN_V1\\_quarantine_ae_provenance\\figures\\ae_decisive_cases\\case_row_69582.png"
+  },
+  {
+    "original_path": "results\\explainability\\EXP_EXPLAIN_V1\\figures\\ae_decisive_cases\\case_row_69620.png",
+    "filename": "case_row_69620.png",
+    "sha256": "7f1fde336c40c23f7ece3d8cce8e4129ec7911fd70aa596e19d95a1ddbb4e6d0",
+    "size_bytes": 88121,
+    "mtime_utc": "2026-09-04T11:44:24.814944+00:00",
+    "quarantine_reason": "Generated with local TabularAutoencoder class which omitted the bottleneck ReLU present in the authoritative src.models.autoencoder.ae_model.Autoencoder training architecture.",
+    "quarantined_to": "results\\explainability\\EXP_EXPLAIN_V1\\_quarantine_ae_provenance\\figures\\ae_decisive_cases\\case_row_69620.png"
+  },
+  {
+    "original_path": "results\\explainability\\EXP_EXPLAIN_V1\\figures\\ae_decisive_cases\\case_row_69625.png",
+    "filename": "case_row_69625.png",
+    "sha256": "08de789aa76c3e99de32b1e449a180f2b460f1bc0896611a5ffeb3259f515bf8",
+    "size_bytes": 87973,
+    "mtime_utc": "2026-09-04T11:44:25.016696+00:00",
+    "quarantine_reason": "Generated with local TabularAutoencoder class which omitted the bottleneck ReLU present in the authoritative src.models.autoencoder.ae_model.Autoencoder training architecture.",
+    "quarantined_to": "results\\explainability\\EXP_EXPLAIN_V1\\_quarantine_ae_provenance\\figures\\ae_decisive_cases\\case_row_69625.png"
+  },
+  {
+    "original_path": "results\\explainability\\EXP_EXPLAIN_V1\\figures\\ae_decisive_cases\\case_row_69638.png",
+    "filename": "case_row_69638.png",
+    "sha256": "ff57e4ecebd282715179556613585d71108f9146d93973d4a7395610bdc4d26c",
+    "size_bytes": 88199,
+    "mtime_utc": "2026-09-04T11:44:25.213276+00:00",
+    "quarantine_reason": "Generated with local TabularAutoencoder class which omitted the bottleneck ReLU present in the authoritative src.models.autoencoder.ae_model.Autoencoder training architecture.",
+    "quarantined_to": "results\\explainability\\EXP_EXPLAIN_V1\\_quarantine_ae_provenance\\figures\\ae_decisive_cases\\case_row_69638.png"
+  },
+  {
+    "original_path": "results\\explainability\\EXP_EXPLAIN_V1\\figures\\ae_decisive_cases\\case_row_69657.png",
+    "filename": "case_row_69657.png",
+    "sha256": "2ed7610fbb3e78563f98dc051c66add1195d26702b7946a9c488a050b998c04c",
+    "size_bytes": 91502,
+    "mtime_utc": "2026-09-04T11:44:25.416582+00:00",
+    "quarantine_reason": "Generated with local TabularAutoencoder class which omitted the bottleneck ReLU present in the authoritative src.models.autoencoder.ae_model.Autoencoder training architecture.",
+    "quarantined_to": "results\\explainability\\EXP_EXPLAIN_V1\\_quarantine_ae_provenance\\figures\\ae_decisive_cases\\case_row_69657.png"
+  }
+]
