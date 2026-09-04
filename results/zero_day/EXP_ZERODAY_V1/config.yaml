@@ -1,0 +1,13 @@
+experiment_id: EXP_ZERODAY_V1
+protocol_version: V1.4
+timestamp_utc: '2026-09-04T15:45:09.520890+00:00'
+headline_system: C06
+generalization_threshold: 0.5
+rescue_gain_threshold: 0.05
+minimum_integer_Q3: 30
+frozen_ae_threshold_tau: 11.160062745213509
+ae_operator: reconstruction_error > tau
+frozen_baseline_p0: 0.000625
+explainability_seed: 42
+training_operations: 0
+recalibration_operations: 0

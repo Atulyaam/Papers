@@ -1,0 +1,305 @@
+{
+  "experiment_id": "EXP_ZERODAY_V1",
+  "protocol_version": "V1.4",
+  "timestamp_utc": "2026-09-04T15:45:09.520890+00:00",
+  "all_gates_passed": true,
+  "total_gates": 44,
+  "passed_gates": 44,
+  "failed_gates": 0,
+  "gates": {
+    "ZD-01": {
+      "description": "Protected file SHA-256 matches frozen authoritative hash",
+      "status": "PASS",
+      "details": {},
+      "timestamp": "2026-09-04T15:45:16.132496+00:00"
+    },
+    "ZD-02": {
+      "description": "Protected row count == 583",
+      "status": "PASS",
+      "details": {},
+      "timestamp": "2026-09-04T15:45:16.132496+00:00"
+    },
+    "ZD-03": {
+      "description": "Protected attack_cat is Backdoor only",
+      "status": "PASS",
+      "details": {},
+      "timestamp": "2026-09-04T15:45:16.133089+00:00"
+    },
+    "ZD-04": {
+      "description": "Protected label is 1 only",
+      "status": "PASS",
+      "details": {},
+      "timestamp": "2026-09-04T15:45:16.133089+00:00"
+    },
+    "ZD-05": {
+      "description": "TRAIN Backdoor count == 0",
+      "status": "PASS",
+      "details": {},
+      "timestamp": "2026-09-04T15:45:16.133089+00:00"
+    },
+    "ZD-06": {
+      "description": "VALIDATION Backdoor count == 0",
+      "status": "PASS",
+      "details": {},
+      "timestamp": "2026-09-04T15:45:16.133089+00:00"
+    },
+    "ZD-07": {
+      "description": "DEVELOPMENT_TEST Backdoor count == 0",
+      "status": "PASS",
+      "details": {},
+      "timestamp": "2026-09-04T15:45:16.133089+00:00"
+    },
+    "ZD-08": {
+      "description": "Benign control count derived programmatically after ZD-PF-33 pass",
+      "status": "PASS",
+      "details": {
+        "count": 37000
+      },
+      "timestamp": "2026-09-04T15:45:16.133089+00:00"
+    },
+    "ZD-09": {
+      "description": "Combined population == 583 + benign_control_n",
+      "status": "PASS",
+      "details": {
+        "count": 37583
+      },
+      "timestamp": "2026-09-04T15:45:16.133089+00:00"
+    },
+    "ZD-10": {
+      "description": "Global source_row_uid uniqueness across splits",
+      "status": "PASS",
+      "details": {},
+      "timestamp": "2026-09-04T15:45:16.133089+00:00"
+    },
+    "ZD-11": {
+      "description": "Protected-vs-TRAIN leakage == 0",
+      "status": "PASS",
+      "details": {},
+      "timestamp": "2026-09-04T15:45:16.133089+00:00"
+    },
+    "ZD-12": {
+      "description": "Protected-vs-VALIDATION leakage == 0",
+      "status": "PASS",
+      "details": {},
+      "timestamp": "2026-09-04T15:45:16.133089+00:00"
+    },
+    "ZD-13": {
+      "description": "Protected-vs-benign-control leakage == 0",
+      "status": "PASS",
+      "details": {},
+      "timestamp": "2026-09-04T15:45:16.133089+00:00"
+    },
+    "ZD-14": {
+      "description": "Frozen feature selection artifact hash verified",
+      "status": "PASS",
+      "details": {},
+      "timestamp": "2026-09-04T15:45:16.133089+00:00"
+    },
+    "ZD-15": {
+      "description": "Frozen DT checkpoint hash verified",
+      "status": "PASS",
+      "details": {},
+      "timestamp": "2026-09-04T15:45:16.133089+00:00"
+    },
+    "ZD-16": {
+      "description": "Frozen RF checkpoint hash verified",
+      "status": "PASS",
+      "details": {},
+      "timestamp": "2026-09-04T15:45:16.133089+00:00"
+    },
+    "ZD-17": {
+      "description": "Frozen SVM checkpoint & scaler hashes verified",
+      "status": "PASS",
+      "details": {},
+      "timestamp": "2026-09-04T15:45:16.133089+00:00"
+    },
+    "ZD-18": {
+      "description": "Frozen NN checkpoint & scaler hashes verified",
+      "status": "PASS",
+      "details": {},
+      "timestamp": "2026-09-04T15:45:16.133629+00:00"
+    },
+    "ZD-19": {
+      "description": "Frozen Stacking meta-learner hashes verified",
+      "status": "PASS",
+      "details": {},
+      "timestamp": "2026-09-04T15:45:16.133629+00:00"
+    },
+    "ZD-20": {
+      "description": "Frozen AE checkpoint & scaler hashes verified",
+      "status": "PASS",
+      "details": {},
+      "timestamp": "2026-09-04T15:45:16.133629+00:00"
+    },
+    "ZD-21": {
+      "description": "Frozen AE threshold verified (tau == 11.160062745213509)",
+      "status": "PASS",
+      "details": {},
+      "timestamp": "2026-09-04T15:45:16.133629+00:00"
+    },
+    "ZD-22": {
+      "description": "Frozen C06 OR-logic rule verified",
+      "status": "PASS",
+      "details": {},
+      "timestamp": "2026-09-04T15:45:16.133629+00:00"
+    },
+    "ZD-23": {
+      "description": "Zero training operations executed",
+      "status": "PASS",
+      "details": {},
+      "timestamp": "2026-09-04T15:45:16.133629+00:00"
+    },
+    "ZD-24": {
+      "description": "Zero threshold recalibrations executed",
+      "status": "PASS",
+      "details": {},
+      "timestamp": "2026-09-04T15:45:16.133629+00:00"
+    },
+    "ZD-25": {
+      "description": "No configuration selection using protected Backdoor",
+      "status": "PASS",
+      "details": {},
+      "timestamp": "2026-09-04T15:45:16.133629+00:00"
+    },
+    "ZD-26": {
+      "description": "Quadrant internal consistency: Q1 + Q2 + Q3 + Q4 == 583",
+      "status": "PASS",
+      "details": {
+        "q1": 0,
+        "q2": 582,
+        "q3": 0,
+        "q4": 1,
+        "sum": 583
+      },
+      "timestamp": "2026-09-04T15:45:16.133629+00:00"
+    },
+    "ZD-27": {
+      "description": "C01 detected count identity: Q1 + Q2 == c01_detected",
+      "status": "PASS",
+      "details": {},
+      "timestamp": "2026-09-04T15:45:16.133629+00:00"
+    },
+    "ZD-28": {
+      "description": "AE detected count identity: Q1 + Q3 == ae_detected",
+      "status": "PASS",
+      "details": {},
+      "timestamp": "2026-09-04T15:45:16.134159+00:00"
+    },
+    "ZD-29": {
+      "description": "C06 detected count identity: Q1 + Q2 + Q3 == c06_detected",
+      "status": "PASS",
+      "details": {},
+      "timestamp": "2026-09-04T15:45:16.134159+00:00"
+    },
+    "ZD-30": {
+      "description": "Discordant pairs count identity: b + c == Q3 (b == 0)",
+      "status": "PASS",
+      "details": {},
+      "timestamp": "2026-09-04T15:45:16.134159+00:00"
+    },
+    "ZD-31": {
+      "description": "Headline generalization system is uniquely C06",
+      "status": "PASS",
+      "details": {},
+      "timestamp": "2026-09-04T15:45:16.134159+00:00"
+    },
+    "ZD-32": {
+      "description": "Generalization threshold >= 0.50 and Wilson 95% CI lower bound > 0.50 evaluated",
+      "status": "PASS",
+      "details": {
+        "zdr": 0.9982847341337907,
+        "ci_low": 0.9903487843853768,
+        "decision": "SUPPORTED"
+      },
+      "timestamp": "2026-09-04T15:45:16.134159+00:00"
+    },
+    "ZD-33": {
+      "description": "Fusion improvement practical threshold RescueGain >= 0.05 evaluated",
+      "status": "PASS",
+      "details": {
+        "rescue_gain": 0.0,
+        "threshold": 0.05,
+        "met": false
+      },
+      "timestamp": "2026-09-04T15:45:16.134159+00:00"
+    },
+    "ZD-34": {
+      "description": "Statistical significance threshold p < 0.05 against p0 = 0.000625 evaluated",
+      "status": "PASS",
+      "details": {
+        "p_val": 1.0,
+        "p0": 0.000625,
+        "decision": "FAIL_TO_REJECT_H0"
+      },
+      "timestamp": "2026-09-04T15:45:16.134159+00:00"
+    },
+    "ZD-35": {
+      "description": "Dual criterion enforcement for fusion improvement verdict",
+      "status": "PASS",
+      "details": {
+        "final_decision": "NOT_SUPPORTED"
+      },
+      "timestamp": "2026-09-04T15:45:16.134159+00:00"
+    },
+    "ZD-36": {
+      "description": "Single-family limitation explicitly recorded in metadata and reports",
+      "status": "PASS",
+      "details": {},
+      "timestamp": "2026-09-04T15:45:16.134159+00:00"
+    },
+    "ZD-37": {
+      "description": "Operational baseline limitation explicitly recorded in metadata and reports",
+      "status": "PASS",
+      "details": {},
+      "timestamp": "2026-09-04T15:45:16.134159+00:00"
+    },
+    "ZD-38": {
+      "description": "Primary rescue rate equals Q3 / 583",
+      "status": "PASS",
+      "details": {
+        "primary_rescue_rate": 0.0
+      },
+      "timestamp": "2026-09-04T15:45:16.134159+00:00"
+    },
+    "ZD-39": {
+      "description": "Conditional rescue rate equals Q3 / (Q2 + Q3) when denominator > 0",
+      "status": "PASS",
+      "details": {},
+      "timestamp": "2026-09-04T15:45:16.134695+00:00"
+    },
+    "ZD-40": {
+      "description": "If Q2 + Q3 == 0, conditional rescue rate is recorded as N/A",
+      "status": "PASS",
+      "details": {},
+      "timestamp": "2026-09-04T15:45:16.134695+00:00"
+    },
+    "ZD-41": {
+      "description": "Minimum integer Q3 satisfying RescueGain >= 0.05 equals 30",
+      "status": "PASS",
+      "details": {},
+      "timestamp": "2026-09-04T15:45:16.134695+00:00"
+    },
+    "ZD-42": {
+      "description": "Statistical test uses p0 from frozen AE validation artifact, not zero-day-derived data",
+      "status": "PASS",
+      "details": {
+        "p0": 0.000625
+      },
+      "timestamp": "2026-09-04T15:45:16.134695+00:00"
+    },
+    "ZD-43": {
+      "description": "Statistical test implementation uses exact one-sided binomial test",
+      "status": "PASS",
+      "details": {
+        "test_type": "scipy.stats.binomtest"
+      },
+      "timestamp": "2026-09-04T15:45:16.134695+00:00"
+    },
+    "ZD-44": {
+      "description": "Independence assumption is explicitly recorded in metadata and report",
+      "status": "PASS",
+      "details": {},
+      "timestamp": "2026-09-04T15:45:16.134695+00:00"
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "generalization_target_system": "C06",
+  "generalization_threshold": 0.5,
+  "generalization_ci": "two-sided 95% Wilson",
+  "generalization_decision": "UNSEEN_CATEGORY_GENERALIZATION_SUPPORTED",
+  "c06_zdr": 0.9982847341337907,
+  "c06_ci_lower": 0.9903487843853768,
+  "c06_ci_upper": 0.9996971492600867,
+  "fusion_target": "C06_vs_C01",
+  "rescue_definition": "Q3",
+  "rescue_population_denominator": 583,
+  "rescue_gain_threshold": 0.05,
+  "minimum_integer_Q3_for_practical_threshold": 30,
+  "observed_Q3": 0,
+  "rescue_gain_observed": 0.0,
+  "secondary_conditional_rescue_rate": "0.000000",
+  "rescue_statistical_baseline": {
+    "source": "EXP_AE_V1 frozen benign validation",
+    "false_positive_count": 7,
+    "benign_validation_n": 11200,
+    "p0": 0.000625
+  },
+  "rescue_test": {
+    "type": "exact one-sided binomial",
+    "null": "p_rescue <= p0",
+    "alternative": "p_rescue > p0",
+    "alpha": 0.05,
+    "independence_assumption": true,
+    "p_value": 1.0,
+    "verdict": "FAIL_TO_REJECT_H0"
+  },
+  "ae_classification_rule": "reconstruction_error > tau",
+  "frozen_tau": 11.160062745213509,
+  "h2_verdict": "NOT_SUPPORTED",
+  "h2_reason": "ae_detected_count = Q1 + Q3 = 0, satisfying DD-4.",
+  "fusion_improvement_decision": "FUSION_IMPROVEMENT_NOT_SUPPORTED"
+}

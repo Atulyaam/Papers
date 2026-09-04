@@ -1,0 +1,9 @@
+{
+  "protected_zero_day_n": 583,
+  "development_test_n": 81749,
+  "benign_control_n": 37000,
+  "attack_control_n": 44749,
+  "combined_evaluation_n": 37583,
+  "derivation_rule": "all development_test rows satisfying label == 0 after ZD-PF-33 pass",
+  "locked_timestamp": "2026-09-04T15:45:09.974332+00:00"
+}

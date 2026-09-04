@@ -1,0 +1,2 @@
+primary_rescue_rate,conditional_rescue_rate,conditional_rescue_denominator,p0,p0_source,test_type,independence_assumption,practical_effect_threshold,minimum_integer_Q3_for_practical_threshold,observed_Q3,p_value,statistical_decision,final_fusion_decision,Both_detected,C01_detected_only,C06_detected_only,Both_missed,n_zero_day
+0.0,0.000000,582,0.000625,EXP_AE_V1 frozen benign validation,exact_one_sided_binomial,True,0.05,30,0,1.0,FAIL_TO_REJECT_H0,FUSION_IMPROVEMENT_NOT_SUPPORTED,0,582,0,1,583

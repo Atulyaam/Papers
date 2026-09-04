@@ -1,0 +1,2 @@
+source_row_uid,label,attack_cat,dt_prediction,dt_score,rf_prediction,rf_score,svm_prediction,svm_score,nn_prediction,nn_score,stacking_prediction,stacking_score,reconstruction_error,ae_flag,c01_prediction,c06_prediction,supervised_detected,ae_detected,quadrant
+UNSW_NB15_testing-set.csv:49998,1,Backdoor,0,0.0,0,0.44,0,-0.01900727884298481,0,0.39798114,0,0.24319391001674331,0.04772251,0,0,0,0,0,Q4

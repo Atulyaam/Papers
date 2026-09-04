@@ -1,0 +1,329 @@
+{
+  "experiment_id": "EXP_ZERODAY_V1",
+  "protocol_version": "V1.4",
+  "timestamp_utc": "2026-09-04T15:45:09.523356+00:00",
+  "all_passed": true,
+  "total_checks": 35,
+  "passed_checks": 35,
+  "failed_checks": 0,
+  "gates": {
+    "ZD-PREREQ-S12": {
+      "description": "Sprint 12 formal freeze prerequisite verified (tag sprint12-freeze present and verified)",
+      "status": "PASS",
+      "details": {
+        "has_tag": true,
+        "tag_commit": "633ccf3 feat: freeze Sprint 12 final reproducibility",
+        "working_tree_clean": false,
+        "sprint12_report_exists": true
+      },
+      "timestamp": "2026-09-04T15:45:09.648008+00:00"
+    },
+    "ZD-PF-01": {
+      "description": "data/splits/protected_unseen_attack.csv exists",
+      "status": "PASS",
+      "details": {},
+      "timestamp": "2026-09-04T15:45:09.648008+00:00"
+    },
+    "ZD-PF-02": {
+      "description": "Protected file SHA-256 matches frozen authoritative hash",
+      "status": "PASS",
+      "details": {
+        "actual": "6ffd23479b575e438ad90678268f40f674a663c2b9507aaf65089623397a9d91",
+        "expected": "6ffd23479b575e438ad90678268f40f674a663c2b9507aaf65089623397a9d91"
+      },
+      "timestamp": "2026-09-04T15:45:09.649499+00:00"
+    },
+    "ZD-PF-03": {
+      "description": "Protected rows == 583",
+      "status": "PASS",
+      "details": {
+        "count": 583
+      },
+      "timestamp": "2026-09-04T15:45:09.654676+00:00"
+    },
+    "ZD-PF-04": {
+      "description": "Protected attack_cat contains only Backdoor",
+      "status": "PASS",
+      "details": {
+        "categories": [
+          "Backdoor"
+        ]
+      },
+      "timestamp": "2026-09-04T15:45:09.654676+00:00"
+    },
+    "ZD-PF-05": {
+      "description": "Protected label contains only 1",
+      "status": "PASS",
+      "details": {
+        "labels": [
+          1
+        ]
+      },
+      "timestamp": "2026-09-04T15:45:09.655246+00:00"
+    },
+    "ZD-PF-33": {
+      "description": "Current development_test.csv SHA-256 exactly matches frozen authoritative hash",
+      "status": "PASS",
+      "details": {
+        "actual": "04725e85732ab2fc6d9eaaa6105418b22b083b5c651067e7b0785464f414e508",
+        "expected": "04725e85732ab2fc6d9eaaa6105418b22b083b5c651067e7b0785464f414e508"
+      },
+      "timestamp": "2026-09-04T15:45:09.675040+00:00"
+    },
+    "ZD-PF-08": {
+      "description": "Current development_test.csv Backdoor count == 0 [derived only after ZD-PF-33 passes]",
+      "status": "PASS",
+      "details": {
+        "backdoor_count": 0
+      },
+      "timestamp": "2026-09-04T15:45:09.972858+00:00"
+    },
+    "ZD-PF-09": {
+      "description": "Current development_test.csv total rows == 81,749 [derived only after ZD-PF-33 passes]",
+      "status": "PASS",
+      "details": {
+        "count": 81749
+      },
+      "timestamp": "2026-09-04T15:45:09.972858+00:00"
+    },
+    "ZD-PF-10": {
+      "description": "Current benign count = exact programmatic label == 0 count [derived only after ZD-PF-33 passes]",
+      "status": "PASS",
+      "details": {
+        "benign_control_n": 37000
+      },
+      "timestamp": "2026-09-04T15:45:09.973819+00:00"
+    },
+    "ZD-PF-11": {
+      "description": "Current attack count = exact programmatic label == 1 count [derived only after ZD-PF-33 passes]",
+      "status": "PASS",
+      "details": {
+        "attack_control_n": 44749
+      },
+      "timestamp": "2026-09-04T15:45:09.973819+00:00"
+    },
+    "ZD-PF-12": {
+      "description": "benign_control_n + attack_control_n == 81,749 [derived only after ZD-PF-33 passes]",
+      "status": "PASS",
+      "details": {
+        "sum": 81749,
+        "expected": 81749
+      },
+      "timestamp": "2026-09-04T15:45:09.973819+00:00"
+    },
+    "ZD-PF-13": {
+      "description": "combined_evaluation_n == 583 + benign_control_n [derived only after ZD-PF-33 passes]",
+      "status": "PASS",
+      "details": {
+        "combined_evaluation_n": 37583,
+        "formula": "583 + 37000 = 37583"
+      },
+      "timestamp": "2026-09-04T15:45:09.973819+00:00"
+    },
+    "ZD-PF-06": {
+      "description": "Current train.csv Backdoor count == 0",
+      "status": "PASS",
+      "details": {
+        "count": 0
+      },
+      "timestamp": "2026-09-04T15:45:10.565720+00:00"
+    },
+    "ZD-PF-07": {
+      "description": "Current validation.csv Backdoor count == 0",
+      "status": "PASS",
+      "details": {
+        "count": 0
+      },
+      "timestamp": "2026-09-04T15:45:10.616963+00:00"
+    },
+    "ZD-PF-14": {
+      "description": "Global source_row_uid uniqueness across splits",
+      "status": "PASS",
+      "details": {
+        "total": 255927,
+        "unique": 255927
+      },
+      "timestamp": "2026-09-04T15:45:10.739343+00:00"
+    },
+    "ZD-PF-15": {
+      "description": "Zero UID leakage between protected Backdoor and TRAIN",
+      "status": "PASS",
+      "details": {
+        "leak_count": 0
+      },
+      "timestamp": "2026-09-04T15:45:10.756292+00:00"
+    },
+    "ZD-PF-16": {
+      "description": "Zero UID leakage between protected Backdoor and VALIDATION",
+      "status": "PASS",
+      "details": {
+        "leak_count": 0
+      },
+      "timestamp": "2026-09-04T15:45:10.757140+00:00"
+    },
+    "ZD-PF-17": {
+      "description": "Zero UID leakage between protected Backdoor and Benign Control",
+      "status": "PASS",
+      "details": {
+        "leak_count": 0
+      },
+      "timestamp": "2026-09-04T15:45:10.777019+00:00"
+    },
+    "ZD-PF-18": {
+      "description": "Frozen feature selection artifact hash verified (75 features)",
+      "status": "PASS",
+      "details": {
+        "sha256": "6a1816143a4fbe1141e406a820c5adbd0b1452b45172a9d7de8767a897db1024",
+        "count": 75
+      },
+      "timestamp": "2026-09-04T15:45:10.778388+00:00"
+    },
+    "ZD-PF-19": {
+      "description": "Frozen DT checkpoint hash verified",
+      "status": "PASS",
+      "details": {
+        "path": "results\\checkpoints\\EXP_BASE_MODELS_V1\\dt\\dt_final.joblib",
+        "actual": "748261c8106e5b12a93decb4de7df435e09dd587b03294dba3837e20c8a2e4a3",
+        "expected": "748261c8106e5b12a93decb4de7df435e09dd587b03294dba3837e20c8a2e4a3",
+        "verified": true
+      },
+      "timestamp": "2026-09-04T15:45:11.061339+00:00"
+    },
+    "ZD-PF-20": {
+      "description": "Frozen RF checkpoint hash verified",
+      "status": "PASS",
+      "details": {
+        "path": "results\\checkpoints\\EXP_BASE_MODELS_V1\\rf\\rf_final.joblib",
+        "actual": "f1f873ef4bd7f09c03885ffbbc4c9ec51306dc2aecc0f48e4584fddd7a97a68f",
+        "expected": "f1f873ef4bd7f09c03885ffbbc4c9ec51306dc2aecc0f48e4584fddd7a97a68f",
+        "verified": true
+      },
+      "timestamp": "2026-09-04T15:45:11.061339+00:00"
+    },
+    "ZD-PF-21": {
+      "description": "Frozen SVM checkpoint & scaler hashes verified",
+      "status": "PASS",
+      "details": {
+        "svm": {
+          "path": "results\\checkpoints\\EXP_BASE_MODELS_V1\\svm\\svm_final.joblib",
+          "actual": "f325d57525dda5bd92cc20c5393a38fa1b9ca055001b0c24fc9402bdbece990c",
+          "expected": "f325d57525dda5bd92cc20c5393a38fa1b9ca055001b0c24fc9402bdbece990c",
+          "verified": true
+        },
+        "scaler": {
+          "path": "results\\checkpoints\\EXP_BASE_MODELS_V1\\svm\\svm_scaler.joblib",
+          "actual": "a85eeeb74d34bed8cead09cc7506c4bbac6522bb1df0467d6904178996bdaa85",
+          "expected": "a85eeeb74d34bed8cead09cc7506c4bbac6522bb1df0467d6904178996bdaa85",
+          "verified": true
+        }
+      },
+      "timestamp": "2026-09-04T15:45:11.061339+00:00"
+    },
+    "ZD-PF-22": {
+      "description": "Frozen NN checkpoint & scaler hashes verified",
+      "status": "PASS",
+      "details": {
+        "nn": {
+          "path": "results\\checkpoints\\EXP_BASE_MODELS_V1\\nn\\nn_final.pt",
+          "actual": "7f3dcdfa59cbd084fcd952645db3b14fa67554769500551f06737d42e5e058ae",
+          "expected": "7f3dcdfa59cbd084fcd952645db3b14fa67554769500551f06737d42e5e058ae",
+          "verified": true
+        },
+        "scaler": {
+          "path": "results\\checkpoints\\EXP_BASE_MODELS_V1\\nn\\nn_scaler.joblib",
+          "actual": "a85eeeb74d34bed8cead09cc7506c4bbac6522bb1df0467d6904178996bdaa85",
+          "expected": "a85eeeb74d34bed8cead09cc7506c4bbac6522bb1df0467d6904178996bdaa85",
+          "verified": true
+        }
+      },
+      "timestamp": "2026-09-04T15:45:11.061339+00:00"
+    },
+    "ZD-PF-23": {
+      "description": "Frozen Stacking meta-learner hashes verified (seeds 42, 123, 2024)",
+      "status": "PASS",
+      "details": {},
+      "timestamp": "2026-09-04T15:45:11.061339+00:00"
+    },
+    "ZD-PF-24": {
+      "description": "Frozen AE checkpoint & scaler hashes verified",
+      "status": "PASS",
+      "details": {},
+      "timestamp": "2026-09-04T15:45:11.061339+00:00"
+    },
+    "ZD-PF-25": {
+      "description": "Frozen C06 OR-logic rule verified; no Backdoor data accessible to selection/tuning",
+      "status": "PASS",
+      "details": {
+        "rule": "C06 = C01_pred OR AE_flag"
+      },
+      "timestamp": "2026-09-04T15:45:11.061339+00:00"
+    },
+    "ZD-PF-26": {
+      "description": "Frozen AE validation artifact exists",
+      "status": "PASS",
+      "details": {
+        "path": "results\\checkpoints\\EXP_AE_V1\\threshold_config.json"
+      },
+      "timestamp": "2026-09-04T15:45:11.061339+00:00"
+    },
+    "ZD-PF-27": {
+      "description": "Frozen AE validation sample count == 11,200",
+      "status": "PASS",
+      "details": {
+        "count": 11200
+      },
+      "timestamp": "2026-09-04T15:45:11.062345+00:00"
+    },
+    "ZD-PF-28": {
+      "description": "Frozen AE validation false-positive count == 7",
+      "status": "PASS",
+      "details": {
+        "fp_count": 7
+      },
+      "timestamp": "2026-09-04T15:45:11.062345+00:00"
+    },
+    "ZD-PF-29": {
+      "description": "Frozen AE validation FPR == 7 / 11,200 == 0.000625",
+      "status": "PASS",
+      "details": {
+        "fpr": 0.000625
+      },
+      "timestamp": "2026-09-04T15:45:11.062345+00:00"
+    },
+    "ZD-PF-30": {
+      "description": "Frozen AE threshold tau == 11.160062745213509 verified against validation threshold artifact",
+      "status": "PASS",
+      "details": {
+        "tau": 11.160062745213509
+      },
+      "timestamp": "2026-09-04T15:45:11.062345+00:00"
+    },
+    "ZD-PF-31": {
+      "description": "Sprint 13 statistical baseline p0 exactly equals validation_false_positives / validation_benign_count = 0.000625",
+      "status": "PASS",
+      "details": {
+        "p0": 0.000625
+      },
+      "timestamp": "2026-09-04T15:45:11.062345+00:00"
+    },
+    "ZD-PF-32": {
+      "description": "Zero zero-day data is used to construct or alter p0",
+      "status": "PASS",
+      "details": {
+        "provenance": "EXP_AE_V1 Normal validation only"
+      },
+      "timestamp": "2026-09-04T15:45:11.062345+00:00"
+    },
+    "ZD-PF-34": {
+      "description": "AE flag operator used in Sprint 13 inference exactly matches the verified operator used to generate the frozen EXP_AE_V1 benign-validation FPR (strict greater-than `>`).",
+      "status": "PASS",
+      "details": {
+        "verified_operator": ">",
+        "rule": "AE_flag = 1 iff reconstruction_error > tau",
+        "source_code_path": "src/models/autoencoder/ae_calibrate.py:L172",
+        "source_artifact": "results/checkpoints/EXP_AE_V1/threshold_config.json"
+      },
+      "timestamp": "2026-09-04T15:45:11.062345+00:00"
+    }
+  }
+}

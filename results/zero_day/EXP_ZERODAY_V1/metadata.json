@@ -1,0 +1,26 @@
+{
+  "experiment_id": "EXP_ZERODAY_V1",
+  "protocol_version": "V1.4",
+  "timestamp_utc": "2026-09-04T15:45:09.520890+00:00",
+  "protected_unseen_attack_rows": 583,
+  "benign_control_rows": 37000,
+  "combined_rows": 37583,
+  "q1": 0,
+  "q2": 582,
+  "q3": 0,
+  "q4": 1,
+  "rescue_gain": 0.0,
+  "conditional_rescue_rate": "0.000000",
+  "p_value": 1.0,
+  "statistical_decision": "FAIL_TO_REJECT_H0",
+  "fusion_improvement_decision": "NOT_SUPPORTED",
+  "c06_zdr": 0.9982847341337907,
+  "c06_ci_lower": 0.9903487843853768,
+  "c06_ci_upper": 0.9996971492600867,
+  "generalization_decision": "SUPPORTED",
+  "limitations": {
+    "limitation_a": "This experiment evaluates a single controlled unseen-attack proxy: the Backdoor category. Therefore, its findings cannot be generalized to unseen attacks as a class.",
+    "limitation_b": "The exact binomial analysis treats protected rows as independent trials, but network-flow observations may be correlated by attack session, host, time, or behavioral similarity. The nominal p-value should therefore be interpreted under the independence assumption.",
+    "limitation_c": "The frozen AE benign-validation FPR is an operational reference baseline, not a random probability of flagging an unseen Backdoor sample."
+  }
+}

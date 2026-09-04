@@ -1,0 +1,128 @@
+{
+  "audit_version": "V1.5",
+  "experiment_id": "EXP_ZERODAY_V1",
+  "audit_timestamp": "2026-09-04T16:05:00Z",
+  "task1_sprint9_h2": {
+    "execution_status": "AUTHORITATIVE_HISTORICAL_EXECUTION_FOUND",
+    "historical_artifact": "results/evaluation/EXP_H123_V1/h2_results.json",
+    "historical_reproduction_artifact": "results/final_reproducibility/EXP_FINAL_REPRO_V1/h123/h2_results.json",
+    "historical_ae_detected_count": 0,
+    "historical_n_prot": 583,
+    "historical_tau": 11.160062745213509,
+    "sprint13_ae_detected_count": 0,
+    "sprint13_n_prot": 583,
+    "sprint13_tau": 11.160062745213509,
+    "operator": "reconstruction_error > tau",
+    "verdict": "EXACT_MATCH"
+  },
+  "task2_sprint10_protected_backdoor_crosscheck": {
+    "historical_artifact": "results/ablation/EXP_ABLATION_V1/protected_backdoor_results.json",
+    "sprint10_counts": {
+      "A1_detected": 582,
+      "A6_detected": 582,
+      "AE_only_detected": 0,
+      "n_prot": 583
+    },
+    "sprint13_counts": {
+      "q1": 0,
+      "q2": 582,
+      "q3": 0,
+      "q4": 1,
+      "c01_detected": 582,
+      "c06_detected": 582,
+      "ae_detected": 0,
+      "n_prot": 583
+    },
+    "verdict": "EXACT_MATCH"
+  },
+  "task3_c01_fpr_audit": {
+    "sprint13_c01": {
+      "fp_count": 7100,
+      "tn_count": 29900,
+      "benign_control_n": 37000,
+      "fpr": 0.1918918918918919
+    },
+    "sprint12_stacking_seed_42": {
+      "fp_count": 7100,
+      "tn_count": 29900,
+      "benign_control_n": 37000,
+      "fpr": 0.1918918918918919,
+      "row_differences_vs_s13": 0,
+      "source_artifact": "results/final_reproducibility/EXP_FINAL_REPRO_V1/stacking/metrics.json"
+    },
+    "sprint10_ablation_a1_seed_42": {
+      "fp_count": 7201,
+      "tn_count": 29799,
+      "benign_control_n": 37000,
+      "fpr": 0.1946216216216216,
+      "source_artifact": "results/ablation/EXP_ABLATION_V1/A1_FULL_STACK/seed_42.json"
+    },
+    "row_level_differences_s10_vs_s13": {
+      "total_benign_rows": 37000,
+      "differing_prediction_rows": 273,
+      "both_tn": 29713,
+      "both_fp": 7014,
+      "s10_fp_only_s13_tn": 187,
+      "s13_fp_only_s10_tn": 86,
+      "net_fp_difference": 101
+    },
+    "provenance_investigation": {
+      "c01_seed": 42,
+      "meta_learner_checkpoint": "results/checkpoints/EXP_OOF_STACK_V1/seed_42/meta_learner.joblib",
+      "meta_learner_sha256": "e5b776680a99ffee3271624445f7f52593f8f94037d20ba56e9f4b54a848ef19",
+      "base_model_checkpoints": {
+        "dt": {
+          "path": "results/checkpoints/EXP_BASE_MODELS_V1/dt/dt_final.joblib",
+          "sha256": "748261c8106e5b12a93decb4de7df435e09dd587b03294dba3837e20c8a2e4a3"
+        },
+        "rf": {
+          "path": "results/checkpoints/EXP_BASE_MODELS_V1/rf/rf_final.joblib",
+          "sha256": "f1f873ef4bd7f09c03885ffbbc4c9ec51306dc2aecc0f48e4584fddd7a97a68f"
+        },
+        "svm": {
+          "path": "results/checkpoints/EXP_BASE_MODELS_V1/svm/svm_final.joblib",
+          "sha256": "f325d57525dda5bd92cc20c5393a38fa1b9ca055001b0c24fc9402bdbece990c"
+        },
+        "svm_scaler": {
+          "path": "results/checkpoints/EXP_BASE_MODELS_V1/svm/svm_scaler.joblib",
+          "sha256": "a85eeeb74d34bed8cead09cc7506c4bbac6522bb1df0467d6904178996bdaa85"
+        },
+        "nn": {
+          "path": "results/checkpoints/EXP_BASE_MODELS_V1/nn/nn_final.pt",
+          "sha256": "7f3dcdfa59cbd084fcd952645db3b14fa67554769500551f06737d42e5e058ae"
+        },
+        "nn_scaler": {
+          "path": "results/checkpoints/EXP_BASE_MODELS_V1/nn/nn_scaler.joblib",
+          "sha256": "a85eeeb74d34bed8cead09cc7506c4bbac6522bb1df0467d6904178996bdaa85"
+        }
+      },
+      "feature_selection": {
+        "path": "results/feature_selection/EXP_MI_V1_1/selected_features.json",
+        "sha256": "6a1816143a4fbe1141e406a820c5adbd0b1452b45172a9d7de8767a897db1024",
+        "feature_count": 75
+      },
+      "benign_control_population": {
+        "source_file": "data/splits/development_test.csv",
+        "file_sha256": "04725e85732ab2fc6d9eaaa6105418b22b083b5c651067e7b0785464f414e508",
+        "total_rows": 81749,
+        "benign_rows": 37000,
+        "exact_subset_used": true
+      },
+      "decision_threshold": 0.5,
+      "root_cause_explanation": "In Sprint 10 (scripts/run_ablation.py), A1_FULL_STACK was evaluated by dynamically training internal base models and re-fitting a fresh LogisticRegression meta-learner (lr.fit(meta_X_oof, y_oof)) on ablation OOF scores. In Sprint 12 (EXP_FINAL_REPRO_V1), A1_FULL_STACK was formally classified as NOT_REPRODUCED under strict zero-training requirements; instead, Sprint 12 reproduced the canonical frozen checkpoints (EXP_OOF_STACK_V1/seed_42/meta_learner.joblib), which produced FP=7,100 (FPR=0.191892). In Sprint 13, C01 was implemented strictly by loading the canonical frozen checkpoints without retraining. This produces a bit-for-bit exact match with Sprint 12 (7,100 FPs, 0 differences across all 37,000 rows), but diverges from Sprint 10's dynamically fitted ablation table (7,201 FPs) by 101 samples."
+    },
+    "reconciliation_statement": "The Sprint 10 A1 result (7201 FP) is a historical dynamically-fitted ablation result and is not computationally identical to the canonical frozen stacking system used by Sprint 12/13. Sprint 13 C01 (7100 FP) exactly matches the Sprint 12 frozen seed-42 checkpoint evaluation. Therefore, the 101-FP difference is a documented model-lineage difference, not an unresolved Sprint 13 reproduction error.",
+    "authoritative_c01_identity": "frozen_checkpoint_evaluation",
+    "task3_verdict": "C01_FPR_LINEAGE_DIFFERENCE_RECONCILED"
+  },
+  "task4_standalone_h2": {
+    "verdict": "NOT_SUPPORTED",
+    "reason": "ae_detected_count = Q1 + Q3 = 0, satisfying DD-4.",
+    "role": "Standalone AE-only hypothesis evaluation, distinct from C01 vs C06 fusion improvement."
+  },
+  "audit_summary": {
+    "blocker_present": false,
+    "blocker_name": null,
+    "final_status": "READY_FOR_HUMAN_FREEZE_REVIEW"
+  }
+}
