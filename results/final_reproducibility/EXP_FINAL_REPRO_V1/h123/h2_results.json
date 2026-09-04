@@ -1,0 +1,9 @@
+{
+  "ae_detected_count": 0,
+  "n_prot": 583,
+  "tau": 11.160062745213509,
+  "threshold_id": "mean+3sigma",
+  "ae_val_fpr_recomputed": 0.000625,
+  "h2_verdict": "NOT_SUPPORTED",
+  "pp_per_row": 0.17152658662092624
+}

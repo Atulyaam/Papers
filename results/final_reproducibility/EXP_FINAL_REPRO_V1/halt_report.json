@@ -1,0 +1,33 @@
+{
+  "experiment_id": "EXP_FINAL_REPRO_V1",
+  "status": "HALTED",
+  "reason": "Mandatory Human Gate #2 (RV-03) failure: The frozen Sprint 10 package (results/ablation/EXP_ABLATION_V1/) contains only base-model prediction cache (dt, rf, svm, nn) and scalar metric summary JSONs. It lacks row-level prediction artifacts and fitted meta-learner models for ablation configurations A0_RF, A1_FULL_STACK, A2_NO_DT, A3_NO_RF, A4_NO_SVM, A5_NO_NN, and A6_STACK_PLUS_AE. Reconstructing these metrics requires executing rf.fit() and lr.fit(), which strictly violates the Absolute No-Training Rule (Section 2) and Section 16 ('It NEVER means: refit a meta-learner. If required metric reproduction is impossible without fitting: HALT'). Under Section 5 and Section 24, execution must halt and escalate to human review.",
+  "triggered_check": "RV-03",
+  "timestamp_utc": "2026-09-04T13:28:06.901600+00:00",
+  "data_access_state": {
+    "repository_baseline": "VERIFIED (clean working tree, commit 8eeece3, tags sprint9-freeze, sprint10-freeze, sprint11-freeze)",
+    "datasets_verified": {
+      "train": "4a259324e604f013287a5de5fe49c46bf19418d815b550c5d1a5820b569ac41c (162395 rows)",
+      "validation": "13caf21a076a33f50243f48f404b7e7525969f71d4b9d7c0f3768aef23589180 (11200 rows)",
+      "development_test": "04725e85732ab2fc6d9eaaa6105418b22b083b5c651067e7b0785464f414e508 (81749 rows)",
+      "protected_unseen_attack": "6ffd23479b575e438ad90678268f40f674a663c2b9507aaf65089623397a9d91 (583 rows)"
+    },
+    "frozen_checkpoints_verified": {
+      "dt_final": "748261c8106e5b12a93decb4de7df435e09dd587b03294dba3837e20c8a2e4a3",
+      "rf_final": "f1f873ef4bd7f09c03885ffbbc4c9ec51306dc2aecc0f48e4584fddd7a97a68f",
+      "svm_final": "f325d57525dda5bd92cc20c5393a38fa1b9ca055001b0c24fc9402bdbece990c",
+      "svm_scaler": "a85eeeb74d34bed8cead09cc7506c4bbac6522bb1df0467d6904178996bdaa85",
+      "nn_final": "7f3dcdfa59cbd084fcd952645db3b14fa67554769500551f06737d42e5e058ae",
+      "nn_scaler": "a85eeeb74d34bed8cead09cc7506c4bbac6522bb1df0467d6904178996bdaa85",
+      "ae_final": "4ab66af8d4a6e61212ef5d78360f30a8caa68aa85dac3d54042218e010f9a1d6",
+      "ae_scaler": "c0128d42ed9ef5be695f261be75155e7de4ddf8e51b926e3ce516c4a88ad8211",
+      "stack_meta_42": "e5b776680a99ffee3271624445f7f52593f8f94037d20ba56e9f4b54a848ef19",
+      "stack_meta_123": "f6517b59fac54864b82db07f3da35139f21f400e2a7664ef56ee29b09fcd6672",
+      "stack_meta_2024": "f6139a79f3e7c96bb2c6610f22907184df117a06dd110ea74d6eb1897aeada74"
+    },
+    "feature_set_verified": "6a1816143a4fbe1141e406a820c5adbd0b1452b45172a9d7de8767a897db1024 (75 features)",
+    "ae_threshold_verified": "11.160062745213509 (mean3sigma)",
+    "sprint10_ablation_provenance": "INSUFFICIENT (row-level predictions and fitted models for A0, A1, A2, A3, A4, A5, A6 are missing; recomputation requires forbidden fitting)"
+  },
+  "escalation_target": "human_reviewer"
+}

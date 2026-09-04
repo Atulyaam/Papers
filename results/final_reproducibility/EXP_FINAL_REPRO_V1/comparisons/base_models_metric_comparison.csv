@@ -1,0 +1,33 @@
+model,metric,reference,reproduced,absolute_diff,relative_diff,tolerance,status
+Decision Tree (Base),Macro Precision,0.8783399173583007,0.8783399173583007,0.0,0.0,"atol=1e-08,rtol=1e-08",PASS
+Decision Tree (Base),Macro Recall,0.8443522799543157,0.8443522799543157,0.0,0.0,"atol=1e-08,rtol=1e-08",PASS
+Decision Tree (Base),Macro F1,0.849851877370434,0.849851877370434,0.0,0.0,"atol=1e-08,rtol=1e-08",PASS
+Decision Tree (Base),Attack Precision,0.8072888524529075,0.8072888524529075,0.0,0.0,"atol=1e-08,rtol=1e-08",PASS
+Decision Tree (Base),Attack Recall,0.968245100449172,0.968245100449172,0.0,0.0,"atol=1e-08,rtol=1e-08",PASS
+Decision Tree (Base),Attack F1,0.8804714488925015,0.8804714488925015,0.0,0.0,"atol=1e-08,rtol=1e-08",PASS
+Decision Tree (Base),Balanced Accuracy,0.8443522799543157,0.8443522799543157,0.0,0.0,"atol=1e-08,rtol=1e-08",PASS
+Decision Tree (Base),FPR,0.27954054054054056,0.27954054054054056,0.0,0.0,"atol=1e-08,rtol=1e-08",PASS
+Random Forest (Base),Macro Precision,0.903931597498701,0.903931597498701,0.0,0.0,"atol=1e-08,rtol=1e-08",PASS
+Random Forest (Base),Macro Recall,0.8749443738135776,0.8749443738135776,0.0,0.0,"atol=1e-08,rtol=1e-08",PASS
+Random Forest (Base),Macro F1,0.8807332603329192,0.8807332603329192,0.0,0.0,"atol=1e-08,rtol=1e-08",PASS
+Random Forest (Base),Attack Precision,0.8370039852792556,0.8370039852792556,0.0,0.0,"atol=1e-08,rtol=1e-08",PASS
+Random Forest (Base),Attack Recall,0.9809157746541822,0.9809157746541822,0.0,0.0,"atol=1e-08,rtol=1e-08",PASS
+Random Forest (Base),Attack F1,0.9032636430981974,0.9032636430981974,0.0,0.0,"atol=1e-08,rtol=1e-08",PASS
+Random Forest (Base),Balanced Accuracy,0.8749443738135776,0.8749443738135776,0.0,0.0,"atol=1e-08,rtol=1e-08",PASS
+Random Forest (Base),FPR,0.23102702702702702,0.23102702702702702,0.0,0.0,"atol=1e-08,rtol=1e-08",PASS
+SVM (Base),Macro Precision,0.851945362590538,0.851945362590538,0.0,0.0,"atol=1e-08,rtol=1e-08",PASS
+SVM (Base),Macro Recall,0.8189055835763808,0.8189055835763808,0.0,0.0,"atol=1e-08,rtol=1e-08",PASS
+SVM (Base),Macro F1,0.8236132580960511,0.8236132580960511,0.0,0.0,"atol=1e-08,rtol=1e-08",PASS
+SVM (Base),Attack Precision,0.7869274986093083,0.7869274986093083,0.0,0.0,"atol=1e-08,rtol=1e-08",PASS
+SVM (Base),Attack Recall,0.948378734720329,0.948378734720329,0.0,0.0,"atol=1e-08,rtol=1e-08",PASS
+SVM (Base),Attack F1,0.8601424821897263,0.8601424821897263,0.0,0.0,"atol=1e-08,rtol=1e-08",PASS
+SVM (Base),Balanced Accuracy,0.8189055835763808,0.8189055835763808,0.0,0.0,"atol=1e-08,rtol=1e-08",PASS
+SVM (Base),FPR,0.3105675675675676,0.3105675675675676,0.0,0.0,"atol=1e-08,rtol=1e-08",PASS
+Neural Network (Base),Macro Precision,0.8989086534662067,0.8989086534662067,0.0,0.0,"atol=1e-08,rtol=1e-08",PASS
+Neural Network (Base),Macro Recall,0.8918501092882644,0.8918501092882644,0.0,0.0,"atol=1e-08,rtol=1e-08",PASS
+Neural Network (Base),Macro F1,0.8942934700408812,0.8942934700408812,0.0,0.0,"atol=1e-08,rtol=1e-08",PASS
+Neural Network (Base),Attack Precision,0.8813405987671205,0.8813405987671205,0.0,0.0,"atol=1e-08,rtol=1e-08",PASS
+Neural Network (Base),Attack Recall,0.9361326510089611,0.9361326510089611,0.0,0.0,"atol=1e-08,rtol=1e-08",PASS
+Neural Network (Base),Attack F1,0.9079107065452969,0.9079107065452969,0.0,0.0,"atol=1e-08,rtol=1e-08",PASS
+Neural Network (Base),Balanced Accuracy,0.8918501092882644,0.8918501092882644,0.0,0.0,"atol=1e-08,rtol=1e-08",PASS
+Neural Network (Base),FPR,0.15243243243243243,0.15243243243243243,0.0,0.0,"atol=1e-08,rtol=1e-08",PASS

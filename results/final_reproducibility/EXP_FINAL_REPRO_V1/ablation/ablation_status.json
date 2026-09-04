@@ -1,0 +1,35 @@
+{
+  "A0_RF": {
+    "status": "NOT_REPRODUCED",
+    "reason": "Requires forbidden rf.fit(); row-level predictions not persisted"
+  },
+  "A1_FULL_STACK": {
+    "status": "NOT_REPRODUCED",
+    "reason": "Requires forbidden lr.fit(); row-level predictions not persisted"
+  },
+  "A1b_SOFT_VOTE": {
+    "status": "REPRODUCED",
+    "reason": "Fit-free parameterless average from verified cache",
+    "macro_f1": 0.8506324370045575
+  },
+  "A2_NO_DT": {
+    "status": "NOT_REPRODUCED",
+    "reason": "Requires forbidden lr.fit(); row-level predictions not persisted"
+  },
+  "A3_NO_RF": {
+    "status": "NOT_REPRODUCED",
+    "reason": "Requires forbidden lr.fit(); row-level predictions not persisted"
+  },
+  "A4_NO_SVM": {
+    "status": "NOT_REPRODUCED",
+    "reason": "Requires forbidden lr.fit(); row-level predictions not persisted"
+  },
+  "A5_NO_NN": {
+    "status": "NOT_REPRODUCED",
+    "reason": "Requires forbidden lr.fit(); row-level predictions not persisted"
+  },
+  "A6_STACK_PLUS_AE": {
+    "status": "NOT_REPRODUCED",
+    "reason": "Dependent on A1 predictions; row-level predictions not persisted"
+  }
+}

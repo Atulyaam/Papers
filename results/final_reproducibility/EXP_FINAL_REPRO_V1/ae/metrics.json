@@ -1,0 +1,11 @@
+{
+  "tau": 11.160062745213509,
+  "dev_test_total": 81749,
+  "dev_test_flagged": 594,
+  "dev_test_flagged_rate": 0.007266143928366096,
+  "validation_total": 11200,
+  "validation_flagged": 7,
+  "validation_fpr": 0.000625,
+  "protected_backdoor_total": 583,
+  "protected_backdoor_flagged": 0
+}

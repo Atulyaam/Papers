@@ -1,0 +1,54 @@
+{
+  "artifact_name": "base_models_checkpoint_verification.json",
+  "models": [
+    {
+      "model_name": "Decision Tree (Base)",
+      "checkpoint_file": "results/checkpoints/EXP_BASE_MODELS_V1/dt/dt_final.joblib",
+      "reference_sha256": "748261c8106e5b12a93decb4de7df435e09dd587b03294dba3837e20c8a2e4a3",
+      "reproduced_sha256": "748261c8106e5b12a93decb4de7df435e09dd587b03294dba3837e20c8a2e4a3",
+      "hash_match": true,
+      "loading_method": "joblib.load()",
+      "training_calls_executed": 0,
+      "status": "PASS"
+    },
+    {
+      "model_name": "Random Forest (Base)",
+      "checkpoint_file": "results/checkpoints/EXP_BASE_MODELS_V1/rf/rf_final.joblib",
+      "reference_sha256": "f1f873ef4bd7f09c03885ffbbc4c9ec51306dc2aecc0f48e4584fddd7a97a68f",
+      "reproduced_sha256": "f1f873ef4bd7f09c03885ffbbc4c9ec51306dc2aecc0f48e4584fddd7a97a68f",
+      "hash_match": true,
+      "loading_method": "joblib.load()",
+      "training_calls_executed": 0,
+      "status": "PASS"
+    },
+    {
+      "model_name": "SVM (Base)",
+      "checkpoint_file": "results/checkpoints/EXP_BASE_MODELS_V1/svm/svm_final.joblib",
+      "reference_sha256": "f325d57525dda5bd92cc20c5393a38fa1b9ca055001b0c24fc9402bdbece990c",
+      "reproduced_sha256": "f325d57525dda5bd92cc20c5393a38fa1b9ca055001b0c24fc9402bdbece990c",
+      "hash_match": true,
+      "loading_method": "joblib.load()",
+      "training_calls_executed": 0,
+      "status": "PASS",
+      "scaler_file": "results/checkpoints/EXP_BASE_MODELS_V1/svm/svm_scaler.joblib",
+      "scaler_reference_sha256": "a85eeeb74d34bed8cead09cc7506c4bbac6522bb1df0467d6904178996bdaa85",
+      "scaler_reproduced_sha256": "a85eeeb74d34bed8cead09cc7506c4bbac6522bb1df0467d6904178996bdaa85",
+      "scaler_hash_match": true
+    },
+    {
+      "model_name": "Neural Network (Base)",
+      "checkpoint_file": "results/checkpoints/EXP_BASE_MODELS_V1/nn/nn_final.pt",
+      "reference_sha256": "7f3dcdfa59cbd084fcd952645db3b14fa67554769500551f06737d42e5e058ae",
+      "reproduced_sha256": "7f3dcdfa59cbd084fcd952645db3b14fa67554769500551f06737d42e5e058ae",
+      "hash_match": true,
+      "loading_method": "torch.load(weights_only=True) + IDSNet.load_state_dict()",
+      "training_calls_executed": 0,
+      "status": "PASS",
+      "scaler_file": "results/checkpoints/EXP_BASE_MODELS_V1/nn/nn_scaler.joblib",
+      "scaler_reference_sha256": "a85eeeb74d34bed8cead09cc7506c4bbac6522bb1df0467d6904178996bdaa85",
+      "scaler_reproduced_sha256": "a85eeeb74d34bed8cead09cc7506c4bbac6522bb1df0467d6904178996bdaa85",
+      "scaler_hash_match": true
+    }
+  ],
+  "all_checkpoints_verified": true
+}

@@ -1,0 +1,13 @@
+component,metric,reference,reproduced,absolute_diff,relative_diff,tolerance,status
+H1,stacking_mean_macro_f1,0.8929612508481996,0.8929612508481996,0.0,0.0,"atol=1e-08,rtol=1e-08",PASS
+H1,stacking_macro_f1_seed_42,0.8926091690431182,0.8926091690431182,0.0,0.0,"atol=1e-08,rtol=1e-08",PASS
+H1,stacking_macro_f1_seed_123,0.8926186397931948,0.8926186397931948,0.0,0.0,"atol=1e-08,rtol=1e-08",PASS
+H1,stacking_macro_f1_seed_2024,0.8936559437082856,0.8936559437082856,0.0,0.0,"atol=1e-08,rtol=1e-08",PASS
+H1,rf_dev_test_macro_f1,0.8807332603329192,0.8807332603329192,0.0,0.0,"atol=1e-08,rtol=1e-08",PASS
+H1,diff,0.01222799051528034,0.01222799051528034,0.0,0.0,"atol=1e-08,rtol=1e-08",PASS
+Fusion,c06_dev_test_macro_f1,0.89244,0.892439983171387,1.682861305862815e-08,1.885685654904324e-08,"atol=1e-08,rtol=1e-08",PASS
+Fusion,c06_dev_test_fpr,0.19224324324324324,0.19224324324324324,0.0,0.0,"atol=1e-08,rtol=1e-08",PASS
+Fusion,c06_prot_detected,582.0,582.0,0.0,0.0,exact,PASS
+AE,ae_val_fpr,0.000625,0.000625,0.0,0.0,"atol=1e-08,rtol=1e-08",PASS
+AE,ae_prot_detected,0.0,0.0,0.0,0.0,exact,PASS
+Ablation,a1b_macro_f1,0.8506324370045575,0.8506324370045575,0.0,0.0,"atol=1e-08,rtol=1e-08",PASS

@@ -1,0 +1,19 @@
+{
+  "artifact_name": "dynamic_zero_training_audit.json",
+  "instrumentation_method": "Runtime monkeypatching of sklearn.base.BaseEstimator.fit, torch.optim.Optimizer.step, and torch.Tensor.backward",
+  "probe_scope": "Full model pipeline (DT, RF, SVM, NN, Scalers, Autoencoder, Stacking Meta-Learner 42, Fusion) loaded and executed through inference",
+  "intercepted_calls": {
+    "estimator_fit": [],
+    "estimator_partial_fit": [],
+    "optimizer_step": [],
+    "tensor_backward": []
+  },
+  "call_counts": {
+    "forbidden_estimator_fit_calls": 0,
+    "forbidden_partial_fit_calls": 0,
+    "forbidden_optimizer_steps": 0,
+    "forbidden_backward_passes": 0
+  },
+  "all_forbidden_counts_zero": true,
+  "verdict": "PASS"
+}

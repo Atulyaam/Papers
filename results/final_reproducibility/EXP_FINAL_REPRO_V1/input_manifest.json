@@ -1,0 +1,40 @@
+{
+  "datasets": {
+    "train": {
+      "path": "data\\splits\\train.csv",
+      "sha256": "4a259324e604f013287a5de5fe49c46bf19418d815b550c5d1a5820b569ac41c",
+      "expected_sha256": "4a259324e604f013287a5de5fe49c46bf19418d815b550c5d1a5820b569ac41c",
+      "rows": 162395,
+      "expected_rows": 162395,
+      "verified": true
+    },
+    "validation": {
+      "path": "data\\splits\\validation.csv",
+      "sha256": "13caf21a076a33f50243f48f404b7e7525969f71d4b9d7c0f3768aef23589180",
+      "expected_sha256": "13caf21a076a33f50243f48f404b7e7525969f71d4b9d7c0f3768aef23589180",
+      "rows": 11200,
+      "expected_rows": 11200,
+      "verified": true
+    },
+    "development_test": {
+      "path": "data\\splits\\development_test.csv",
+      "sha256": "04725e85732ab2fc6d9eaaa6105418b22b083b5c651067e7b0785464f414e508",
+      "expected_sha256": "04725e85732ab2fc6d9eaaa6105418b22b083b5c651067e7b0785464f414e508",
+      "rows": 81749,
+      "expected_rows": 81749,
+      "verified": true
+    },
+    "protected_backdoor": {
+      "path": "data\\splits\\protected_unseen_attack.csv",
+      "sha256": "6ffd23479b575e438ad90678268f40f674a663c2b9507aaf65089623397a9d91",
+      "expected_sha256": "6ffd23479b575e438ad90678268f40f674a663c2b9507aaf65089623397a9d91",
+      "rows": 583,
+      "expected_rows": 583,
+      "verified": true
+    }
+  },
+  "features": {
+    "path": "results\\feature_selection\\EXP_MI_V1_1\\selected_features.json",
+    "sha256": "6a1816143a4fbe1141e406a820c5adbd0b1452b45172a9d7de8767a897db1024"
+  }
+}

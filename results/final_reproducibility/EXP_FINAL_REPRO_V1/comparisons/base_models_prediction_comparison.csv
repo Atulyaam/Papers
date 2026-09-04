@@ -1,0 +1,5 @@
+target,population,total_rows,mismatches,mismatch_pct,status
+Decision Tree (Base) dev_test,DEVELOPMENT_TEST,81749,0,0.0,PASS
+Random Forest (Base) dev_test,DEVELOPMENT_TEST,81749,0,0.0,PASS
+SVM (Base) dev_test,DEVELOPMENT_TEST,81749,0,0.0,PASS
+Neural Network (Base) dev_test,DEVELOPMENT_TEST,81749,0,0.0,PASS

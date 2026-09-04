@@ -1,0 +1,22 @@
+experiment_id: EXP_FINAL_REPRO_V1
+protocol: SCOPED_CONTINUATION_DECISION_B
+human_authorization: "Gate Q2 Resolution: I authorize Decision B (Scoped Continuation\
+  \ Without Fitting). Proceed with full frozen-model inference reproduction for EXP_BASE_MODELS_V1,\
+  \ EXP_OOF_STACK_V1 (seeds 42, 123, 2024), EXP_AE_V1, EXP_FUSION_V1 (C06), and EXP_H123_V1\
+  \ with zero training/fitting. For EXP_ABLATION_V1, reproduce A1b_SOFT_VOTE fit-free,\
+  \ do not refit A0 or A1\u2013A5, do not regenerate OOF folds, preserve halt_report.json,\
+  \ and record RV-03 = NOT_REPRODUCED / FAIL for full ablation reproduction."
+seeds:
+- 42
+- 123
+- 2024
+epsilon: 0.005
+epsilon_source_artifact: evaluate_sprint9.py
+ae_threshold_tau: 11.160062745213509
+fusion_configuration: C06
+fusion_rule: A6_final = A1_pred (seed 42) OR AE_flag
+numerical_tolerance:
+  atol: 1.0e-08
+  rtol: 1.0e-08
+feature_count: 75
+training_operations_executed: 0

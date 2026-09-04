@@ -1,0 +1,18 @@
+{
+  "stacking_macro_f1_seed_42": 0.8926091690431182,
+  "stacking_macro_f1_seed_123": 0.8926186397931948,
+  "stacking_macro_f1_seed_2024": 0.8936559437082856,
+  "stacking_mean_macro_f1": 0.8929612508481996,
+  "stacking_std_macro_f1": 0.000601640300485015,
+  "rf_dev_test_macro_f1": 0.8807332603329192,
+  "diff": 0.01222799051528034,
+  "epsilon": 0.005,
+  "epsilon_source_artifact": "evaluate_sprint9.py",
+  "h1_verdict": "SUPPORTED",
+  "n_dev_test": 81749,
+  "seeds": [
+    42,
+    123,
+    2024
+  ]
+}

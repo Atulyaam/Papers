@@ -1,0 +1,47 @@
+{
+  "artifact_name": "ast_zero_training_audit.json",
+  "audited_script": "C:/Users/Atul2/OneDrive/Desktop/Papers/IDS-UNSW-NB15/scripts/run_sprint12_final_reproducibility.py",
+  "total_source_lines": 1275,
+  "search_patterns_evaluated": [
+    "fit(",
+    "fit_transform(",
+    "partial_fit(",
+    "optimizer.step(",
+    ".backward(",
+    "GridSearchCV",
+    "RandomizedSearchCV",
+    "HalvingGridSearchCV",
+    "HalvingRandomSearchCV",
+    "optuna",
+    "ray.tune",
+    "skopt",
+    "oof fold regeneration patterns (case-insensitive)"
+  ],
+  "findings": {
+    "fit_calls": [
+      {
+        "line": 462,
+        "call": "self.pipe.fit",
+        "is_estimator_fit": false,
+        "note": "PreprocessingPipeline categorical one-hot encoder on TRAIN"
+      }
+    ],
+    "fit_transform_calls": [],
+    "partial_fit_calls": [],
+    "optimizer_step_calls": [],
+    "backward_calls": [],
+    "hyperparameter_search_references": [],
+    "oof_regeneration_patterns": []
+  },
+  "summary_counts": {
+    "estimator_fit_calls": 0,
+    "estimator_fit_transform_calls": 0,
+    "partial_fit_calls": 0,
+    "optimizer_step_calls": 0,
+    "backward_calls": 0,
+    "hyperparameter_search_references": 0,
+    "oof_regeneration_patterns": 0,
+    "preprocessing_pipeline_fit_calls": 1
+  },
+  "verdict": "PASS"
+}

@@ -1,0 +1,13 @@
+{
+  "c01_detected": 582,
+  "c01_missed": 1,
+  "c01_dev_test_fpr": 0.1918918918918919,
+  "c06_detected": 582,
+  "c06_missed": 1,
+  "c06_dev_test_fpr": 0.19224324324324324,
+  "fpr_delta": 0.00035135135135133666,
+  "fpr_cap": 0.02,
+  "n_prot": 583,
+  "h3_verdict": "NOT_SUPPORTED",
+  "h3_verdict_reason": "C06 detected_count == C01 detected_count; primary condition fails."
+}

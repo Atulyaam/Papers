@@ -1,0 +1,32 @@
+{
+  "artifact_name": "fusion_macro_f1_root_cause.json",
+  "source_confusion_matrix_file": "results/fusion/EXP_FUSION_V1/development_test/metrics.json",
+  "source_confusion_matrix_values": {
+    "tp": 43306,
+    "fp": 7113,
+    "tn": 29887,
+    "fn": 1443
+  },
+  "computed_macro_f1_exact_float64": 0.892439983171387,
+  "reference_metric_json_scalar": 0.89244,
+  "reference_precision_note": "Serialized to 6 decimal places (trailing zero omitted in JSON: 0.892440 -> 0.89244)",
+  "reproduced_metric_scalar": 0.892439983171387,
+  "absolute_diff_computed_vs_reference": 1.682861305862815e-08,
+  "absolute_diff_computed_vs_reproduced": 0.0,
+  "locked_numerical_tolerance": {
+    "atol": 1e-08,
+    "rtol": 1e-08,
+    "effective_tolerance_limit": 1.89244e-08
+  },
+  "tolerance_check_verdict": "PASS",
+  "bitwise_equality_with_reproduced": true,
+  "mathematical_derivation": {
+    "attack_precision": 0.8589222316983677,
+    "attack_recall": 0.9677534693512704,
+    "attack_f1": 0.910095830531271,
+    "benign_precision": 0.953941908713693,
+    "benign_recall": 0.8077567567567567,
+    "benign_f1": 0.874784135811503,
+    "macro_f1_formula": "(f1_attack + f1_benign) / 2.0"
+  }
+}

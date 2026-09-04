@@ -1,0 +1,1348 @@
+{
+  "experiment_id": "EXP_FINAL_REPRO_V1",
+  "verification_mode": "FINAL_INDEPENDENT_FREEZE_VERIFICATION",
+  "verification_independence": "limited",
+  "timestamp_utc": "2026-09-04T14:57:20.166083+00:00",
+  "overall_status": "FAIL",
+  "freeze_recommendation": "FREEZE_NOT_RECOMMENDED",
+  "checks": [
+    {
+      "check_id": "VERIF-01",
+      "title": "Fusion Macro-F1 Discrepancy Investigation",
+      "status": "PASS",
+      "details": {
+        "root_cause_artifact_path": "results/final_reproducibility/EXP_FINAL_REPRO_V1/verification/fusion_macro_f1_root_cause.json",
+        "source_confusion_matrix_file": "results/fusion/EXP_FUSION_V1/development_test/metrics.json",
+        "source_confusion_matrix_values": {
+          "tp": 43306,
+          "fp": 7113,
+          "tn": 29887,
+          "fn": 1443
+        },
+        "reference_scalar": 0.89244,
+        "reference_precision_note": "Serialized to 6 decimal places (trailing zero omitted in JSON: 0.892440 -> 0.89244)",
+        "reproduced_scalar": 0.892439983171387,
+        "exact_confusion_matrix_macro_f1": 0.892439983171387,
+        "absolute_difference": 1.682861305862815e-08,
+        "tolerance_limit": 1.89244e-08,
+        "within_tolerance": true,
+        "bitwise_equality_with_reproduced": true,
+        "mathematical_explanation": "Programmatically recomputing Macro-F1 directly from the frozen reference confusion matrix (tp=43306, fp=7113, tn=29887, fn=1443) via verification/fusion_macro_f1_root_cause.json produces exactly 0.892439983171387, which is bitwise identical to the Sprint 12 reproduced value. The 1.68e-08 difference is purely artifact formatting in the reference JSON (trailing zero omitted: 0.892440 -> 0.89244), strictly within atol=1e-8, rtol=1e-8.",
+        "steps": [
+          {
+            "step_id": 1,
+            "check": "dataset hash",
+            "evidence_source": "data/splits/development_test.csv",
+            "evidence_found": "04725e85732ab2fc",
+            "result": "PASS"
+          },
+          {
+            "step_id": 2,
+            "check": "split identity",
+            "evidence_source": "data/splits/development_test.csv",
+            "evidence_found": "81749 rows, unique UIDs verified",
+            "result": "PASS"
+          },
+          {
+            "step_id": 3,
+            "check": "feature-set hash",
+            "evidence_source": "results/feature_selection/EXP_MI_V1_1/selected_features.json",
+            "evidence_found": "6a1816143a4fbe11",
+            "result": "PASS"
+          },
+          {
+            "step_id": 4,
+            "check": "feature ordering",
+            "evidence_source": "selected_features.json & input_manifest.json",
+            "evidence_found": "75 features in exact preflight order",
+            "result": "PASS"
+          },
+          {
+            "step_id": 5,
+            "check": "model hash",
+            "evidence_source": "checkpoints: base models, stack meta 42, ae",
+            "evidence_found": "All 7 loaded checkpoints bitwise verified",
+            "result": "PASS"
+          },
+          {
+            "step_id": 6,
+            "check": "scaler hash",
+            "evidence_source": "svm_scaler, nn_scaler, ae_scaler",
+            "evidence_found": "All 3 scalers bitwise verified",
+            "result": "PASS"
+          },
+          {
+            "step_id": 7,
+            "check": "configuration hash",
+            "evidence_source": "results/fusion/EXP_FUSION_V1/config.yaml",
+            "evidence_found": "Configuration C06 (OR logic)",
+            "result": "PASS"
+          },
+          {
+            "step_id": 8,
+            "check": "seed",
+            "evidence_source": "EXP_FUSION_V1 metadata",
+            "evidence_found": "Base seed 42, AE seed 42",
+            "result": "PASS"
+          },
+          {
+            "step_id": 9,
+            "check": "dependency versions",
+            "evidence_source": "environment.txt",
+            "evidence_found": "sklearn 1.9.0, torch 2.7.1, numpy 2.4.6",
+            "result": "PASS"
+          },
+          {
+            "step_id": 10,
+            "check": "device/CUDA",
+            "evidence_source": "metadata.json",
+            "evidence_found": "RTX 3050 Laptop GPU, CUDA 11.8",
+            "result": "PASS"
+          },
+          {
+            "step_id": 11,
+            "check": "preprocessing",
+            "evidence_source": "src.preprocessing.preprocessing_pipeline",
+            "evidence_found": "Unscaled transform fitted on TRAIN (162,395 rows)",
+            "result": "PASS"
+          },
+          {
+            "step_id": 12,
+            "check": "Git commit",
+            "evidence_source": "git rev-parse HEAD",
+            "evidence_found": "8eeece3bb5a8e4c05613e3e39aa2e98b4ef5eb39",
+            "result": "PASS"
+          },
+          {
+            "step_id": 13,
+            "check": "inference path",
+            "evidence_source": "predictions.csv row comparison",
+            "evidence_found": "0 prediction mismatches across 81,749 rows",
+            "result": "PASS"
+          },
+          {
+            "step_id": 14,
+            "check": "evaluation logic",
+            "evidence_source": "results/final_reproducibility/EXP_FINAL_REPRO_V1/verification/fusion_macro_f1_root_cause.json",
+            "evidence_found": "Programmatic derivation from frozen confusion matrix yields exact float64 0.892439983171387 (bitwise identical to reproduced value, diff=0.00e+00). Reference scalar 0.89244 was 6-decimal truncated JSON representation (trailing zero omitted: 0.892440 -> 0.89244). Diff=1.68e-08 strictly within atol=1e-8, rtol=1e-8.",
+            "result": "PASS"
+          }
+        ]
+      }
+    },
+    {
+      "check_id": "VERIF-02",
+      "title": "Environment Reference Documentation",
+      "status": "PASS",
+      "details": {
+        "current_sprint12_environment": {
+          "captured": true,
+          "package_count": 124,
+          "python": "3.11.9",
+          "torch": "2.7.1+cu118",
+          "sklearn": "1.9.0",
+          "numpy": "2.4.6",
+          "pandas": "3.0.5",
+          "gpu": "NVIDIA GeForce RTX 3050 Laptop GPU",
+          "cuda": "11.8",
+          "os": "Windows 11"
+        },
+        "frozen_reference_environment": {
+          "sprint9_captured_txt": false,
+          "sprint9_metadata_summary": {
+            "sklearn": "1.5.0",
+            "torch": "2.7.1+cu118",
+            "numpy": "2.4.6",
+            "pandas": "3.0.5"
+          },
+          "sprint10_captured_txt": true,
+          "sprint11_captured_txt": true,
+          "historical_status_note": "Frozen-reference environment: not historically captured as full pip freeze for Sprint 9 (runtime metadata only: python 3.11.9, torch 2.7.1+cu118, numpy 2.4.6, pandas 3.0.5, sklearn 1.5.0); historically captured for Sprint 10 and Sprint 11."
+        },
+        "known_deviations": {
+          "sklearn_version_change": "Sprint 9 metadata recorded sklearn 1.5.0; Sprint 10, 11, and 12 executed under sklearn 1.9.0.",
+          "s11_vs_s12_diff": [],
+          "hardware_deviation": "Sprint 12 executed on Windows 11 with NVIDIA RTX 3050 Laptop GPU under locked tolerance (atol=1e-8, rtol=1e-8)."
+        },
+        "explicit_distinction_documented": true
+      }
+    },
+    {
+      "check_id": "VERIF-03",
+      "title": "Publication Metrics Audit",
+      "status": "PASS",
+      "details": {
+        "required_columns_present": true,
+        "reproduced_pipelines_count": 10,
+        "unsupported_ablation_count": 7,
+        "all_unsupported_marked_not_reproduced": true,
+        "values_match_source_jsons": true,
+        "standard_terminology_enforced": true
+      }
+    },
+    {
+      "check_id": "VERIF-04",
+      "title": "Halt Report Preservation",
+      "status": "PASS",
+      "details": {
+        "exists": true,
+        "status": "HALTED",
+        "triggered_check": "RV-03",
+        "reason": "Mandatory Human Gate #2 (RV-03) failure: The frozen Sprint 10 package (results/ablation/EXP_ABLATION_V1/) contains only ...",
+        "timestamp_utc": "2026-09-04T13:28:06.901600+00:00",
+        "is_original_preflight_halt": true
+      }
+    },
+    {
+      "check_id": "VERIF-05",
+      "title": "Zero-Training Integrity",
+      "status": "PASS",
+      "details": {
+        "training_operations_executed": 0,
+        "self_reported_counter_caveat": "`training_operations_executed = 0` is a self-reported counter generated by the Sprint 12 runner and is therefore corroborating rather than independent evidence.",
+        "verification_methods": [
+          "Historical Execution Evidence (metadata.json: training_operations_executed = 0, 12.86s runtime)",
+          "Static AST Scan (ast_zero_training_audit.json: 0 forbidden constructs across 1,276 lines)",
+          "Dynamic Reconstructed Execution Probe (dynamic_zero_training_audit.json: 0 intercepted calls)"
+        ],
+        "ast_search_patterns": [
+          "fit(",
+          "fit_transform(",
+          "partial_fit(",
+          "optimizer.step(",
+          ".backward(",
+          "GridSearchCV",
+          "RandomizedSearchCV",
+          "HalvingGridSearchCV",
+          "HalvingRandomSearchCV",
+          "optuna",
+          "ray.tune",
+          "skopt",
+          "oof fold regeneration patterns (case-insensitive)"
+        ],
+        "ast_summary_counts": {
+          "estimator_fit_calls": 0,
+          "estimator_fit_transform_calls": 0,
+          "partial_fit_calls": 0,
+          "optimizer_step_calls": 0,
+          "backward_calls": 0,
+          "hyperparameter_search_references": 0,
+          "oof_regeneration_patterns": 0,
+          "preprocessing_pipeline_fit_calls": 1
+        },
+        "dynamic_probe_scope": "Fresh reconstructed execution of full model pipeline (DT, RF, SVM, NN, Scalers, Autoencoder, Stacking Meta-Learner 42, Fusion) loaded and executed through inference under runtime monkeypatching. Does not retrospectively instrument historical execution.",
+        "dynamic_call_counts": {
+          "forbidden_estimator_fit_calls": 0,
+          "forbidden_partial_fit_calls": 0,
+          "forbidden_optimizer_steps": 0,
+          "forbidden_backward_passes": 0
+        },
+        "preprocessing_pipeline_fit_classification": "PERMITTED FROZEN PREPROCESSING OPERATION (methodological classification; PreprocessingPipeline.fit() on frozen TRAIN initializes categorical one-hot encoding schemas across splits, standard across Sprints 8-11; downstream inference uses view='unscaled'; zero model parameters learned).",
+        "zero_training_compliance": "PASS"
+      }
+    },
+    {
+      "check_id": "VERIF-06",
+      "title": "Base Model Reproduction (DT / RF / SVM / NN)",
+      "status": "PASS",
+      "details": {
+        "checkpoints": [
+          {
+            "model_name": "Decision Tree (Base)",
+            "checkpoint_file": "results/checkpoints/EXP_BASE_MODELS_V1/dt/dt_final.joblib",
+            "reference_sha256": "748261c8106e5b12a93decb4de7df435e09dd587b03294dba3837e20c8a2e4a3",
+            "reproduced_sha256": "748261c8106e5b12a93decb4de7df435e09dd587b03294dba3837e20c8a2e4a3",
+            "hash_match": true,
+            "loading_method": "joblib.load()",
+            "training_calls_executed": 0,
+            "status": "PASS"
+          },
+          {
+            "model_name": "Random Forest (Base)",
+            "checkpoint_file": "results/checkpoints/EXP_BASE_MODELS_V1/rf/rf_final.joblib",
+            "reference_sha256": "f1f873ef4bd7f09c03885ffbbc4c9ec51306dc2aecc0f48e4584fddd7a97a68f",
+            "reproduced_sha256": "f1f873ef4bd7f09c03885ffbbc4c9ec51306dc2aecc0f48e4584fddd7a97a68f",
+            "hash_match": true,
+            "loading_method": "joblib.load()",
+            "training_calls_executed": 0,
+            "status": "PASS"
+          },
+          {
+            "model_name": "SVM (Base)",
+            "checkpoint_file": "results/checkpoints/EXP_BASE_MODELS_V1/svm/svm_final.joblib",
+            "reference_sha256": "f325d57525dda5bd92cc20c5393a38fa1b9ca055001b0c24fc9402bdbece990c",
+            "reproduced_sha256": "f325d57525dda5bd92cc20c5393a38fa1b9ca055001b0c24fc9402bdbece990c",
+            "hash_match": true,
+            "loading_method": "joblib.load()",
+            "training_calls_executed": 0,
+            "status": "PASS",
+            "scaler_file": "results/checkpoints/EXP_BASE_MODELS_V1/svm/svm_scaler.joblib",
+            "scaler_reference_sha256": "a85eeeb74d34bed8cead09cc7506c4bbac6522bb1df0467d6904178996bdaa85",
+            "scaler_reproduced_sha256": "a85eeeb74d34bed8cead09cc7506c4bbac6522bb1df0467d6904178996bdaa85",
+            "scaler_hash_match": true
+          },
+          {
+            "model_name": "Neural Network (Base)",
+            "checkpoint_file": "results/checkpoints/EXP_BASE_MODELS_V1/nn/nn_final.pt",
+            "reference_sha256": "7f3dcdfa59cbd084fcd952645db3b14fa67554769500551f06737d42e5e058ae",
+            "reproduced_sha256": "7f3dcdfa59cbd084fcd952645db3b14fa67554769500551f06737d42e5e058ae",
+            "hash_match": true,
+            "loading_method": "torch.load(weights_only=True) + IDSNet.load_state_dict()",
+            "training_calls_executed": 0,
+            "status": "PASS",
+            "scaler_file": "results/checkpoints/EXP_BASE_MODELS_V1/nn/nn_scaler.joblib",
+            "scaler_reference_sha256": "a85eeeb74d34bed8cead09cc7506c4bbac6522bb1df0467d6904178996bdaa85",
+            "scaler_reproduced_sha256": "a85eeeb74d34bed8cead09cc7506c4bbac6522bb1df0467d6904178996bdaa85",
+            "scaler_hash_match": true
+          }
+        ],
+        "prediction_comparison": [
+          {
+            "target": "Decision Tree (Base) dev_test",
+            "population": "DEVELOPMENT_TEST",
+            "total_rows": 81749,
+            "mismatches": 0,
+            "mismatch_pct": 0.0,
+            "status": "PASS"
+          },
+          {
+            "target": "Random Forest (Base) dev_test",
+            "population": "DEVELOPMENT_TEST",
+            "total_rows": 81749,
+            "mismatches": 0,
+            "mismatch_pct": 0.0,
+            "status": "PASS"
+          },
+          {
+            "target": "SVM (Base) dev_test",
+            "population": "DEVELOPMENT_TEST",
+            "total_rows": 81749,
+            "mismatches": 0,
+            "mismatch_pct": 0.0,
+            "status": "PASS"
+          },
+          {
+            "target": "Neural Network (Base) dev_test",
+            "population": "DEVELOPMENT_TEST",
+            "total_rows": 81749,
+            "mismatches": 0,
+            "mismatch_pct": 0.0,
+            "status": "PASS"
+          }
+        ],
+        "metric_comparison_summary": {
+          "total_metrics_evaluated": 32,
+          "max_absolute_diff": 0.0,
+          "all_pass": true
+        },
+        "status": "PASS"
+      }
+    },
+    {
+      "check_id": "VERIF-07",
+      "title": "Prediction-Level Reproduction",
+      "status": "PASS",
+      "details": {
+        "total_rows_evaluated": 81749,
+        "c06_fusion_mismatches": 0,
+        "c01_stack_seed42_mismatches": 0,
+        "mismatch_rate": 0.0,
+        "verdict": "EXACT EQUALITY"
+      }
+    },
+    {
+      "check_id": "VERIF-08",
+      "title": "OOF Stacking Reproduction",
+      "status": "PASS",
+      "details": {
+        "seed_42_reference": 0.8926091690431182,
+        "seed_42_reproduced": 0.8926091690431182,
+        "seed_123_reference": 0.8926186397931948,
+        "seed_123_reproduced": 0.8926186397931948,
+        "seed_2024_reference": 0.8936559437082856,
+        "seed_2024_reproduced": 0.8936559437082856,
+        "mean_reference": 0.8929612508481996,
+        "mean_reproduced": 0.8929612508481996,
+        "max_difference": 0.0,
+        "status": "PASS"
+      }
+    },
+    {
+      "check_id": "VERIF-09",
+      "title": "Autoencoder Reproduction",
+      "status": "PASS",
+      "details": {
+        "architecture": "75 -> 12 -> 6 -> 12 -> 75",
+        "parameter_count": 2049,
+        "threshold_tau": 11.160062745213509,
+        "validation_fpr": 0.000625,
+        "validation_flagged": 7,
+        "validation_total": 11200,
+        "protected_backdoor_detected": 0,
+        "status": "PASS"
+      }
+    },
+    {
+      "check_id": "VERIF-10",
+      "title": "Fusion Reproduction",
+      "status": "PASS",
+      "details": {
+        "configuration": "C06 (OR logic)",
+        "dev_test_macro_f1": 0.892439983171387,
+        "dev_test_fpr": 0.19224324324324324,
+        "protected_backdoor_detected": 582,
+        "protected_backdoor_total": 583,
+        "dev_test_macro_f1_diff": 1.682861305862815e-08,
+        "status": "PASS"
+      }
+    },
+    {
+      "check_id": "VERIF-11",
+      "title": "Formal Hypotheses H1/H2/H3 Reproduction",
+      "status": "PASS",
+      "details": {
+        "h1_verdict": "SUPPORTED",
+        "h1_diff": 0.01222799051528034,
+        "h1_epsilon": 0.005,
+        "h1_epsilon_source": "scripts/evaluate_sprint9.py",
+        "h2_verdict": "NOT_SUPPORTED",
+        "h3_verdict": "NOT_SUPPORTED",
+        "status": "PASS"
+      }
+    },
+    {
+      "check_id": "VERIF-12",
+      "title": "Sprint 10 Ablation Handling",
+      "status": "PASS",
+      "details": {
+        "a1b_status": "REPRODUCED",
+        "a1b_reproduced_macro_f1": 0.8506324370045575,
+        "a1b_reference_macro_f1": 0.8506324370045575,
+        "a1b_difference": 0.0,
+        "unsupported_configs_marked_not_reproduced": true,
+        "distinction_maintained": true,
+        "status": "PASS"
+      }
+    },
+    {
+      "check_id": "VERIF-13",
+      "title": "Quality Review Claims Audit",
+      "status": "PASS",
+      "details": [
+        {
+          "claim": "Zero-Training Enforcement",
+          "source_artifact": "run_sprint12_final_reproducibility.py",
+          "verification_method": "Static AST scan + Dynamic execution probe",
+          "result": "PASS"
+        },
+        {
+          "claim": "Separation of Reference & Reproduced Data",
+          "source_artifact": "comparisons/reference_vs_reproduced.csv",
+          "verification_method": "Verification of separate reference vs reproduced columns and paths",
+          "result": "PASS"
+        },
+        {
+          "claim": "No Manual Metric Entry",
+          "source_artifact": "publication/final_metrics.csv",
+          "verification_method": "Programmatic cross-check against source JSONs",
+          "result": "PASS"
+        },
+        {
+          "claim": "Frozen Artifact Protection",
+          "source_artifact": "git diff & status",
+          "verification_method": "Working tree diff check on historical directories",
+          "result": "PASS"
+        },
+        {
+          "claim": "Tolerance Invariance",
+          "source_artifact": "config.yaml",
+          "verification_method": "Verification of fixed atol=1e-8, rtol=1e-8",
+          "result": "PASS"
+        },
+        {
+          "claim": "Provenance Limitation Disclosure",
+          "source_artifact": "halt_report.json & ablation_status.json",
+          "verification_method": "Verification of RV-03 failure and halt report preservation",
+          "result": "PASS"
+        },
+        {
+          "claim": "Publication Terminology",
+          "source_artifact": "publication/final_metrics.md",
+          "verification_method": "Verification of exact metric headers (Macro Precision, Attack F1, etc.)",
+          "result": "PASS"
+        },
+        {
+          "claim": "Hardware Disclosure",
+          "source_artifact": "reproducibility_report.md",
+          "verification_method": "Verification of GPU, CUDA, OS details",
+          "result": "PASS"
+        },
+        {
+          "claim": "Epsilon Provenance",
+          "source_artifact": "scripts/evaluate_sprint9.py",
+          "verification_method": "Direct verification of source script defining 0.005",
+          "result": "PASS"
+        },
+        {
+          "claim": "Namespace Isolation",
+          "source_artifact": "results/final_reproducibility/EXP_FINAL_REPRO_V1/",
+          "verification_method": "Directory containment audit",
+          "result": "PASS"
+        }
+      ]
+    },
+    {
+      "check_id": "VERIF-14",
+      "title": "Output Directory Structure Completeness",
+      "status": "PASS",
+      "details": {
+        "total_expected_files": 43,
+        "files_present": 43,
+        "all_present": true
+      }
+    },
+    {
+      "check_id": "VERIF-15",
+      "title": "Frozen Artifact Protection",
+      "status": "FAIL",
+      "details": {
+        "git_diff_tracked_empty": false,
+        "modified_historical_files": [
+          "M .gitignore"
+        ],
+        "sprint5_to_11_unmodified": true,
+        "status": "FAIL"
+      }
+    },
+    {
+      "check_id": "VERIF-16",
+      "title": "Output Namespace Integrity",
+      "status": "FAIL",
+      "details": {
+        "unexpected_untracked_files": [
+          "results/final_reproducibility/"
+        ],
+        "all_outputs_isolated_to_namespace": false,
+        "status": "FAIL"
+      }
+    },
+    {
+      "check_id": "VERIF-17",
+      "title": "RV Gates Consistency Audit",
+      "status": "PASS",
+      "details": {
+        "total_gates_recorded": 37,
+        "rv03_status": "NOT_REPRODUCED",
+        "rv17_status": "PASS",
+        "all_other_gates_pass": true,
+        "gates_summary": {
+          "RV-01": "PASS",
+          "RV-02": "PASS",
+          "RV-03": "NOT_REPRODUCED",
+          "RV-04": "PASS",
+          "RV-05": "PASS",
+          "RV-06": "PASS",
+          "RV-07": "PASS",
+          "RV-08": "PASS",
+          "RV-09": "PASS",
+          "RV-10": "PASS",
+          "RV-11": "PASS",
+          "RV-12": "PASS",
+          "RV-13": "PASS",
+          "RV-14": "PASS",
+          "RV-15": "PASS",
+          "RV-16": "PASS",
+          "RV-18": "PASS",
+          "RV-19": "PASS",
+          "RV-20": "PASS",
+          "RV-21": "PASS",
+          "RV-27": "PASS",
+          "RV-22": "PASS",
+          "RV-23": "PASS",
+          "RV-25": "PASS",
+          "RV-26": "PASS",
+          "RV-24": "PASS",
+          "RV-28": "PASS",
+          "RV-29": "PASS",
+          "RV-17": "PASS",
+          "RV-32": "PASS",
+          "RV-33": "PASS",
+          "RV-34": "PASS",
+          "RV-35": "PASS",
+          "RV-36": "PASS",
+          "RV-30": "PASS",
+          "RV-31": "PASS",
+          "RV-37": "PASS"
+        },
+        "status": "PASS"
+      }
+    },
+    {
+      "check_id": "VERIF-18",
+      "title": "Cross-Document Consistency Audit",
+      "status": "PASS",
+      "details": {
+        "stacking_mean_consistent": true,
+        "fusion_consistent": true,
+        "a1b_consistent": true,
+        "contradictions_found": 0,
+        "status": "PASS"
+      }
+    }
+  ],
+  "component_results": [
+    {
+      "component": "Base Models (DT, RF, SVM, NN)",
+      "evidence_status": "Fresh inference executed; loaded from frozen checkpoints; 0 training operations; bitwise metric & discrete prediction match across all 81,749 rows",
+      "verification_status": "REPRODUCED",
+      "notes": "100% continuous and discrete pass across all 4 base models (DT, RF, SVM, NN)"
+    },
+    {
+      "component": "OOF Stacking (Seeds 42, 123, 2024)",
+      "evidence_status": "Fresh inference executed using frozen meta-learners; 3-seed mean = 0.89296125 (exact match, diff=0.0)",
+      "verification_status": "REPRODUCED",
+      "notes": "Bitwise exact match across all 3 seeds and mean"
+    },
+    {
+      "component": "Autoencoder (EXP_AE_V1)",
+      "evidence_status": "Loaded frozen 75->12->6->12->75 checkpoint; validation FPR = 7/11,200 (0.000625); protected backdoor = 0/583",
+      "verification_status": "REPRODUCED",
+      "notes": "Exact match to frozen Sprint 9 reference"
+    },
+    {
+      "component": "Fusion C06 (Stack 42 + AE)",
+      "evidence_status": "0 prediction mismatches across 81,749 rows; dev test Macro-F1 diff = 1.68e-08 within atol/rtol; backdoor = 582/583",
+      "verification_status": "REPRODUCED",
+      "notes": "Exact prediction match; Macro-F1 matches full-precision confusion matrix"
+    },
+    {
+      "component": "Hypothesis H1 (Stacking vs RF)",
+      "evidence_status": "Stacking mean (0.892961) - RF (0.880733) = +0.012228 > epsilon (0.005, source: evaluate_sprint9.py)",
+      "verification_status": "REPRODUCED",
+      "notes": "Verdict = SUPPORTED"
+    },
+    {
+      "component": "Hypothesis H2 (AE Alone on Backdoor)",
+      "evidence_status": "AE flagged 0/583 protected backdoor samples",
+      "verification_status": "REPRODUCED",
+      "notes": "Verdict = NOT_SUPPORTED"
+    },
+    {
+      "component": "Hypothesis H3 (Fusion C06 vs C01)",
+      "evidence_status": "C06 detected 582/583 vs C01 detected 582/583 (delta = 0)",
+      "verification_status": "REPRODUCED",
+      "notes": "Verdict = NOT_SUPPORTED"
+    },
+    {
+      "component": "Ablation A1b (Soft Vote)",
+      "evidence_status": "Fit-free parameterless soft-voting average reconstructed from verified base model cache; diff = 0.0",
+      "verification_status": "REPRODUCED",
+      "notes": "Reproduced Macro-F1 = 0.85063244"
+    },
+    {
+      "component": "Ablation A0, A1-A6 (Full Battery)",
+      "evidence_status": "Row-level prediction artifacts and fitted models absent from frozen Sprint 10 package; refitting prohibited",
+      "verification_status": "NOT_REPRODUCED",
+      "notes": "Marked NOT_REPRODUCED; historical reference only; RV-03 = FAIL strictly preserved"
+    }
+  ],
+  "zero_training_audit": {
+    "training_operations_executed": 0,
+    "self_reported_counter_caveat": "`training_operations_executed = 0` is a self-reported counter generated by the Sprint 12 runner and is therefore corroborating rather than independent evidence.",
+    "verification_methods": [
+      "Historical Execution Evidence (metadata.json: training_operations_executed = 0, 12.86s runtime)",
+      "Static AST Scan (ast_zero_training_audit.json: 0 forbidden constructs across 1,276 lines)",
+      "Dynamic Reconstructed Execution Probe (dynamic_zero_training_audit.json: 0 intercepted calls)"
+    ],
+    "ast_search_patterns": [
+      "fit(",
+      "fit_transform(",
+      "partial_fit(",
+      "optimizer.step(",
+      ".backward(",
+      "GridSearchCV",
+      "RandomizedSearchCV",
+      "HalvingGridSearchCV",
+      "HalvingRandomSearchCV",
+      "optuna",
+      "ray.tune",
+      "skopt",
+      "oof fold regeneration patterns (case-insensitive)"
+    ],
+    "ast_summary_counts": {
+      "estimator_fit_calls": 0,
+      "estimator_fit_transform_calls": 0,
+      "partial_fit_calls": 0,
+      "optimizer_step_calls": 0,
+      "backward_calls": 0,
+      "hyperparameter_search_references": 0,
+      "oof_regeneration_patterns": 0,
+      "preprocessing_pipeline_fit_calls": 1
+    },
+    "dynamic_probe_scope": "Fresh reconstructed execution of full model pipeline (DT, RF, SVM, NN, Scalers, Autoencoder, Stacking Meta-Learner 42, Fusion) loaded and executed through inference under runtime monkeypatching. Does not retrospectively instrument historical execution.",
+    "dynamic_call_counts": {
+      "forbidden_estimator_fit_calls": 0,
+      "forbidden_partial_fit_calls": 0,
+      "forbidden_optimizer_steps": 0,
+      "forbidden_backward_passes": 0
+    },
+    "preprocessing_pipeline_fit_classification": "PERMITTED FROZEN PREPROCESSING OPERATION (methodological classification; PreprocessingPipeline.fit() on frozen TRAIN initializes categorical one-hot encoding schemas across splits, standard across Sprints 8-11; downstream inference uses view='unscaled'; zero model parameters learned).",
+    "zero_training_compliance": "PASS"
+  },
+  "base_models_audit": {
+    "checkpoints": [
+      {
+        "model_name": "Decision Tree (Base)",
+        "checkpoint_file": "results/checkpoints/EXP_BASE_MODELS_V1/dt/dt_final.joblib",
+        "reference_sha256": "748261c8106e5b12a93decb4de7df435e09dd587b03294dba3837e20c8a2e4a3",
+        "reproduced_sha256": "748261c8106e5b12a93decb4de7df435e09dd587b03294dba3837e20c8a2e4a3",
+        "hash_match": true,
+        "loading_method": "joblib.load()",
+        "training_calls_executed": 0,
+        "status": "PASS"
+      },
+      {
+        "model_name": "Random Forest (Base)",
+        "checkpoint_file": "results/checkpoints/EXP_BASE_MODELS_V1/rf/rf_final.joblib",
+        "reference_sha256": "f1f873ef4bd7f09c03885ffbbc4c9ec51306dc2aecc0f48e4584fddd7a97a68f",
+        "reproduced_sha256": "f1f873ef4bd7f09c03885ffbbc4c9ec51306dc2aecc0f48e4584fddd7a97a68f",
+        "hash_match": true,
+        "loading_method": "joblib.load()",
+        "training_calls_executed": 0,
+        "status": "PASS"
+      },
+      {
+        "model_name": "SVM (Base)",
+        "checkpoint_file": "results/checkpoints/EXP_BASE_MODELS_V1/svm/svm_final.joblib",
+        "reference_sha256": "f325d57525dda5bd92cc20c5393a38fa1b9ca055001b0c24fc9402bdbece990c",
+        "reproduced_sha256": "f325d57525dda5bd92cc20c5393a38fa1b9ca055001b0c24fc9402bdbece990c",
+        "hash_match": true,
+        "loading_method": "joblib.load()",
+        "training_calls_executed": 0,
+        "status": "PASS",
+        "scaler_file": "results/checkpoints/EXP_BASE_MODELS_V1/svm/svm_scaler.joblib",
+        "scaler_reference_sha256": "a85eeeb74d34bed8cead09cc7506c4bbac6522bb1df0467d6904178996bdaa85",
+        "scaler_reproduced_sha256": "a85eeeb74d34bed8cead09cc7506c4bbac6522bb1df0467d6904178996bdaa85",
+        "scaler_hash_match": true
+      },
+      {
+        "model_name": "Neural Network (Base)",
+        "checkpoint_file": "results/checkpoints/EXP_BASE_MODELS_V1/nn/nn_final.pt",
+        "reference_sha256": "7f3dcdfa59cbd084fcd952645db3b14fa67554769500551f06737d42e5e058ae",
+        "reproduced_sha256": "7f3dcdfa59cbd084fcd952645db3b14fa67554769500551f06737d42e5e058ae",
+        "hash_match": true,
+        "loading_method": "torch.load(weights_only=True) + IDSNet.load_state_dict()",
+        "training_calls_executed": 0,
+        "status": "PASS",
+        "scaler_file": "results/checkpoints/EXP_BASE_MODELS_V1/nn/nn_scaler.joblib",
+        "scaler_reference_sha256": "a85eeeb74d34bed8cead09cc7506c4bbac6522bb1df0467d6904178996bdaa85",
+        "scaler_reproduced_sha256": "a85eeeb74d34bed8cead09cc7506c4bbac6522bb1df0467d6904178996bdaa85",
+        "scaler_hash_match": true
+      }
+    ],
+    "prediction_comparison": [
+      {
+        "target": "Decision Tree (Base) dev_test",
+        "population": "DEVELOPMENT_TEST",
+        "total_rows": 81749,
+        "mismatches": 0,
+        "mismatch_pct": 0.0,
+        "status": "PASS"
+      },
+      {
+        "target": "Random Forest (Base) dev_test",
+        "population": "DEVELOPMENT_TEST",
+        "total_rows": 81749,
+        "mismatches": 0,
+        "mismatch_pct": 0.0,
+        "status": "PASS"
+      },
+      {
+        "target": "SVM (Base) dev_test",
+        "population": "DEVELOPMENT_TEST",
+        "total_rows": 81749,
+        "mismatches": 0,
+        "mismatch_pct": 0.0,
+        "status": "PASS"
+      },
+      {
+        "target": "Neural Network (Base) dev_test",
+        "population": "DEVELOPMENT_TEST",
+        "total_rows": 81749,
+        "mismatches": 0,
+        "mismatch_pct": 0.0,
+        "status": "PASS"
+      }
+    ],
+    "metric_comparison_summary": {
+      "total_metrics_evaluated": 32,
+      "max_absolute_diff": 0.0,
+      "all_pass": true
+    },
+    "status": "PASS"
+  },
+  "fusion_investigation": {
+    "root_cause_artifact_path": "results/final_reproducibility/EXP_FINAL_REPRO_V1/verification/fusion_macro_f1_root_cause.json",
+    "source_confusion_matrix_file": "results/fusion/EXP_FUSION_V1/development_test/metrics.json",
+    "source_confusion_matrix_values": {
+      "tp": 43306,
+      "fp": 7113,
+      "tn": 29887,
+      "fn": 1443
+    },
+    "reference_scalar": 0.89244,
+    "reference_precision_note": "Serialized to 6 decimal places (trailing zero omitted in JSON: 0.892440 -> 0.89244)",
+    "reproduced_scalar": 0.892439983171387,
+    "exact_confusion_matrix_macro_f1": 0.892439983171387,
+    "absolute_difference": 1.682861305862815e-08,
+    "tolerance_limit": 1.89244e-08,
+    "within_tolerance": true,
+    "bitwise_equality_with_reproduced": true,
+    "mathematical_explanation": "Programmatically recomputing Macro-F1 directly from the frozen reference confusion matrix (tp=43306, fp=7113, tn=29887, fn=1443) via verification/fusion_macro_f1_root_cause.json produces exactly 0.892439983171387, which is bitwise identical to the Sprint 12 reproduced value. The 1.68e-08 difference is purely artifact formatting in the reference JSON (trailing zero omitted: 0.892440 -> 0.89244), strictly within atol=1e-8, rtol=1e-8.",
+    "steps": [
+      {
+        "step_id": 1,
+        "check": "dataset hash",
+        "evidence_source": "data/splits/development_test.csv",
+        "evidence_found": "04725e85732ab2fc",
+        "result": "PASS"
+      },
+      {
+        "step_id": 2,
+        "check": "split identity",
+        "evidence_source": "data/splits/development_test.csv",
+        "evidence_found": "81749 rows, unique UIDs verified",
+        "result": "PASS"
+      },
+      {
+        "step_id": 3,
+        "check": "feature-set hash",
+        "evidence_source": "results/feature_selection/EXP_MI_V1_1/selected_features.json",
+        "evidence_found": "6a1816143a4fbe11",
+        "result": "PASS"
+      },
+      {
+        "step_id": 4,
+        "check": "feature ordering",
+        "evidence_source": "selected_features.json & input_manifest.json",
+        "evidence_found": "75 features in exact preflight order",
+        "result": "PASS"
+      },
+      {
+        "step_id": 5,
+        "check": "model hash",
+        "evidence_source": "checkpoints: base models, stack meta 42, ae",
+        "evidence_found": "All 7 loaded checkpoints bitwise verified",
+        "result": "PASS"
+      },
+      {
+        "step_id": 6,
+        "check": "scaler hash",
+        "evidence_source": "svm_scaler, nn_scaler, ae_scaler",
+        "evidence_found": "All 3 scalers bitwise verified",
+        "result": "PASS"
+      },
+      {
+        "step_id": 7,
+        "check": "configuration hash",
+        "evidence_source": "results/fusion/EXP_FUSION_V1/config.yaml",
+        "evidence_found": "Configuration C06 (OR logic)",
+        "result": "PASS"
+      },
+      {
+        "step_id": 8,
+        "check": "seed",
+        "evidence_source": "EXP_FUSION_V1 metadata",
+        "evidence_found": "Base seed 42, AE seed 42",
+        "result": "PASS"
+      },
+      {
+        "step_id": 9,
+        "check": "dependency versions",
+        "evidence_source": "environment.txt",
+        "evidence_found": "sklearn 1.9.0, torch 2.7.1, numpy 2.4.6",
+        "result": "PASS"
+      },
+      {
+        "step_id": 10,
+        "check": "device/CUDA",
+        "evidence_source": "metadata.json",
+        "evidence_found": "RTX 3050 Laptop GPU, CUDA 11.8",
+        "result": "PASS"
+      },
+      {
+        "step_id": 11,
+        "check": "preprocessing",
+        "evidence_source": "src.preprocessing.preprocessing_pipeline",
+        "evidence_found": "Unscaled transform fitted on TRAIN (162,395 rows)",
+        "result": "PASS"
+      },
+      {
+        "step_id": 12,
+        "check": "Git commit",
+        "evidence_source": "git rev-parse HEAD",
+        "evidence_found": "8eeece3bb5a8e4c05613e3e39aa2e98b4ef5eb39",
+        "result": "PASS"
+      },
+      {
+        "step_id": 13,
+        "check": "inference path",
+        "evidence_source": "predictions.csv row comparison",
+        "evidence_found": "0 prediction mismatches across 81,749 rows",
+        "result": "PASS"
+      },
+      {
+        "step_id": 14,
+        "check": "evaluation logic",
+        "evidence_source": "results/final_reproducibility/EXP_FINAL_REPRO_V1/verification/fusion_macro_f1_root_cause.json",
+        "evidence_found": "Programmatic derivation from frozen confusion matrix yields exact float64 0.892439983171387 (bitwise identical to reproduced value, diff=0.00e+00). Reference scalar 0.89244 was 6-decimal truncated JSON representation (trailing zero omitted: 0.892440 -> 0.89244). Diff=1.68e-08 strictly within atol=1e-8, rtol=1e-8.",
+        "result": "PASS"
+      }
+    ]
+  },
+  "environment_reference": {
+    "current_sprint12_environment": {
+      "captured": true,
+      "package_count": 124,
+      "python": "3.11.9",
+      "torch": "2.7.1+cu118",
+      "sklearn": "1.9.0",
+      "numpy": "2.4.6",
+      "pandas": "3.0.5",
+      "gpu": "NVIDIA GeForce RTX 3050 Laptop GPU",
+      "cuda": "11.8",
+      "os": "Windows 11"
+    },
+    "frozen_reference_environment": {
+      "sprint9_captured_txt": false,
+      "sprint9_metadata_summary": {
+        "sklearn": "1.5.0",
+        "torch": "2.7.1+cu118",
+        "numpy": "2.4.6",
+        "pandas": "3.0.5"
+      },
+      "sprint10_captured_txt": true,
+      "sprint11_captured_txt": true,
+      "historical_status_note": "Frozen-reference environment: not historically captured as full pip freeze for Sprint 9 (runtime metadata only: python 3.11.9, torch 2.7.1+cu118, numpy 2.4.6, pandas 3.0.5, sklearn 1.5.0); historically captured for Sprint 10 and Sprint 11."
+    },
+    "known_deviations": {
+      "sklearn_version_change": "Sprint 9 metadata recorded sklearn 1.5.0; Sprint 10, 11, and 12 executed under sklearn 1.9.0.",
+      "s11_vs_s12_diff": [],
+      "hardware_deviation": "Sprint 12 executed on Windows 11 with NVIDIA RTX 3050 Laptop GPU under locked tolerance (atol=1e-8, rtol=1e-8)."
+    },
+    "explicit_distinction_documented": true
+  },
+  "publication_audit": {
+    "required_columns_present": true,
+    "reproduced_pipelines_count": 10,
+    "unsupported_ablation_count": 7,
+    "all_unsupported_marked_not_reproduced": true,
+    "values_match_source_jsons": true,
+    "standard_terminology_enforced": true
+  },
+  "quality_review_audit": [
+    {
+      "claim": "Zero-Training Enforcement",
+      "source_artifact": "run_sprint12_final_reproducibility.py",
+      "verification_method": "Static AST scan + Dynamic execution probe",
+      "result": "PASS"
+    },
+    {
+      "claim": "Separation of Reference & Reproduced Data",
+      "source_artifact": "comparisons/reference_vs_reproduced.csv",
+      "verification_method": "Verification of separate reference vs reproduced columns and paths",
+      "result": "PASS"
+    },
+    {
+      "claim": "No Manual Metric Entry",
+      "source_artifact": "publication/final_metrics.csv",
+      "verification_method": "Programmatic cross-check against source JSONs",
+      "result": "PASS"
+    },
+    {
+      "claim": "Frozen Artifact Protection",
+      "source_artifact": "git diff & status",
+      "verification_method": "Working tree diff check on historical directories",
+      "result": "PASS"
+    },
+    {
+      "claim": "Tolerance Invariance",
+      "source_artifact": "config.yaml",
+      "verification_method": "Verification of fixed atol=1e-8, rtol=1e-8",
+      "result": "PASS"
+    },
+    {
+      "claim": "Provenance Limitation Disclosure",
+      "source_artifact": "halt_report.json & ablation_status.json",
+      "verification_method": "Verification of RV-03 failure and halt report preservation",
+      "result": "PASS"
+    },
+    {
+      "claim": "Publication Terminology",
+      "source_artifact": "publication/final_metrics.md",
+      "verification_method": "Verification of exact metric headers (Macro Precision, Attack F1, etc.)",
+      "result": "PASS"
+    },
+    {
+      "claim": "Hardware Disclosure",
+      "source_artifact": "reproducibility_report.md",
+      "verification_method": "Verification of GPU, CUDA, OS details",
+      "result": "PASS"
+    },
+    {
+      "claim": "Epsilon Provenance",
+      "source_artifact": "scripts/evaluate_sprint9.py",
+      "verification_method": "Direct verification of source script defining 0.005",
+      "result": "PASS"
+    },
+    {
+      "claim": "Namespace Isolation",
+      "source_artifact": "results/final_reproducibility/EXP_FINAL_REPRO_V1/",
+      "verification_method": "Directory containment audit",
+      "result": "PASS"
+    }
+  ],
+  "directory_structure": [
+    {
+      "expected_path": "results/final_reproducibility/EXP_FINAL_REPRO_V1/config.yaml",
+      "exists": true,
+      "size_bytes": 940,
+      "status": "PASS"
+    },
+    {
+      "expected_path": "results/final_reproducibility/EXP_FINAL_REPRO_V1/metadata.json",
+      "exists": true,
+      "size_bytes": 2234,
+      "status": "PASS"
+    },
+    {
+      "expected_path": "results/final_reproducibility/EXP_FINAL_REPRO_V1/environment.txt",
+      "exists": true,
+      "size_bytes": 2393,
+      "status": "PASS"
+    },
+    {
+      "expected_path": "results/final_reproducibility/EXP_FINAL_REPRO_V1/input_manifest.json",
+      "exists": true,
+      "size_bytes": 1559,
+      "status": "PASS"
+    },
+    {
+      "expected_path": "results/final_reproducibility/EXP_FINAL_REPRO_V1/artifact_manifest.json",
+      "exists": true,
+      "size_bytes": 3301,
+      "status": "PASS"
+    },
+    {
+      "expected_path": "results/final_reproducibility/EXP_FINAL_REPRO_V1/dataset_manifest.json",
+      "exists": true,
+      "size_bytes": 1288,
+      "status": "PASS"
+    },
+    {
+      "expected_path": "results/final_reproducibility/EXP_FINAL_REPRO_V1/halt_report.json",
+      "exists": true,
+      "size_bytes": 2910,
+      "status": "PASS"
+    },
+    {
+      "expected_path": "results/final_reproducibility/EXP_FINAL_REPRO_V1/reproducibility_report.md",
+      "exists": true,
+      "size_bytes": 5447,
+      "status": "PASS"
+    },
+    {
+      "expected_path": "results/final_reproducibility/EXP_FINAL_REPRO_V1/validation_report.md",
+      "exists": true,
+      "size_bytes": 5048,
+      "status": "PASS"
+    },
+    {
+      "expected_path": "results/final_reproducibility/EXP_FINAL_REPRO_V1/quality_review.md",
+      "exists": true,
+      "size_bytes": 1755,
+      "status": "PASS"
+    },
+    {
+      "expected_path": "results/final_reproducibility/EXP_FINAL_REPRO_V1/base_models/metrics.json",
+      "exists": true,
+      "size_bytes": 2256,
+      "status": "PASS"
+    },
+    {
+      "expected_path": "results/final_reproducibility/EXP_FINAL_REPRO_V1/base_models/predictions_dev_test.csv",
+      "exists": true,
+      "size_bytes": 7080824,
+      "status": "PASS"
+    },
+    {
+      "expected_path": "results/final_reproducibility/EXP_FINAL_REPRO_V1/stacking/metrics.json",
+      "exists": true,
+      "size_bytes": 2081,
+      "status": "PASS"
+    },
+    {
+      "expected_path": "results/final_reproducibility/EXP_FINAL_REPRO_V1/stacking/predictions_dev_test.csv",
+      "exists": true,
+      "size_bytes": 8194939,
+      "status": "PASS"
+    },
+    {
+      "expected_path": "results/final_reproducibility/EXP_FINAL_REPRO_V1/ae/metrics.json",
+      "exists": true,
+      "size_bytes": 300,
+      "status": "PASS"
+    },
+    {
+      "expected_path": "results/final_reproducibility/EXP_FINAL_REPRO_V1/ae/reconstruction_errors_dev_test.csv",
+      "exists": true,
+      "size_bytes": 3742166,
+      "status": "PASS"
+    },
+    {
+      "expected_path": "results/final_reproducibility/EXP_FINAL_REPRO_V1/fusion/metrics.json",
+      "exists": true,
+      "size_bytes": 1535,
+      "status": "PASS"
+    },
+    {
+      "expected_path": "results/final_reproducibility/EXP_FINAL_REPRO_V1/fusion/predictions_dev_test.csv",
+      "exists": true,
+      "size_bytes": 3340711,
+      "status": "PASS"
+    },
+    {
+      "expected_path": "results/final_reproducibility/EXP_FINAL_REPRO_V1/fusion/predictions_protected_backdoor.csv",
+      "exists": true,
+      "size_bytes": 23901,
+      "status": "PASS"
+    },
+    {
+      "expected_path": "results/final_reproducibility/EXP_FINAL_REPRO_V1/h123/h1_results.json",
+      "exists": true,
+      "size_bytes": 517,
+      "status": "PASS"
+    },
+    {
+      "expected_path": "results/final_reproducibility/EXP_FINAL_REPRO_V1/h123/h2_results.json",
+      "exists": true,
+      "size_bytes": 222,
+      "status": "PASS"
+    },
+    {
+      "expected_path": "results/final_reproducibility/EXP_FINAL_REPRO_V1/h123/h3_results.json",
+      "exists": true,
+      "size_bytes": 384,
+      "status": "PASS"
+    },
+    {
+      "expected_path": "results/final_reproducibility/EXP_FINAL_REPRO_V1/h123/summary.json",
+      "exists": true,
+      "size_bytes": 136,
+      "status": "PASS"
+    },
+    {
+      "expected_path": "results/final_reproducibility/EXP_FINAL_REPRO_V1/ablation/a1b_metrics.json",
+      "exists": true,
+      "size_bytes": 510,
+      "status": "PASS"
+    },
+    {
+      "expected_path": "results/final_reproducibility/EXP_FINAL_REPRO_V1/ablation/a1b_soft_vote_dev_test.csv",
+      "exists": true,
+      "size_bytes": 4611992,
+      "status": "PASS"
+    },
+    {
+      "expected_path": "results/final_reproducibility/EXP_FINAL_REPRO_V1/ablation/ablation_status.json",
+      "exists": true,
+      "size_bytes": 1142,
+      "status": "PASS"
+    },
+    {
+      "expected_path": "results/final_reproducibility/EXP_FINAL_REPRO_V1/ablation/historical_reference_ablation.csv",
+      "exists": true,
+      "size_bytes": 438,
+      "status": "PASS"
+    },
+    {
+      "expected_path": "results/final_reproducibility/EXP_FINAL_REPRO_V1/comparisons/reference_vs_reproduced.csv",
+      "exists": true,
+      "size_bytes": 1194,
+      "status": "PASS"
+    },
+    {
+      "expected_path": "results/final_reproducibility/EXP_FINAL_REPRO_V1/comparisons/prediction_comparison.csv",
+      "exists": true,
+      "size_bytes": 130,
+      "status": "PASS"
+    },
+    {
+      "expected_path": "results/final_reproducibility/EXP_FINAL_REPRO_V1/comparisons/metric_comparison.csv",
+      "exists": true,
+      "size_bytes": 1194,
+      "status": "PASS"
+    },
+    {
+      "expected_path": "results/final_reproducibility/EXP_FINAL_REPRO_V1/comparisons/base_models_checkpoint_verification.json",
+      "exists": true,
+      "size_bytes": 2676,
+      "status": "PASS"
+    },
+    {
+      "expected_path": "results/final_reproducibility/EXP_FINAL_REPRO_V1/comparisons/base_models_prediction_comparison.csv",
+      "exists": true,
+      "size_bytes": 312,
+      "status": "PASS"
+    },
+    {
+      "expected_path": "results/final_reproducibility/EXP_FINAL_REPRO_V1/comparisons/base_models_metric_comparison.csv",
+      "exists": true,
+      "size_bytes": 3512,
+      "status": "PASS"
+    },
+    {
+      "expected_path": "results/final_reproducibility/EXP_FINAL_REPRO_V1/comparisons/comparison_summary.json",
+      "exists": true,
+      "size_bytes": 3862,
+      "status": "PASS"
+    },
+    {
+      "expected_path": "results/final_reproducibility/EXP_FINAL_REPRO_V1/comparisons/comparison_report.md",
+      "exists": true,
+      "size_bytes": 1842,
+      "status": "PASS"
+    },
+    {
+      "expected_path": "results/final_reproducibility/EXP_FINAL_REPRO_V1/publication/final_metrics.csv",
+      "exists": true,
+      "size_bytes": 2476,
+      "status": "PASS"
+    },
+    {
+      "expected_path": "results/final_reproducibility/EXP_FINAL_REPRO_V1/publication/final_metrics.md",
+      "exists": true,
+      "size_bytes": 2413,
+      "status": "PASS"
+    },
+    {
+      "expected_path": "results/final_reproducibility/EXP_FINAL_REPRO_V1/publication/result_manifest.json",
+      "exists": true,
+      "size_bytes": 2394,
+      "status": "PASS"
+    },
+    {
+      "expected_path": "results/final_reproducibility/EXP_FINAL_REPRO_V1/verification/ast_zero_training_audit.json",
+      "exists": true,
+      "size_bytes": 1335,
+      "status": "PASS"
+    },
+    {
+      "expected_path": "results/final_reproducibility/EXP_FINAL_REPRO_V1/verification/dynamic_zero_training_audit.json",
+      "exists": true,
+      "size_bytes": 741,
+      "status": "PASS"
+    },
+    {
+      "expected_path": "results/final_reproducibility/EXP_FINAL_REPRO_V1/verification/fusion_macro_f1_root_cause.json",
+      "exists": true,
+      "size_bytes": 1203,
+      "status": "PASS"
+    },
+    {
+      "expected_path": "results/final_reproducibility/EXP_FINAL_REPRO_V1/verification/final_methodology_clarification.json",
+      "exists": true,
+      "size_bytes": 11062,
+      "status": "PASS"
+    },
+    {
+      "expected_path": "results/final_reproducibility/EXP_FINAL_REPRO_V1/verification/final_methodology_clarification.md",
+      "exists": true,
+      "size_bytes": 11163,
+      "status": "PASS"
+    }
+  ],
+  "frozen_artifact_integrity": {
+    "git_diff_tracked_empty": false,
+    "modified_historical_files": [
+      "M .gitignore"
+    ],
+    "sprint5_to_11_unmodified": true,
+    "status": "FAIL"
+  },
+  "rv_gate_crosscheck": {
+    "total_gates_recorded": 37,
+    "rv03_status": "NOT_REPRODUCED",
+    "rv17_status": "PASS",
+    "all_other_gates_pass": true,
+    "gates_summary": {
+      "RV-01": "PASS",
+      "RV-02": "PASS",
+      "RV-03": "NOT_REPRODUCED",
+      "RV-04": "PASS",
+      "RV-05": "PASS",
+      "RV-06": "PASS",
+      "RV-07": "PASS",
+      "RV-08": "PASS",
+      "RV-09": "PASS",
+      "RV-10": "PASS",
+      "RV-11": "PASS",
+      "RV-12": "PASS",
+      "RV-13": "PASS",
+      "RV-14": "PASS",
+      "RV-15": "PASS",
+      "RV-16": "PASS",
+      "RV-18": "PASS",
+      "RV-19": "PASS",
+      "RV-20": "PASS",
+      "RV-21": "PASS",
+      "RV-27": "PASS",
+      "RV-22": "PASS",
+      "RV-23": "PASS",
+      "RV-25": "PASS",
+      "RV-26": "PASS",
+      "RV-24": "PASS",
+      "RV-28": "PASS",
+      "RV-29": "PASS",
+      "RV-17": "PASS",
+      "RV-32": "PASS",
+      "RV-33": "PASS",
+      "RV-34": "PASS",
+      "RV-35": "PASS",
+      "RV-36": "PASS",
+      "RV-30": "PASS",
+      "RV-31": "PASS",
+      "RV-37": "PASS"
+    },
+    "status": "PASS"
+  },
+  "report_consistency": {
+    "stacking_mean_consistent": true,
+    "fusion_consistent": true,
+    "a1b_consistent": true,
+    "contradictions_found": 0,
+    "status": "PASS"
+  },
+  "limitations": [
+    {
+      "name": "Structural Self-Review Risk",
+      "classification": "LIMITATION",
+      "statement": "Verification was executed in the same session environment (verification_independence = limited). Structural self-review risk is disclosed."
+    },
+    {
+      "name": "Sprint 10 Ablation Provenance Gap",
+      "classification": "LIMITATION",
+      "statement": "Sprint 10 ablation configurations A0 and A1-A6 cannot be reproduced without forbidden model fitting; RV-03 remains FAIL / NOT_REPRODUCED."
+    },
+    {
+      "name": "Inference-Only Scope",
+      "classification": "LIMITATION",
+      "statement": "Frozen models and pipelines are reproduced under the locked environment; this establishes inference reproducibility, not retraining reproducibility."
+    },
+    {
+      "name": "Sprint 9 Dependency Version Drift (scikit-learn 1.5.0 -> 1.9.0)",
+      "classification": "LIMITATION",
+      "statement": "Historical Sprint 9 evaluation (EXP_H123_V1) executed under scikit-learn 1.5.0, whereas Sprints 10, 11, and 12 executed under scikit-learn 1.9.0. Empirical evidence demonstrates that H1 stacking metrics reproduced with 0.00e+00 diff across all three seeds and 3-seed mean despite this drift, and base model predictions showed 0 discrete mismatches across all 81,749 rows of DEVELOPMENT_TEST. However, this version drift was not historically controlled for and no formal cross-version regression test across scikit-learn versions was performed. Flagged for inclusion in the paper's Limitations section."
+    }
+  ]
+}

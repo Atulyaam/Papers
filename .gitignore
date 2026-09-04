@@ -5,7 +5,10 @@ __pycache__/
 data/raw/
 data/splits/
 data/audit/
-results/
+results/*
+!results/final_reproducibility/
+results/final_reproducibility/*
+!results/final_reproducibility/EXP_FINAL_REPRO_V1/
 *.egg-info/
 .DS_Store
 Thumbs.db

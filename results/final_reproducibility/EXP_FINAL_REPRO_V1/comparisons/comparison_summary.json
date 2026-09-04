@@ -1,0 +1,141 @@
+{
+  "metric_comparisons": [
+    {
+      "component": "H1",
+      "metric": "stacking_mean_macro_f1",
+      "reference": 0.8929612508481996,
+      "reproduced": 0.8929612508481996,
+      "absolute_diff": 0.0,
+      "relative_diff": 0.0,
+      "tolerance": "atol=1e-08,rtol=1e-08",
+      "status": "PASS"
+    },
+    {
+      "component": "H1",
+      "metric": "stacking_macro_f1_seed_42",
+      "reference": 0.8926091690431182,
+      "reproduced": 0.8926091690431182,
+      "absolute_diff": 0.0,
+      "relative_diff": 0.0,
+      "tolerance": "atol=1e-08,rtol=1e-08",
+      "status": "PASS"
+    },
+    {
+      "component": "H1",
+      "metric": "stacking_macro_f1_seed_123",
+      "reference": 0.8926186397931948,
+      "reproduced": 0.8926186397931948,
+      "absolute_diff": 0.0,
+      "relative_diff": 0.0,
+      "tolerance": "atol=1e-08,rtol=1e-08",
+      "status": "PASS"
+    },
+    {
+      "component": "H1",
+      "metric": "stacking_macro_f1_seed_2024",
+      "reference": 0.8936559437082856,
+      "reproduced": 0.8936559437082856,
+      "absolute_diff": 0.0,
+      "relative_diff": 0.0,
+      "tolerance": "atol=1e-08,rtol=1e-08",
+      "status": "PASS"
+    },
+    {
+      "component": "H1",
+      "metric": "rf_dev_test_macro_f1",
+      "reference": 0.8807332603329192,
+      "reproduced": 0.8807332603329192,
+      "absolute_diff": 0.0,
+      "relative_diff": 0.0,
+      "tolerance": "atol=1e-08,rtol=1e-08",
+      "status": "PASS"
+    },
+    {
+      "component": "H1",
+      "metric": "diff",
+      "reference": 0.01222799051528034,
+      "reproduced": 0.01222799051528034,
+      "absolute_diff": 0.0,
+      "relative_diff": 0.0,
+      "tolerance": "atol=1e-08,rtol=1e-08",
+      "status": "PASS"
+    },
+    {
+      "component": "Fusion",
+      "metric": "c06_dev_test_macro_f1",
+      "reference": 0.89244,
+      "reproduced": 0.892439983171387,
+      "absolute_diff": 1.682861305862815e-08,
+      "relative_diff": 1.885685654904324e-08,
+      "tolerance": "atol=1e-08,rtol=1e-08",
+      "status": "PASS"
+    },
+    {
+      "component": "Fusion",
+      "metric": "c06_dev_test_fpr",
+      "reference": 0.19224324324324324,
+      "reproduced": 0.19224324324324324,
+      "absolute_diff": 0.0,
+      "relative_diff": 0.0,
+      "tolerance": "atol=1e-08,rtol=1e-08",
+      "status": "PASS"
+    },
+    {
+      "component": "Fusion",
+      "metric": "c06_prot_detected",
+      "reference": 582,
+      "reproduced": 582,
+      "absolute_diff": 0,
+      "relative_diff": 0.0,
+      "tolerance": "exact",
+      "status": "PASS"
+    },
+    {
+      "component": "AE",
+      "metric": "ae_val_fpr",
+      "reference": 0.000625,
+      "reproduced": 0.000625,
+      "absolute_diff": 0.0,
+      "relative_diff": 0.0,
+      "tolerance": "atol=1e-08,rtol=1e-08",
+      "status": "PASS"
+    },
+    {
+      "component": "AE",
+      "metric": "ae_prot_detected",
+      "reference": 0,
+      "reproduced": 0,
+      "absolute_diff": 0,
+      "relative_diff": 0.0,
+      "tolerance": "exact",
+      "status": "PASS"
+    },
+    {
+      "component": "Ablation",
+      "metric": "a1b_macro_f1",
+      "reference": 0.8506324370045575,
+      "reproduced": 0.8506324370045575,
+      "absolute_diff": 0.0,
+      "relative_diff": 0.0,
+      "tolerance": "atol=1e-08,rtol=1e-08",
+      "status": "PASS"
+    }
+  ],
+  "prediction_comparisons": [
+    {
+      "target": "C06_Fusion_dev_test",
+      "total_rows": 81749,
+      "mismatches": 0,
+      "mismatch_pct": 0.0,
+      "status": "PASS"
+    },
+    {
+      "target": "C01_Supervised_dev_test",
+      "total_rows": 81749,
+      "mismatches": 0,
+      "mismatch_pct": 0.0,
+      "status": "PASS"
+    }
+  ],
+  "summary": "100% exact and numerical tolerance pass across all reproduced models."
+}
