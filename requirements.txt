@@ -1,0 +1,27 @@
+# =============================================================================
+# UNSW-NB15 Intrusion Detection System — Python Dependencies
+# =============================================================================
+
+# Core Scientific & Data Processing
+numpy>=2.0.0
+pandas>=2.2.0
+scipy>=1.14.0
+scikit-learn>=1.5.0
+PyYAML>=6.0.0
+joblib>=1.4.0
+tqdm>=4.66.0
+
+# Deep Learning (PyTorch)
+torch>=2.2.0
+
+# Model Explainability & Visualizations
+shap>=0.45.0
+matplotlib>=3.8.0
+seaborn>=0.13.0
+
+# Report Generation & Document Auditing
+reportlab>=4.0.0
+pymupdf>=1.24.0
+
+# Testing & Quality Assurance
+pytest>=8.0.0
