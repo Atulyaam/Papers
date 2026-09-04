@@ -193,7 +193,7 @@ def make_fig04_ae_reconstruction_error():
     re_vals = df["re_value"].values
 
     fig, ax = plt.subplots(figsize=(8.5, 4.5), dpi=300)
-    bins = np.logspace(np.log10(max(re_vals.min(), 0.001)), np.log10(re_vals.max()), 60)
+    bins = list(np.logspace(np.log10(max(re_vals.min(), 0.001)), np.log10(re_vals.max()), 60))
     ax.hist(re_vals, bins=bins, color=NAVY, alpha=0.75, edgecolor="#333333", lw=0.6, label="Normal Validation RE (n=11,200)")
 
     # Mark thresholds
